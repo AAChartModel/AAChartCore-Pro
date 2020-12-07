@@ -1,5 +1,12 @@
 package com.aachartmodel.aachartcore_pro;
 
+import com.google.gson.Gson;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 class AAOptionsData {
 
     public static Object[] variablepieData;
@@ -29,109 +36,131 @@ class AAOptionsData {
     public static Object[] wordcloudData;
     public static Object[] eulerData;
 
-    private static Object[] getVariablepieData() {
+    public static Object[] getVariablepieData() {
         return getJsonDataWithJsonFileName("variablepieData");
     }
 
-    private static Object[] getVariwideData() {
+    public static Object[] getVariwideData() {
         return getJsonDataWithJsonFileName("variwideData");
     }
 
-    private static Object[] getHeatmapData() {
+    public static Object[] getHeatmapData() {
         return getJsonDataWithJsonFileName("heatmapData");
     }
 
-    private static Object[] getPackedbubbleData() {
+    public static Object[] getPackedbubbleData() {
         return getJsonDataWithJsonFileName("packedbubbleData");
     }
 
-    private static Object[] getPackedbubbleSplitData() {
+    public static Object[] getPackedbubbleSplitData() {
         return getJsonDataWithJsonFileName("packedbubbleSplitData");
     }
 
-    private static Object[] getColumnpyramidData() {
+    public static Object[] getColumnpyramidData() {
         return getJsonDataWithJsonFileName("columnpyramidData");
     }
 
-    private static Object[] getTreemapWithColorAxisData() {
+    public static Object[] getTreemapWithColorAxisData() {
         return getJsonDataWithJsonFileName("treemapWithColorAxisData");
     }
 
-    private static Object[] getDrilldownTreemapData() {
+    public static Object[] getDrilldownTreemapData() {
         return getJsonDataWithJsonFileName("drilldownTreemapData");
     }
 
-    private static Object[] getSankeyData() {
+    public static Object[] getSankeyData() {
         return getJsonDataWithJsonFileName("sankeyData");
     }
 
-    private static Object[] getDependencywheelData() {
+    public static Object[] getDependencywheelData() {
         return getJsonDataWithJsonFileName("dependencywheelData");
     }
 
-    private static Object[] getSunburstData() {
+    public static Object[] getSunburstData() {
         return getJsonDataWithJsonFileName("sunburstData");
     }
 
-    private static Object[] getDumbbellData() {
+    public static Object[] getDumbbellData() {
         return getJsonDataWithJsonFileName("dumbbellData");
     }
 
-    private static Object[] getVennData() {
+    public static Object[] getVennData() {
         return getJsonDataWithJsonFileName("vennData");
     }
 
-    private static Object[] getLollipopData() {
+    public static Object[] getLollipopData() {
         return getJsonDataWithJsonFileName("lollipopData");
     }
 
-    private static Object[] getTilemapData() {
+    public static Object[] getTilemapData() {
         return getJsonDataWithJsonFileName("tilemapData");
     }
 
-    private static Object[] getTreemapWithLevelsData() {
+    public static Object[] getTreemapWithLevelsData() {
         return getJsonDataWithJsonFileName("treemapWithLevelsData");
     }
 
-    private static Object[] getXrangeData() {
+    public static Object[] getXrangeData() {
         return getJsonDataWithJsonFileName("xrangeData");
     }
 
-    private static Object[] getVectorData() {
+    public static Object[] getVectorData() {
         return getJsonDataWithJsonFileName("vectorData");
     }
 
-    private static Object[] getBellcurveData() {
+    public static Object[] getBellcurveData() {
         return getJsonDataWithJsonFileName("bellcurveData");
     }
 
-    private static Object[] getTimelineData() {
+    public static Object[] getTimelineData() {
         return getJsonDataWithJsonFileName("timelineData");
     }
 
-    private static Object[] getItemData() {
+    public static Object[] getItemData() {
         return getJsonDataWithJsonFileName("itemData");
     }
 
-    private static Object[] getWindbarbData() {
+    public static Object[] getWindbarbData() {
         return getJsonDataWithJsonFileName("windbarbData");
     }
 
-    private static Object[] getNetworkgraphData() {
+    public static Object[] getNetworkgraphData() {
         return getJsonDataWithJsonFileName("networkgraphData");
     }
 
-    private static Object[] getWordcloudData() {
+    public static Object[] getWordcloudData() {
         return getJsonDataWithJsonFileName("wordcloudData");
     }
 
-    private static Object[] getEulerData() {
+    public static Object[] getEulerData() {
         return getJsonDataWithJsonFileName("eulerData");
     }
 
 
 
-    private static Object[] getJsonDataWithJsonFileName(String jsonFileName) {
-        return new Object[]{};
+    public static Object[] getJsonDataWithJsonFileName(String jsonFileName) {
+        String jsonStr = getJson("data/" + jsonFileName + ".json");
+        Gson gson = new Gson();
+
+        Object[] dataArr = gson.fromJson(jsonStr, new Object[]{}.getClass());
+        return dataArr;
     }
+
+
+    public static String getJson(String fileName){
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            InputStream is = BaseApplication.getContext().getAssets().open(fileName);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+            String line;
+            while ((line=bufferedReader.readLine()) != null){
+                stringBuilder.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return stringBuilder.toString();
+    }
+
 }

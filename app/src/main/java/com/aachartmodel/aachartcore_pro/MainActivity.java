@@ -19,9 +19,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        String testJson = getJson("data/bellcurveData.json");
-        String testJson1 = getJson("data/bellcurveData.json");
-        String testJson2 = getJson("data/bellcurveData.json");
+        Object[] testDataArr1 = AAOptionsData.variablepieData;
+        Object[] testDataArr2= AAOptionsData.variwideData;
+        Object[] testDataArr3 = AAOptionsData.heatmapData;
+
+
+
+        Object[] testDataArr = AAOptionsData.getBellcurveData();
+
+        String testJson = getJson("bellcurveData");
+        String testJson1 = getJson("bellcurveData");
+        String testJson2 = getJson("bellcurveData");
 
     }
 
