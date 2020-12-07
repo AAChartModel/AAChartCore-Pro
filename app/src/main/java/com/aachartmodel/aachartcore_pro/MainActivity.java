@@ -19,16 +19,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        String testJson = getJson("data/bellcurveData.json",this);
-        String testJson1 = getJson("data/bellcurveData.json",this);
-        String testJson2 = getJson("data/bellcurveData.json",this);
+        String testJson = getJson("data/bellcurveData.json");
+        String testJson1 = getJson("data/bellcurveData.json");
+        String testJson2 = getJson("data/bellcurveData.json");
 
     }
 
-    public static String getJson(String fileName, Context context){
+    public static String getJson(String fileName){
         StringBuilder stringBuilder = new StringBuilder();
         try {
-            InputStream is = context.getAssets().open(fileName);
+            InputStream is = BaseApplication.getContext().getAssets().open(fileName);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
             String line;
             while ((line=bufferedReader.readLine()) != null){
