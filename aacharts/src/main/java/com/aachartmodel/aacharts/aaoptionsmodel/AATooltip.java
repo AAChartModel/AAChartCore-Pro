@@ -1,6 +1,6 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
-import com.aachartmodel.aachartcorelib.AATools.AAJSStringPurer;
+import com.aachartmodel.aacharts.aatools.AAJSStringPurer;
 
 public class AATooltip {
     public String backgroundColor;

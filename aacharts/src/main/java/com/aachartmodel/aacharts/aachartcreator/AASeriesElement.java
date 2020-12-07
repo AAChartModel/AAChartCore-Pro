@@ -32,10 +32,7 @@
 
 package com.aachartmodel.aacharts.aachartcreator;
 
-import com.aachartmodel.aachartcorelib.AAOptionsModel.AADataLabels;
-import com.aachartmodel.aachartcorelib.AAOptionsModel.AAMarker;
-import com.aachartmodel.aachartcorelib.AAOptionsModel.AAShadow;
-import com.aachartmodel.aachartcorelib.AAOptionsModel.AATooltip;
+import com.aachartmodel.aacharts.aaoptionsmodel.*;
 
 /**
  * Created by anan on 2018/4/16.

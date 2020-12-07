@@ -35,29 +35,8 @@
 
 package com.aachartmodel.aacharts.aachartcreator;
 
-import com.aachartmodel.aacharts.aachartenum.AAChartAnimationType;
-import com.aachartmodel.aacharts.aachartenum.AAChartSymbolStyleType;
-import com.aachartmodel.aacharts.aachartenum.AAChartType;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAAnimation;
-import com.aachartmodel.aacharts.aaoptionsmodel.AABar;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAChart;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAColumn;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAColumnrange;
-import com.aachartmodel.aacharts.aaoptionsmodel.AADataLabels;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAItemStyle;
-import com.aachartmodel.aacharts.aaoptionsmodel.AALabels;
-import com.aachartmodel.aacharts.aaoptionsmodel.AALegend;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAMarker;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAOptions;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAPie;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAPlotOptions;
-import com.aachartmodel.aacharts.aaoptionsmodel.AASeries;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAStyle;
-import com.aachartmodel.aacharts.aaoptionsmodel.AASubtitle;
-import com.aachartmodel.aacharts.aaoptionsmodel.AATitle;
-import com.aachartmodel.aacharts.aaoptionsmodel.AATooltip;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAXAxis;
-import com.aachartmodel.aacharts.aaoptionsmodel.AAYAxis;
+import com.aachartmodel.aacharts.aachartenum.*;
+import com.aachartmodel.aacharts.aaoptionsmodel.*;
 
 public class AAOptionsConstructor
 {

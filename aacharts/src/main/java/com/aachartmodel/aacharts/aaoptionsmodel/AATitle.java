@@ -1,7 +1,7 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
-import com.aachartmodel.aachartcorelib.AAChartEnum.AAChartAlignType;
-import com.aachartmodel.aachartcorelib.AAChartEnum.AAChartVerticalAlignType;
+import com.aachartmodel.aacharts.aachartenum.AAChartAlignType;
+import com.aachartmodel.aacharts.aachartenum.AAChartVerticalAlignType;
 
 public class AATitle {
     public String text;
