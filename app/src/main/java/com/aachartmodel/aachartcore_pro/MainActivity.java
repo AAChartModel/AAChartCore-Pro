@@ -2,8 +2,6 @@ package com.aachartmodel.aachartcore_pro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Application;
-import android.content.Context;
 import android.os.Bundle;
 
 import java.io.BufferedReader;
@@ -25,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Object[] testDataArr = AAOptionsData.getBellcurveData();
+        Object[] testDataArr = AAOptionsDataTool.getBellcurveData();
 
         String testJson = getJson("bellcurveData");
         String testJson1 = getJson("bellcurveData");
