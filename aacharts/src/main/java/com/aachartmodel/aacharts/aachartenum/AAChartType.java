@@ -20,4 +20,28 @@ public interface AAChartType {
     String Polygon         = "polygon";
     String Gauge           = "gauge";
     String Errorbar        = "errorbar";
+
+    String Sankey          =  "sankey";
+    String Variablepie     =  "variablepie";
+    String Treemap         =  "treemap";
+    String Variwide        =  "variwide";
+    String Sunburst        =  "sunburst";
+    String Dependencywheel =  "dependencywheel";
+    String Heatmap         =  "heatmap";
+    String Packedbubble    =  "packedbubble";
+    String Venn            =  "venn";
+    String Dumbbell        =  "dumbbell";
+    String Lollipop        =  "lollipop";
+    String Streamgraph     =  "streamgraph";
+    String Columnpyramid   =  "columnpyramid";
+    String Xrange          =  "xrange";
+
+    String Tilemap         =  "tilemap";
+    String Vector          =  "vector";
+    String Bellcurve       =  "bellcurve";
+    String Timeline        =  "timeline";
+    String Item            =  "item";
+    String Windbarb        =  "windbarb";
+    String Networkgraph    =  "networkgraph";
+    String Wordcloud       =  "wordcloud";
 }
