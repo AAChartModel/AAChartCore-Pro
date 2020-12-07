@@ -43,8 +43,8 @@ import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-//import com.google.gson.Gson;
-//import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 import com.aachartmodel.aacharts.aaoptionsmodel.AAOptions;
 import com.aachartmodel.aacharts.aatools.AAJSStringPurer;
 
@@ -146,14 +146,14 @@ public class AAChartView extends WebView {
     //js调用安卓，必须加@JavascriptInterface注释的方法才可以被js调用
     @JavascriptInterface
     public String androidMethod(String message) {
-//        Gson gson = new Gson();
-//        Map messageBody = new HashMap<String, Object>();
-//        messageBody = gson.fromJson(message, messageBody.getClass());
-//        AAMoveOverEventMessageModel eventMessageModel = getEventMessageModel(messageBody);
-//        if (callBack != null) {
-//            callBack.chartViewMoveOverEventMessage(this,eventMessageModel);
-//        }
-//       Log.i("androidMethod","++++++++++++++++显示总共调用了几次");
+        Gson gson = new Gson();
+        Map messageBody = new HashMap<String, Object>();
+        messageBody = gson.fromJson(message, messageBody.getClass());
+        AAMoveOverEventMessageModel eventMessageModel = getEventMessageModel(messageBody);
+        if (callBack != null) {
+            callBack.chartViewMoveOverEventMessage(this,eventMessageModel);
+        }
+       Log.i("androidMethod","++++++++++++++++显示总共调用了几次");
         return "";
     }
 
@@ -256,12 +256,12 @@ public class AAChartView extends WebView {
                 || options instanceof Double) {
             optionsStr = String.valueOf(options);
         } else {
-//            optionsStr = new Gson().toJson(options);
+            optionsStr = new Gson().toJson(options);
         }
 
         String javaScriptStr = "addPointToChartSeries('"
                 + elementIndex + "','"
-//                + optionsStr + "','"
+                + optionsStr + "','"
                 + redraw + "','"
                 + shift + "','"
                 + animation + "')";
@@ -281,16 +281,16 @@ public class AAChartView extends WebView {
     }
 
     public void aa_addElementToChartSeries(AASeriesElement aaSeriesElement) {
-//        String pureElementJsonStr = new Gson().toJson(aaSeriesElement);
+        String pureElementJsonStr = new Gson().toJson(aaSeriesElement);
 
-//        new Gson().toJson(aaSeriesElement)
-        //        Log.isLoggable("onlyInDebugEnvironment",Log.DEBUG)
+        new Gson().toJson(aaSeriesElement);
+                Log.isLoggable("onlyInDebugEnvironment",Log.DEBUG);
 
-//        String tag = "----- AAChartCore -----";
-//        boolean isDebug = Log.isLoggable(tag, Log.DEBUG);
-//        if (isDebug) {
-//            Log.i(tag, pureElementJsonStr);
-//        }
+        String tag = "----- AAChartCore -----";
+        boolean isDebug = Log.isLoggable(tag, Log.DEBUG);
+        if (isDebug) {
+            Log.i(tag, pureElementJsonStr);
+        }
 
         String javaScriptStr = "addElementToChartSeriesWithElement('"
                  + "')";
