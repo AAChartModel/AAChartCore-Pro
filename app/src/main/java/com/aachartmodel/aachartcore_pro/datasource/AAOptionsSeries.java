@@ -1,6 +1,6 @@
-package com.aachartmodel.aachartcore_pro;
+package com.aachartmodel.aachartcore_pro.datasource;
 
-class AAOptionsSeries {
+public class AAOptionsSeries {
     public static Object[] packedbubbleSeries;
     public static Object[] streamgraphSeries;
 

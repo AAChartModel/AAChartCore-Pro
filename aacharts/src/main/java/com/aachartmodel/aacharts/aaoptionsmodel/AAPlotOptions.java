@@ -1,5 +1,8 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AAPackedbubble;
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AATreemap;
+
 public class AAPlotOptions {
     public AAColumn column;
     public AALine line;
@@ -12,6 +15,10 @@ public class AAPlotOptions {
     public AAArearange arearange;
     public AASeries series;
 
+    public AAPackedbubble packedbubble;
+    public AATreemap treemap;
+//    AAPropStatementAndPropSetFuncStatement(strong, AAPlotOptions, AAPackedbubble     *, packedbubble);
+//    AAPropStatementAndPropSetFuncStatement(strong, AAPlotOptions, AATreemap     *, treemap);
 
     public AAPlotOptions column(AAColumn prop) {
         column = prop;
@@ -60,6 +67,17 @@ public class AAPlotOptions {
 
     public AAPlotOptions series(AASeries prop) {
         series = prop;
+        return this;
+    }
+
+
+    public AAPlotOptions packedbubble(AAPackedbubble prop) {
+        packedbubble = prop;
+        return this;
+    }
+
+    public AAPlotOptions treemap(AATreemap prop) {
+        treemap = prop;
         return this;
     }
 

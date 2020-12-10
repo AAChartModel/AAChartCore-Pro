@@ -1,5 +1,6 @@
-package com.aachartmodel.aachartcore_pro;
+package com.aachartmodel.aachartcore_pro.datasource;
 
+import com.aachartmodel.aachartcore_pro.BaseApplication;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -7,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-class AAOptionsDataTool {
+public class AAOptionsDataTool {
 
     public static Object[] variablepieData;
     public static Object[] variwideData;

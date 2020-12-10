@@ -1,7 +1,7 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
 public class AAYAxis {
-    public AATitle title;
+    public AAAxisTitle title;
     public AAPlotBandsElement[] plotBands;
     public AAPlotLinesElement[] plotLines;
     public String[] categories;
@@ -30,7 +30,7 @@ public class AAYAxis {
     public String tickPosition; //刻度线相对于轴线的位置，可用的值有 inside 和 outside，分别表示在轴线的内部和外部。 默认是：outside.
 
 
-    public AAYAxis title(AATitle prop) {
+    public AAYAxis title(AAAxisTitle prop) {
         title = prop;
         return this;
     }

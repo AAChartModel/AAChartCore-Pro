@@ -1,5 +1,7 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AAColorAxis;
+
 public class AAOptions {
     public AAChart chart;
     public AATitle title;
@@ -16,6 +18,8 @@ public class AAOptions {
     public Object[] colors;
     public AALang defaultOptions;
     public Boolean touchEventEnabled;
+
+    public AAColorAxis colorAxis;
 
     public AAOptions chart(AAChart prop) {
         chart = prop;
@@ -89,6 +93,11 @@ public class AAOptions {
 
     public AAOptions touchEventEnabled(Boolean prop) {
         touchEventEnabled = prop;
+        return this;
+    }
+
+    public AAOptions colorAxis(AAColorAxis prop) {
+        colorAxis = prop;
         return this;
     }
 

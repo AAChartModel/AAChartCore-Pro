@@ -2,7 +2,7 @@ package com.aachartmodel.aacharts.aaoptionsmodelpro;
 
 import com.aachartmodel.aacharts.aaoptionsmodel.AADataLabels;
 
-class AAPackedbubble {
+public class AAPackedbubble {
     public String minSize;
     public String maxSize;
     public Float zMin;

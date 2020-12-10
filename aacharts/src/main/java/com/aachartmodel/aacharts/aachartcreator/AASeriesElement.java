@@ -33,6 +33,7 @@
 package com.aachartmodel.aacharts.aachartcreator;
 
 import com.aachartmodel.aacharts.aaoptionsmodel.*;
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AALevels;
 
 /**
  * Created by anan on 2018/4/16.
@@ -46,6 +47,7 @@ public class AASeriesElement {
     private Object[] data;
     private Float lineWidth;//折线图、曲线图、直方折线图、折线填充图、曲线填充图、直方折线填充图的线条宽度
     private Float borderWidth;
+    private Float borderRadius;
     private Object color;
     private Object fillColor;
     private Float fillOpacity;//折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色透明度
@@ -69,6 +71,19 @@ public class AASeriesElement {
     private Boolean showInLegend;
     private Boolean enableMouseTracking;
     private Boolean reversed;
+    private  String[] keys;
+
+    private AALevels[] levels;
+    private Boolean allowDrillToNode;
+    private Integer xAxis;
+    private Integer baseSeries;
+
+
+
+//    AAPropStatementAndPropSetFuncStatement(strong, AASeriesElement, NSArray<AALevels *>*, levels)
+//    AAPropStatementAndPropSetFuncStatement(assign, AASeriesElement, BOOL        , allowDrillToNode)
+//    AAPropStatementAndPropSetFuncStatement(strong, AASeriesElement, NSNumber *, xAxis)
+//    AAPropStatementAndPropSetFuncStatement(strong, AASeriesElement, NSNumber *, baseSeries)
 
 
     public AASeriesElement type(String prop) {
@@ -98,6 +113,11 @@ public class AASeriesElement {
 
     public AASeriesElement borderWidth(Float prop) {
         borderWidth = prop;
+        return this;
+    }
+
+    public AASeriesElement borderRadius(Float prop) {
+        borderRadius = prop;
         return this;
     }
 
@@ -213,6 +233,32 @@ public class AASeriesElement {
 
     public AASeriesElement reversed(Boolean prop) {
         reversed = prop;
+        return this;
+    }
+
+    public AASeriesElement keys(String[] prop) {
+        keys = prop;
+        return this;
+    }
+
+
+    public AASeriesElement levels(AALevels[] prop) {
+        levels = prop;
+        return this;
+    }
+
+    public AASeriesElement allowDrillToNode(Boolean prop) {
+        allowDrillToNode = prop;
+        return this;
+    }
+
+    public AASeriesElement xAxis(Integer prop) {
+        xAxis = prop;
+        return this;
+    }
+
+    public AASeriesElement baseSeries(Integer prop) {
+        baseSeries = prop;
         return this;
     }
 

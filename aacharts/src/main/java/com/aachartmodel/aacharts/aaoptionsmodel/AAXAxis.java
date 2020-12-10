@@ -1,6 +1,7 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
 public class AAXAxis {
+    public AAAxisTitle title;
     public String type;
     public AAPlotBandsElement[] plotBands;
     public AAPlotLinesElement[] plotLines;
@@ -16,7 +17,7 @@ public class AAXAxis {
     public Float gridLineWidth; //x轴网格线宽度
     public String gridLineColor; //x轴网格线颜色
     public String gridLineDashStyle; //x轴网格线样式
-    public Float off;//x轴垂直偏移
+    public Float offset;//x轴垂直偏移
     public AALabels labels; //用于设置 x 轴文字相关的
     public Boolean visible; //用于设置 x 轴以及 x 轴文字是否显示
     public Boolean startOnTick; //Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. 默认是：false.
@@ -27,7 +28,10 @@ public class AAXAxis {
     public Float tickLength;//坐标轴刻度线的长度。 默认是：10.
     public String tickPosition; //刻度线相对于轴线的位置，可用的值有 inside 和 outside，分别表示在轴线的内部和外部。 默认是：outside.
 
-
+    public AAXAxis title(AAAxisTitle prop) {
+        title = prop;
+        return this;
+    }
 
     public AAXAxis type(String prop) {
         type = prop;
@@ -104,8 +108,8 @@ public class AAXAxis {
         return this;
     }
 
-    public AAXAxis off(Float prop) {
-        off = prop;
+    public AAXAxis offset(Float prop) {
+        offset = prop;
         return this;
     }
 

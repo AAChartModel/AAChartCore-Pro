@@ -13,6 +13,8 @@ public class AASeries {
     public Map events;
     public AAShadow shadow;
     public AADataLabels dataLabels;
+    public Float pointPadding;
+    public Float groupPadding;
 
     public AASeries borderRadius(Float prop) {
         borderRadius = prop;
@@ -61,6 +63,16 @@ public class AASeries {
 
     public AASeries dataLabels(AADataLabels prop) {
         dataLabels = prop;
+        return this;
+    }
+
+    public AASeries pointPadding(Float prop) {
+        pointPadding = prop;
+        return this;
+    }
+
+    public AASeries groupPadding(Float prop) {
+        groupPadding = prop;
         return this;
     }
 

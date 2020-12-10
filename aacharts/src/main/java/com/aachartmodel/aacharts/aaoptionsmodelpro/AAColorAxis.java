@@ -1,6 +1,6 @@
 package com.aachartmodel.aacharts.aaoptionsmodelpro;
 
-class AAColorAxis {
+public class AAColorAxis {
     public Float min;
     public String minColor;
     public String maxColor;

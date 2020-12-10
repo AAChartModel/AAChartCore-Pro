@@ -2,7 +2,7 @@ package com.aachartmodel.aacharts.aaoptionsmodelpro;
 
 import com.aachartmodel.aacharts.aaoptionsmodel.AADataLabels;
 
-class AALevels {
+public class AALevels {
     public String borderColor;
     public String borderDashStyle;
     public Float borderWidth;

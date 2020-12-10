@@ -1,6 +1,6 @@
 package com.aachartmodel.aacharts.aaoptionsmodelpro;
 
-class AATreemap {
+public class AATreemap {
     public String layoutAlgorithm;
     public Boolean allowTraversingTree;
 

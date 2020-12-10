@@ -1,6 +1,6 @@
 package com.aachartmodel.aacharts.aaoptionsmodelpro;
 
-class AADataClasses {
+public class AADataClasses {
     public Float from;
     public Float to;
     public Object color;

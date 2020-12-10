@@ -1,4 +1,4 @@
-package com.aachartmodel.aachartcore_pro;
+package com.aachartmodel.aachartcore_pro.datasource;
 
 public interface AAOptionsData {
     Object[] variablepieData = AAOptionsDataTool.getVariablepieData();

@@ -1,6 +1,6 @@
 package com.aachartmodel.aacharts.aaoptionsmodelpro;
 
-class AALayoutAlgorithm {
+public class AALayoutAlgorithm {
 
     public Float gravitationalConstant;
     public String splitSeries;

@@ -1,6 +1,6 @@
 package com.aachartmodel.aacharts.aaoptionsmodelpro;
 
-class AAColorVariation {
+public class AAColorVariation {
     public String key;
     public Float to;
 
