@@ -333,10 +333,11 @@ public class AAChartView extends WebView {
             chartOptions.chart.backgroundColor("rgba(0,0,0,0)");
         }
 
-
-        this.optionsJson = "aaOptionsJsonStr";
+        Gson gson = new Gson();
+        String aaOptionsJsonStr = gson.toJson(chartOptions);
+        this.optionsJson = aaOptionsJsonStr;
         String javaScriptStr = "loadTheHighChartView('"
-                + "aaOptionsJsonStr" + "','"
+                + aaOptionsJsonStr + "','"
                 + this.contentWidth + "','"
                 + this.contentHeight + "')";
         this.safeEvaluateJavaScriptString(javaScriptStr);

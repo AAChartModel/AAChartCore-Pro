@@ -6,6 +6,11 @@ import android.os.Bundle;
 
 import com.aachartmodel.aachartcore_pro.datasource.AAOptionsData;
 import com.aachartmodel.aachartcore_pro.datasource.AAOptionsDataTool;
+import com.aachartmodel.aacharts.aachartcreator.AAChartModel;
+import com.aachartmodel.aacharts.aachartcreator.AAChartView;
+import com.aachartmodel.aacharts.aachartcreator.AASeriesElement;
+import com.aachartmodel.aacharts.aachartenum.AAChartType;
+import com.aachartmodel.aacharts.aaoptionsmodel.AAOptions;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
         Object[] testDataArr1 = AAOptionsData.variablepieData;
         Object[] testDataArr2= AAOptionsData.variwideData;
         Object[] testDataArr3 = AAOptionsData.heatmapData;
+
+
+        AAChartView aaChartView = findViewById(R.id.aa_chart_view);
+        AAOptions aaOptions = ProChartOptionsComposer.itemChart();
+
+        aaChartView.aa_drawChartWithChartOptions(aaOptions);
+
 
 
 

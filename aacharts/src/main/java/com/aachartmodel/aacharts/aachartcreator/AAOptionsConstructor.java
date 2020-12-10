@@ -245,7 +245,7 @@ public class AAOptionsConstructor
                     .allowDecimals(aaChartModel.yAxisAllowDecimals) //是否允许显示小数
                     .reversed(aaChartModel.yAxisReversed)
                     .gridLineWidth(aaChartModel.yAxisGridLineWidth) //y轴网格线宽度
-                    .title(new AATitle()
+                    .title(new AAAxisTitle()
                             .text(aaChartModel.yAxisTitle)
                             .style(new AAStyle()
                                     .color(aaChartModel.axesTextColor))
