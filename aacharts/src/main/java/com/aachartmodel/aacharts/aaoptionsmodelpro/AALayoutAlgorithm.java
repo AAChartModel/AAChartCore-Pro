@@ -3,7 +3,7 @@ package com.aachartmodel.aacharts.aaoptionsmodelpro;
 public class AALayoutAlgorithm {
 
     public Float gravitationalConstant;
-    public String splitSeries;
+    public Boolean splitSeries;
     public Boolean seriesInteraction;
     public Boolean dragBetweenSeries;
     public Boolean parentNodeLimit;
@@ -13,7 +13,7 @@ public class AALayoutAlgorithm {
         return this;
     }
 
-    public AALayoutAlgorithm splitSeries(String prop) {
+    public AALayoutAlgorithm splitSeries(Boolean prop) {
         splitSeries = prop;
         return this;
     }

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.aachartmodel.aachartcore_pro.adapter.ChartTypesRecyclerViewAdapter;
 import com.aachartmodel.aachartcore_pro.R;
+import com.aachartmodel.aachartcore_pro.datasource.AAOptionsSeriesTool;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Object[] packedbubbleSeries = AAOptionsSeriesTool.getPackedbubbleSeries();
+        Object[] streamgraphSeries = AAOptionsSeriesTool.getStreamgraphSeries();
 
         setupRecycleView();
     }

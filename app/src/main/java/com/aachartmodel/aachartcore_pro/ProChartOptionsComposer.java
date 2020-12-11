@@ -302,7 +302,7 @@ public class ProChartOptionsComposer {
                                 .zMax(1000f)
                                 .layoutAlgorithm(new AALayoutAlgorithm() //packedbubbleChart 和 packedbubbleSplitChart 只有layoutAlgorithm这一段不一样
                                         .gravitationalConstant(0.02f)
-                                        .splitSeries("false"))
+                                        .splitSeries(false))
                                 .dataLabels(new AADataLabels()
                                         .enabled(true)
                                         .format("{point.name}")
@@ -333,7 +333,7 @@ public class ProChartOptionsComposer {
                                 .zMax(1000f)
                                 .layoutAlgorithm(new AALayoutAlgorithm() //packedbubbleChart 和 packedbubbleSplitChart 只有layoutAlgorithm这一段不一样
                                         .gravitationalConstant(0.05f)
-                                        .splitSeries("true")
+                                        .splitSeries(true)
                                         .seriesInteraction(false)
                                         .dragBetweenSeries(true)
                                         .parentNodeLimit(true))
