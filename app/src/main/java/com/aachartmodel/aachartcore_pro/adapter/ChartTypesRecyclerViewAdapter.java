@@ -11,7 +11,7 @@ import com.aachartmodel.aachartcore_pro.R;
 
 
 public class ChartTypesRecyclerViewAdapter extends RecyclerView.Adapter<ProChartTypesRecyclerViewHolder> {
-    interface OnItemClickListener {
+    public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
 
