@@ -27,7 +27,7 @@
                  }
 
             if (aaOptions.plotOptions) {
-                configurePlotOptions(aaOptions);
+//                configurePlotOptions(aaOptions);
                 }
 
             aaGlobalChart = Highcharts.chart('container', aaOptions);

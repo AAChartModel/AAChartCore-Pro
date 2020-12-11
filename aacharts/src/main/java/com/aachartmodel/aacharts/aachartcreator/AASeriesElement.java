@@ -79,13 +79,6 @@ public class AASeriesElement {
     private Integer baseSeries;
 
 
-
-//    AAPropStatementAndPropSetFuncStatement(strong, AASeriesElement, NSArray<AALevels *>*, levels)
-//    AAPropStatementAndPropSetFuncStatement(assign, AASeriesElement, BOOL        , allowDrillToNode)
-//    AAPropStatementAndPropSetFuncStatement(strong, AASeriesElement, NSNumber *, xAxis)
-//    AAPropStatementAndPropSetFuncStatement(strong, AASeriesElement, NSNumber *, baseSeries)
-
-
     public AASeriesElement type(String prop) {
         type = prop;
         return this;

@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.ProChartActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chart_types_recycle_view"
+    <com.aachartmodel.aacharts.aachartcreator.AAChartView
+        android:id="@+id/aa_chart_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent">
+    </com.aachartmodel.aacharts.aachartcreator.AAChartView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
