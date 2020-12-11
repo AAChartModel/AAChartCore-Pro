@@ -7,6 +7,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AAOptionsDataTool {
 
@@ -47,14 +51,6 @@ public class AAOptionsDataTool {
 
     public static Object[] getHeatmapData() {
         return getJsonDataWithJsonFileName("heatmapData");
-    }
-
-    public static Object[] getPackedbubbleData() {
-        return getJsonDataWithJsonFileName("packedbubbleData");
-    }
-
-    public static Object[] getPackedbubbleSplitData() {
-        return getJsonDataWithJsonFileName("packedbubbleSplitData");
     }
 
     public static Object[] getColumnpyramidData() {
@@ -102,7 +98,14 @@ public class AAOptionsDataTool {
     }
 
     public static Object[] getXrangeData() {
-        return getJsonDataWithJsonFileName("xrangeData");
+        ArrayList dataArr = new ArrayList();
+        for (int i = 0; i < 20; i++) {
+            Object[] data = getSingleGroupCategoryDataElementArrayWithY(i);
+            for (Object dataElement: data) {
+                dataArr.add(dataElement);
+            }
+        }
+        return dataArr.toArray();
     }
 
     public static Object[] getVectorData() {
@@ -162,6 +165,23 @@ public class AAOptionsDataTool {
         }
 
         return stringBuilder.toString();
+    }
+
+    private static Object[] getSingleGroupCategoryDataElementArrayWithY(int y) {
+        ArrayList dataArr = new ArrayList();
+        int x = 0;
+        int x2 = (int) (x + (Math.random() % 10));
+
+        for (int i = 0; i < 50; i++) {
+            Map dataElementDic = new HashMap();
+            dataElementDic.put("x",x);
+            dataElementDic.put("x2",x2);
+            dataElementDic.put("y",y);
+            dataArr.add(dataElementDic);
+            x = (int) (x2 + (Math.random() * 1000));
+            x2 = (int) (x + (Math.random() * 2000));
+        }
+        return dataArr.toArray();
     }
 
 }

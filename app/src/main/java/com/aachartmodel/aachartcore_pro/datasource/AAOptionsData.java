@@ -4,8 +4,6 @@ public interface AAOptionsData {
     Object[] variablepieData = AAOptionsDataTool.getVariablepieData();
     Object[] variwideData = AAOptionsDataTool.getVariwideData();
     Object[] heatmapData = AAOptionsDataTool.getHeatmapData();
-    Object[] packedbubbleData = AAOptionsDataTool.getPackedbubbleData();
-    Object[] packedbubbleSplitData = AAOptionsDataTool.getPackedbubbleSplitData();
     Object[] columnpyramidData = AAOptionsDataTool.getColumnpyramidData();
     Object[] treemapWithColorAxisData = AAOptionsDataTool.getTreemapWithColorAxisData();
     Object[] drilldownTreemapData = AAOptionsDataTool.getDrilldownTreemapData();
