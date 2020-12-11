@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-class ProChartOptionsComposer {
+public class ProChartOptionsComposer {
     public static AAOptions sankeyChart() {
         return new AAOptions()
                 .title(new AATitle()
@@ -61,7 +61,7 @@ class ProChartOptionsComposer {
         AATooltip aaTooltip = new AATooltip()
                 .enabled(true)
                 .headerFormat("")
-                .pointFormat("span style=\"color:{point.color}\">\\u25CF</span> <b> {point.name}</b><br/>\"面积 (平方千米): <b>{point.y}</b><br/>\"人口密度 (每平方千米人数): <b>{point.z}</b><br/>\"")
+                .pointFormat("<span style=\\\\\\\"color:{point.color}\\\\\\\\\\\\\\\">○<\\/span> <b> {point.name}<\\/b><br\\/>\\\\\\\"面积 (平方千米): <b>{point.y}<\\/b><br\\/>\\\\\\\"人口密度 (每平方千米人数): <b>{point.z}<\\/b><br\\/>\\\\\\\"")
                 ;
 
         AAOptions aaOptions = new AAOptions()
@@ -162,7 +162,7 @@ class ProChartOptionsComposer {
                 .text("2017 世界人口分布");
 
         AASubtitle aaSubtitle = new AASubtitle()
-                .text("数据来源:<href=\"https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)\">Wikipedia</a>")
+                .text("数据来源:<href=\\\\\\\"https:\\/\\/en.wikipedia.org\\/wiki\\/List_of_countries_by_population_(United_Nations)\\\\\\\">Wikipedia<\\/a>")
                 ;
 
         AATooltip aaTooltip = new AATooltip()
@@ -292,7 +292,8 @@ class ProChartOptionsComposer {
                 .tooltip(new AATooltip()
                         .enabled(true)
                         .useHTML(true)
-                        .pointFormat("<b>{point.name}:</b> {point.y}m CO<sub>2</sub>"))
+                        .pointFormat("<b>{point.name}:<\\/b> {point.y}m CO<sub>2<\\/sub>")
+                )
                 .plotOptions(new AAPlotOptions()
                         .packedbubble(new AAPackedbubble()
                                 .minSize("30%")
@@ -322,7 +323,8 @@ class ProChartOptionsComposer {
                 .tooltip(new AATooltip()
                         .enabled(true)
                         .useHTML(true)
-                        .pointFormat("<b>{point.name}:</b> {point.y}m CO<sub>2</sub>"))
+                        .pointFormat("<b>{point.name}:<\\/b> {point.y}m CO<sub>2<\\/sub>")
+                )
                 .plotOptions(new AAPlotOptions()
                         .packedbubble(new AAPackedbubble()
                                 .minSize("30%")
@@ -780,9 +782,9 @@ class ProChartOptionsComposer {
                         .text("欧拉图和韦恩图的关系"))
                 .tooltip(new AATooltip()
                         .enabled(true)
-                        .headerFormat("<span style=\"color:{point.color}\">\u2022</span>" +
-                                "<span style=\"font-size: 14px\"> {point.point.name}</span><br/>")
-                        .pointFormat("{point.description}<br><span style=\"font-size: 10px\">Source: Wikipedia</span>"))
+                        .headerFormat("<span style=\\\\\\\"color:{point.color}\\\\\\\">○<\\/span>" +
+                                "<span style=\\\\\\\"font-size: 14px\\\\\\\"> {point.point.name}<\\/span><br\\/>")
+                        .pointFormat("{point.description}<br><span style=\\\\\\\"font-size: 10px\\\\\\\">Source: Wikipedia<\\/span>"))
                 .series(new AASeriesElement[]{
                         new AASeriesElement()
                                 .data(AAOptionsData.eulerData),
