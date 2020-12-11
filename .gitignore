@@ -91,3 +91,5 @@ hs_err_pid*
 .idea/gradle.xml
 .idea/gradle.xml
 .idea/modules/aacharts/AAChartCore-Pro.aacharts.iml
+.gradle/6.5/fileHashes/fileHashes.bin
+.idea/AAChartCore-Pro-Beta.iml
