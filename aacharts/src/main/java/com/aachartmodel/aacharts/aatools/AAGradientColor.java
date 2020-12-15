@@ -4,100 +4,125 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AAGradientColor {
+    public static HashMap<String,Object> OceanBlue = oceanBlueColor();
+    public static HashMap<String,Object> Sanguine = sanguineColor();
+    public static HashMap<String,Object> LusciousLime = lusciousLimeColor();
+    public static HashMap<String,Object> PurpleLake = purpleLakeColor();
+    public static HashMap<String,Object> FreshPapaya = freshPapayaColor();
+    public static HashMap<String,Object> Ultramarine = ultramarineColor();
+    public static HashMap<String,Object> PinkSugar = pinkSugarColor();
+    public static HashMap<String,Object> LemonDrizzle = lemonDrizzleColor();
+    public static HashMap<String,Object> VictoriaPurple = victoriaPurpleColor();
+    public static HashMap<String,Object> SpringGreens = springGreensColor();
+    public static HashMap<String,Object> MysticMauve = mysticMauveColor();
+    public static HashMap<String,Object> ReflexSilver = reflexSilverColor();
+    public static HashMap<String,Object> NeonGlow = neonGlowColor();
+    public static HashMap<String,Object> BerrySmoothie = berrySmoothieColor();
+    public static HashMap<String,Object> NewLeaf = newLeafColor();
+    public static HashMap<String,Object> CottonCandy = cottonCandyColor();
+    public static HashMap<String,Object> PixieDust = pixieDustColor();
+    public static HashMap<String,Object> FizzyPeach = fizzyPeachColor();
+    public static HashMap<String,Object> SweetDream = sweetDreamColor();
+    public static HashMap<String,Object> Firebrick = firebrickColor();
+    public static HashMap<String,Object> WroughtIron = wroughtIronColor();
+    public static HashMap<String,Object> DeepSea = deepSeaColor();
+    public static HashMap<String,Object> CoastalBreeze = coastalBreezeColor();
+    public static HashMap<String,Object> EveningDelight = eveningDelightColor();
 
-    public static HashMap<String,Object> oceanBlueColor() {
+
+    private static HashMap<String,Object> oceanBlueColor() {
         return oceanBlueColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> sanguineColor() {
+    private static HashMap<String,Object> sanguineColor() {
         return sanguineColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> lusciousLimeColor() {
+    private static HashMap<String,Object> lusciousLimeColor() {
         return lusciousLimeColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> purpleLakeColor() {
+    private static HashMap<String,Object> purpleLakeColor() {
         return purpleLakeColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> freshPapayaColor() {
+    private static HashMap<String,Object> freshPapayaColor() {
         return freshPapayaColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> ultramarineColor() {
+    private static HashMap<String,Object> ultramarineColor() {
         return ultramarineColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> pinkSugarColor() {
+    private static HashMap<String,Object> pinkSugarColor() {
         return pinkSugarColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> lemonDrizzleColor() {
+    private static HashMap<String,Object> lemonDrizzleColor() {
         return lemonDrizzleColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> victoriaPurpleColor() {
+    private static HashMap<String,Object> victoriaPurpleColor() {
         return victoriaPurpleColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> springGreensColor() {
+    private static HashMap<String,Object> springGreensColor() {
         return springGreensColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> mysticMauveColor() {
+    private static HashMap<String,Object> mysticMauveColor() {
         return mysticMauveColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> reflexSilverColor() {
+    private static HashMap<String,Object> reflexSilverColor() {
         return reflexSilverColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> neonGlowColor() {
+    private static HashMap<String,Object> neonGlowColor() {
         return neonGlowColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> berrySmoothieColor() {
+    private static HashMap<String,Object> berrySmoothieColor() {
         return berrySmoothieColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> newLeafColor() {
+    private static HashMap<String,Object> newLeafColor() {
         return newLeafColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> cottonCandyColor() {
+    private static HashMap<String,Object> cottonCandyColor() {
         return cottonCandyColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> pixieDustColor() {
+    private static HashMap<String,Object> pixieDustColor() {
         return pixieDustColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> fizzyPeachColor() {
+    private static HashMap<String,Object> fizzyPeachColor() {
         return fizzyPeachColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> sweetDreamColor() {
+    private static HashMap<String,Object> sweetDreamColor() {
         return sweetDreamColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> firebrickColor() {
+    private static HashMap<String,Object> firebrickColor() {
         return firebrickColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> wroughtIronColor() {
+    private static HashMap<String,Object> wroughtIronColor() {
         return wroughtIronColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> deepSeaColor() {
+    private static HashMap<String,Object> deepSeaColor() {
         return deepSeaColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> coastalBreezeColor() {
+    private static HashMap<String,Object> coastalBreezeColor() {
         return coastalBreezeColor(AALinearGradientDirection.ToTop);
     }
 
-    public static HashMap<String,Object> eveningDelightColor() {
+    private static HashMap<String,Object> eveningDelightColor() {
         return eveningDelightColor(AALinearGradientDirection.ToTop);
     }
 
@@ -260,10 +285,10 @@ public class AAGradientColor {
 
     private static Map linearGradientMap(int x1, int y1, int x2, int y2) {
         Map linearGradientMap = new HashMap<String,Integer>();
-        linearGradientMap.put("x1",x1);
-        linearGradientMap.put("y1",y1);
-        linearGradientMap.put("x2",x2);
-        linearGradientMap.put("y2",y2);
+        linearGradientMap.put("x1", x1);
+        linearGradientMap.put("y1", y1);
+        linearGradientMap.put("x2", x2);
+        linearGradientMap.put("y2", y2);
         return linearGradientMap;
     }
 }
