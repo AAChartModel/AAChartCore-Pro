@@ -223,12 +223,12 @@ public class AAGradientColor {
         return linearGradient(direction,"#93278F","#00A99D");
     }
 
-    public static  HashMap<String,Object> linearGradient(String startColor,
-                                                         String endColor) {
-      return linearGradient(AALinearGradientDirection.ToTop, startColor, endColor);
+    public static HashMap<String,Object> linearGradient(String startColor,
+                                                        String endColor) {
+        return linearGradient(AALinearGradientDirection.ToTop, startColor, endColor);
     }
 
-    public static  HashMap<String,Object> linearGradient(
+    public static HashMap<String,Object> linearGradient(
             AALinearGradientDirection direction,
             String startColor,
             String endColor
@@ -241,7 +241,7 @@ public class AAGradientColor {
         return linearGradient(direction,stopsArr);
     }
 
-    public static  HashMap<String,Object> linearGradient(
+    public static HashMap<String,Object> linearGradient(
             AALinearGradientDirection direction,
             Object[][] stopsArr
     ) {

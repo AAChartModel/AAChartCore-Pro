@@ -31,59 +31,59 @@ public class AAColor {
         return "black";
     }
 
-    private  static String darkGrayColor() {
+    private static String darkGrayColor() {
         return "darkGray";
     }
 
-    private  static String lightGrayColor() {
+    private static String lightGrayColor() {
         return "lightGray";
     }
 
-    private  static String whiteColor() {
+    private static String whiteColor() {
         return "white";
     }
 
-    private  static String grayColor() {
+    private static String grayColor() {
         return "gray";
     }
 
-    private  static String redColor() {
+    private static String redColor() {
         return "red";
     }
 
-    private  static String greenColor() {
+    private static String greenColor() {
         return "green";
     }
 
-    private  static String blueColor() {
+    private static String blueColor() {
         return "blue";
     }
 
-    private  static String cyanColor() {
+    private static String cyanColor() {
         return "cyan";
     }
 
-    private  static String yellowColor() {
+    private static String yellowColor() {
         return "yellow";
     }
 
-    private  static String magentaColor() {
+    private static String magentaColor() {
         return "magenta";
     }
 
-    private  static String orangeColor() {
+    private static String orangeColor() {
         return "orange";
     }
 
-    private  static String purpleColor() {
+    private static String purpleColor() {
         return "purple";
     }
 
-    private  static String brownColor() {
+    private static String brownColor() {
         return "brown";
     }
 
-    private  static String clearColor() {
+    private static String clearColor() {
         return "clear";
     }
 
