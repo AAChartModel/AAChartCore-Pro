@@ -208,7 +208,7 @@ public class AAGradientColor {
             String startColor,
             String endColor
     ) {
-        Object[][] stopsArr =  new Object[][]{
+        Object[][] stopsArr = new Object[][]{
                 {0  ,startColor},
                 {1  ,endColor},
         };
