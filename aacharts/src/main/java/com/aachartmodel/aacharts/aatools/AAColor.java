@@ -20,6 +20,14 @@ public class AAColor {
     public static String rgbaColor(
             Integer red,
             Integer green,
+            Integer blue
+    ) {
+        return rgbaColor(red,green,blue,1f);
+    }
+
+    public static String rgbaColor(
+            Integer red,
+            Integer green,
             Integer blue,
             Float alpha
     ) {

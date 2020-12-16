@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.aachartmodel.aachartcore_pro.adapter.ChartTypesRecyclerViewAdapter;
 import com.aachartmodel.aachartcore_pro.R;
-import com.aachartmodel.aachartcore_pro.datasource.AAOptionsSeriesTool;
 
 public class MainActivity extends AppCompatActivity {
 

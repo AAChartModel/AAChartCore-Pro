@@ -26,18 +26,18 @@ public class ProChartOptionsComposer {
                 .title(new AATitle()
                         .text("AAChartKit-Pro 桑基图"))
                 .colors(new String[]{
-                        "rgb(137,78,36)",
-                        "rgb(220,36,30)",
-                        "rgb(255,206,0)",
-                        "rgb(1,114,41)",
-                        "rgb(0,175,173)",
-                        "rgb(215,153,175)",
-                        "rgb(106,114,120)",
-                        "rgb(114,17,84)",
-                        "rgb(0,0,0)",
-                        "rgb(0,24,168)",
-                        "rgb(0,160,226)",
-                        "rgb(106,187,170)"
+                        AAColor.rgbaColor(137,78,36),
+                        AAColor.rgbaColor(220,36,30),
+                        AAColor.rgbaColor(255,206,0),
+                        AAColor.rgbaColor(1,114,41),
+                        AAColor.rgbaColor(0,175,173),
+                        AAColor.rgbaColor(215,153,175),
+                        AAColor.rgbaColor(106,114,120),
+                        AAColor.rgbaColor(114,17,84),
+                        AAColor.rgbaColor(0,0,0),
+                        AAColor.rgbaColor(0,24,168),
+                        AAColor.rgbaColor(0,160,226),
+                        AAColor.rgbaColor(106,187,170)
                 })
                 .series(new AASeriesElement[]{
                         new AASeriesElement()
@@ -277,7 +277,7 @@ public class ProChartOptionsComposer {
                                 .data(AAOptionsData.heatmapData)
                                 .dataLabels(new AADataLabels()
                                 .enabled(true)
-                                .color(AAColor.redColor()))
+                                .color(AAColor.Red))
                 });
     }
 
