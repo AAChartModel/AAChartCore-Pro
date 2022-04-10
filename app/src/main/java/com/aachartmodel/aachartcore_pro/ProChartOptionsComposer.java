@@ -7,7 +7,7 @@ import com.aachartmodel.aacharts.aachartenum.*;
 import com.aachartmodel.aacharts.aaoptionsmodel.*;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAColorAxis;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAColorVariation;
-import com.aachartmodel.aacharts.aaoptionsmodelpro.AADataClasses;
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AADataClassesElement;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAFilter;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AALayoutAlgorithm;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AALevels;
@@ -516,23 +516,23 @@ public class ProChartOptionsComposer {
                 .yAxis(new AAYAxis()
                         .visible(false))
                 .colorAxis(new AAColorAxis()
-                        .dataClasses(new AADataClasses[]{
-                                new AADataClasses()
+                        .dataClasses(new AADataClassesElement[]{
+                                new AADataClassesElement()
                                         .from(0f)
                                         .to(1000000f)
                                         .color("#F9EDB3")
                                         .name("< 1M"),
-                                new AADataClasses()
+                                new AADataClassesElement()
                                         .from(1000000f)
                                         .to(5000000f)
                                         .color("#FFC428")
                                         .name("1M - 5M"),
-                                new AADataClasses()
+                                new AADataClassesElement()
                                         .from(5000000f)
                                         .to(20000000f)
                                         .color("#F9EDB3")
                                         .name("5M - 20M"),
-                                new AADataClasses()
+                                new AADataClassesElement()
                                         .from(20000000f)
                                         .color("#FF2371")
                                         .name("> 20M"),

@@ -1,27 +1,27 @@
 package com.aachartmodel.aacharts.aaoptionsmodelpro;
 
-public class AADataClasses {
+public class AADataClassesElement {
     public Float from;
     public Float to;
     public Object color;
     public String name;
 
-    public AADataClasses from(Float prop) {
+    public AADataClassesElement from(Float prop) {
         from = prop;
         return this;
     }
 
-    public AADataClasses to(Float prop) {
+    public AADataClassesElement to(Float prop) {
         to = prop;
         return this;
     }
 
-    public AADataClasses color(Object prop) {
+    public AADataClassesElement color(Object prop) {
         color = prop;
         return this;
     }
 
-    public AADataClasses name(String prop) {
+    public AADataClassesElement name(String prop) {
         name = prop;
         return this;
     }

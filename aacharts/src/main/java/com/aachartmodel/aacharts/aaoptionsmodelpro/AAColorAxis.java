@@ -4,7 +4,7 @@ public class AAColorAxis {
     public Float min;
     public String minColor;
     public String maxColor;
-    public AADataClasses[] dataClasses;
+    public AADataClassesElement[] dataClasses;
 
 
     public AAColorAxis min(Float prop) {
@@ -22,7 +22,7 @@ public class AAColorAxis {
         return this;
     }
 
-    public AAColorAxis dataClasses(AADataClasses[] prop) {
+    public AAColorAxis dataClasses(AADataClassesElement[] prop) {
         dataClasses = prop;
         return this;
     }
