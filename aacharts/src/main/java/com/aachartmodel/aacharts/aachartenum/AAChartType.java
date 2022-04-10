@@ -44,4 +44,8 @@ public interface AAChartType {
     String Windbarb        =  "windbarb";
     String Networkgraph    =  "networkgraph";
     String Wordcloud       =  "wordcloud";
+
+    String Organization    =  "organization";
+    String Arcdiagram      =  "arcdiagram";
+    String Flame           =  "flame";
 }
