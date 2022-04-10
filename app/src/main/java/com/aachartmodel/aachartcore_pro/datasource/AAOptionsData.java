@@ -39,6 +39,15 @@ public class AAOptionsData {
     public static Object[] wordcloudData = getWordcloudData();
     public static Object[] eulerData = getEulerData();
 
+    public static Object[] organizationData = organizationData();
+    public static Object[] organizationNodesData = organizationNodesData();
+
+    public static Object[] arcdiagram1Data = arcdiagram1Data();
+    public static Object[] arcdiagram2Data = arcdiagram2Data();
+    public static Object[] arcdiagram3Data = arcdiagram3Data();
+    public static Object[] flameData = flameData();
+    public static Object[] sunburst2Data = sunburst2Data();
+
     private static Object[] getVariablepieData() {
         return getJsonDataWithJsonFileName("variablepieData");
     }
@@ -138,7 +147,34 @@ public class AAOptionsData {
         return getJsonDataWithJsonFileName("eulerData");
     }
 
+    public static Object[]organizationData() {
+        return getJsonDataWithJsonFileName("organizationData");
+    }
 
+    public static Object[]organizationNodesData() {
+        return getJsonDataWithJsonFileName("organizationNodesData");
+    }
+
+
+    public static Object[]arcdiagram1Data() {
+        return getJsonDataWithJsonFileName("arcdiagram1Data");
+    }
+
+    public static Object[]arcdiagram2Data() {
+        return getJsonDataWithJsonFileName("arcdiagram2Data");
+    }
+
+    public static Object[]arcdiagram3Data() {
+        return getJsonDataWithJsonFileName("arcdiagram3Data");
+    }
+
+    public static Object[]flameData() {
+        return getJsonDataWithJsonFileName("flameData");
+    }
+
+    public static Object[]sunburst2Data() {
+        return getJsonDataWithJsonFileName("sunburst2Data");
+    }
 
     private static Object[] getJsonDataWithJsonFileName(String jsonFileName) {
         String jsonStr = getJson("data/" + jsonFileName + ".json");
