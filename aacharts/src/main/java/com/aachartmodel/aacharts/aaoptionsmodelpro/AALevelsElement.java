@@ -13,6 +13,8 @@ public class AALevelsElement {
     public String layoutStartingDirection;
     public Object level;
     public AAColorVariation colorVariation;
+    public Float height;
+
 
     public AALevelsElement borderColor(String prop) {
         borderColor = prop;
@@ -61,6 +63,11 @@ public class AALevelsElement {
 
     public AALevelsElement colorVariation(AAColorVariation prop) {
         colorVariation = prop;
+        return this;
+    }
+
+    public AALevelsElement height(Float prop) {
+        height = prop;
         return this;
     }
 

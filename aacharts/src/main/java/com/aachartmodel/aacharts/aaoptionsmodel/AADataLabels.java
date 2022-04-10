@@ -1,5 +1,7 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AATextPath;
+
 public class AADataLabels {
     public Boolean enabled;
     public String align;
@@ -22,8 +24,12 @@ public class AADataLabels {
     public Boolean crop;
     public String overflow;
     public Boolean softConnector;
-    public Object textPath;
     public Object filter;
+    public AATextPath textPath;
+    public AATextPath linkTextPath;
+    public Float padding; //When either the borderWidth or the backgroundColor is set, this is the padding within the box. Defaults to 5.
+    public String nodeFormat; //The format string specifying what to show for nodes in the sankey diagram. By default the nodeFormatter returns {point.name}. Defaults to undefined.
+
 
     public AADataLabels enabled(Boolean prop) {
         enabled = prop;
@@ -131,13 +137,29 @@ public class AADataLabels {
         return this;
     }
 
-    public AADataLabels textPath(Object prop) {
+
+    public AADataLabels filter(Object prop) {
+        filter = prop;
+        return this;
+    }
+
+    public AADataLabels textPath(AATextPath prop) {
         textPath = prop;
         return this;
     }
 
-    public AADataLabels filter(Object prop) {
-        filter = prop;
+    public AADataLabels linkTextPath(AATextPath prop) {
+        linkTextPath = prop;
+        return this;
+    }
+
+    public AADataLabels padding(Float prop) {
+        padding = prop;
+        return this;
+    }
+
+    public AADataLabels nodeFormat(String prop) {
+        nodeFormat = prop;
         return this;
     }
 }

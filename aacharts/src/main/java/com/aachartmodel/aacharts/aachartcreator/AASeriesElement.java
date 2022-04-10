@@ -47,6 +47,7 @@ public class AASeriesElement {
     private Object[] data;
     private Float lineWidth;//折线图、曲线图、直方折线图、折线填充图、曲线填充图、直方折线填充图的线条宽度
     private Float borderWidth;
+    private String borderColor;
     private Float borderRadius;
     private Object color;
     private Object fillColor;
@@ -83,7 +84,7 @@ public class AASeriesElement {
     private Float nodeWidth;
     private String cursor;
     private String offset;           //The offset of an arc diagram nodes column in relation to the plotArea. The offset equal to 50% places nodes in the center of a chart. By default the series is placed so that the biggest node is touching the bottom border of the plotArea. Defaults to '100%'.
-    private Integer linkWeight           //The global link weight. If not set, width is calculated per link, depending on the weight value. Defaults to undefined.
+    private Integer linkWeight;           //The global link weight. If not set, width is calculated per link, depending on the weight value. Defaults to undefined.
     private Boolean centeredLinks;       //The option to center links rather than position them one after another. Defaults to false.
 
 
@@ -114,6 +115,11 @@ public class AASeriesElement {
 
     public AASeriesElement borderWidth(Float prop) {
         borderWidth = prop;
+        return this;
+    }
+
+    public AASeriesElement borderColor(String prop) {
+        borderColor = prop;
         return this;
     }
 
