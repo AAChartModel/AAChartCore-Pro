@@ -10,7 +10,7 @@ import com.aachartmodel.aacharts.aaoptionsmodelpro.AAColorVariation;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AADataClassesElement;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAFilter;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AALayoutAlgorithm;
-import com.aachartmodel.aacharts.aaoptionsmodelpro.AALevels;
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AALevelsElement;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAPackedbubble;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AATextPath;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AATreemap;
@@ -92,8 +92,8 @@ public class ProChartOptionsComposer {
                 .series(new AASeriesElement[]{
                         new AASeriesElement()
                                 .type(AAChartType.Treemap)
-                                .levels(new AALevels[]{
-                                        new AALevels()
+                                .levels(new AALevelsElement[]{
+                                        new AALevelsElement()
                                                 .level(1)
                                                 .layoutAlgorithm("sliceAndDice")
                                                 .dataLabels(new AADataLabels()
@@ -176,18 +176,18 @@ public class ProChartOptionsComposer {
                 new AASeriesElement()
                         .type(AAChartType.Sunburst)
                         .allowDrillToNode(true)
-                        .levels(new AALevels[]{
-                                new  AALevels()
+                        .levels(new AALevelsElement[]{
+                                new AALevelsElement()
                                         .level(2)
                                         .colorByPoint(true)
                                         .layoutAlgorithm("sliceAndDice")
                                 ,
-                                new AALevels()
+                                new AALevelsElement()
                                         .level(3)
                                         .colorVariation(new AAColorVariation()
                                         .key("brightness")
                                         .to(-0.5f)),
-                                new AALevels()
+                                new AALevelsElement()
                                         .level(4)
                                         .colorVariation(new AAColorVariation()
                                         .key("brightness")
@@ -588,8 +588,8 @@ public class ProChartOptionsComposer {
                 .series(new AASeriesElement[]{
                         new AASeriesElement()
                                 .type(AAChartType.Treemap)
-                                .levels(new AALevels[]{
-                                        new AALevels()
+                                .levels(new AALevelsElement[]{
+                                        new AALevelsElement()
                                                 .level(1)
                                                 .dataLabels(new AADataLabels()
                                                         .enabled(true))

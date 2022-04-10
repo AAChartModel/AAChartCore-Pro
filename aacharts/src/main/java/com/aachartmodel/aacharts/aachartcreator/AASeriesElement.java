@@ -33,7 +33,7 @@
 package com.aachartmodel.aacharts.aachartcreator;
 
 import com.aachartmodel.aacharts.aaoptionsmodel.*;
-import com.aachartmodel.aacharts.aaoptionsmodelpro.AALevels;
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AALevelsElement;
 
 /**
  * Created by anan on 2018/4/16.
@@ -73,7 +73,7 @@ public class AASeriesElement {
     private Boolean reversed;
     private  String[] keys;
 
-    private AALevels[] levels;
+    private AALevelsElement[] levels;
     private Boolean allowDrillToNode;
     private Integer xAxis;
     private Integer baseSeries;
@@ -235,7 +235,7 @@ public class AASeriesElement {
     }
 
 
-    public AASeriesElement levels(AALevels[] prop) {
+    public AASeriesElement levels(AALevelsElement[] prop) {
         levels = prop;
         return this;
     }
