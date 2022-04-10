@@ -9,6 +9,7 @@ public class AAPackedbubble {
     public Float zMax;
     public AALayoutAlgorithm layoutAlgorithm;
     public AADataLabels dataLabels;
+    public Boolean useSimulation;
 
     public AAPackedbubble minSize(String prop) {
         minSize = prop;
@@ -37,6 +38,11 @@ public class AAPackedbubble {
 
     public AAPackedbubble dataLabels(AADataLabels prop) {
         dataLabels = prop;
+        return this;
+    }
+
+    public AAPackedbubble useSimulation(Boolean prop) {
+        useSimulation = prop;
         return this;
     }
 
