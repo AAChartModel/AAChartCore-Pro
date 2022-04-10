@@ -26,16 +26,16 @@ public class ProChartActivity extends AppCompatActivity {
 
     private AAOptions chartConfigurationWithSelectedIndex(int selectedIndex) {
         switch (selectedIndex) {
-            case 0: return  ProChartOptionsComposer.sankeyChart();
-            case 1: return ProChartOptionsComposer.variablepieChart();
-            case 2: return ProChartOptionsComposer.treemapWithLevelsData();
-            case 3: return ProChartOptionsComposer.variwideChart();
-            case 4: return ProChartOptionsComposer.sunburstChart();
-            case 5: return ProChartOptionsComposer.dependencywheelChart();
-            case 6: return ProChartOptionsComposer.heatmapChart();
-            case 7: return ProChartOptionsComposer.packedbubbleChart();
-            case 8: return ProChartOptionsComposer.packedbubbleSplitChart();
-            case 9: return ProChartOptionsComposer.vennChart();
+            case  0: return  ProChartOptionsComposer.sankeyChart();
+            case  1: return ProChartOptionsComposer.variablepieChart();
+            case  2: return ProChartOptionsComposer.treemapWithLevelsData();
+            case  3: return ProChartOptionsComposer.variwideChart();
+            case  4: return ProChartOptionsComposer.sunburstChart();
+            case  5: return ProChartOptionsComposer.dependencywheelChart();
+            case  6: return ProChartOptionsComposer.heatmapChart();
+            case  7: return ProChartOptionsComposer.packedbubbleChart();
+            case  8: return ProChartOptionsComposer.packedbubbleSplitChart();
+            case  9: return ProChartOptionsComposer.vennChart();
             case 10: return ProChartOptionsComposer.dumbbellChart();
             case 11: return ProChartOptionsComposer.lollipopChart();
             case 12: return ProChartOptionsComposer.streamgraphChart();
@@ -52,6 +52,12 @@ public class ProChartActivity extends AppCompatActivity {
             case 23: return ProChartOptionsComposer.networkgraphChart();
             case 24: return ProChartOptionsComposer.wordcloudChart();
             case 25: return ProChartOptionsComposer.eulerChart();
+            case 26: return ProChartOptionsComposer.organizationChart();
+            case 27: return ProChartOptionsComposer.arcdiagramChart1();
+            case 28: return ProChartOptionsComposer.arcdiagramChart2();
+            case 29: return ProChartOptionsComposer.arcdiagramChart3();
+            case 30: return ProChartOptionsComposer.flameChart();
+            case 31: return ProChartOptionsComposer.packedbubbleSpiralChart();
         }
         return ProChartOptionsComposer.sankeyChart();
     }
