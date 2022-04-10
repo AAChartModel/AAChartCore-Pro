@@ -62,13 +62,14 @@ public class AASeriesElement {
     private AAMarker marker;
     private Object step;
     private Object states;
+    private Boolean showInLegend;        //Whether to display this particular series or series type in the legend. The default value is true for standalone series, false for linked series. Deafualt value：true
+    private Boolean visible;              //Set the initial visibility of the series. Deafualt value：true
     private Boolean colorByPoint;
     private Integer zIndex;
     private Object[] zones;
     private AAShadow shadow;
     private String stack;
     private AATooltip tooltip;
-    private Boolean showInLegend;
     private Boolean enableMouseTracking;
     private Boolean reversed;
     private  String[] keys;
@@ -77,6 +78,13 @@ public class AASeriesElement {
     private Boolean allowDrillToNode;
     private Integer xAxis;
     private Integer baseSeries;
+
+    private Object[] nodes;
+    private Float nodeWidth;
+    private String cursor;
+    private String offset;           //The offset of an arc diagram nodes column in relation to the plotArea. The offset equal to 50% places nodes in the center of a chart. By default the series is placed so that the biggest node is touching the bottom border of the plotArea. Defaults to '100%'.
+    private Integer linkWeight           //The global link weight. If not set, width is calculated per link, depending on the weight value. Defaults to undefined.
+    private Boolean centeredLinks;       //The option to center links rather than position them one after another. Defaults to false.
 
 
     public AASeriesElement type(String prop) {
@@ -184,6 +192,16 @@ public class AASeriesElement {
         return this;
     }
 
+    public AASeriesElement showInLegend(Boolean prop) {
+        showInLegend = prop;
+        return this;
+    }
+
+    public AASeriesElement visible(Boolean prop) {
+        visible = prop;
+        return this;
+    }
+
     public AASeriesElement colorByPoint(Boolean prop) {
         colorByPoint = prop;
         return this;
@@ -211,11 +229,6 @@ public class AASeriesElement {
 
     public AASeriesElement tooltip(AATooltip prop) {
         tooltip = prop;
-        return this;
-    }
-
-    public AASeriesElement showInLegend(Boolean prop) {
-        showInLegend = prop;
         return this;
     }
 
@@ -252,6 +265,36 @@ public class AASeriesElement {
 
     public AASeriesElement baseSeries(Integer prop) {
         baseSeries = prop;
+        return this;
+    }
+
+    public AASeriesElement nodes(Object[] prop) {
+        nodes = prop;
+        return this;
+    }
+
+    public AASeriesElement nodeWidth(Float prop) {
+        nodeWidth = prop;
+        return this;
+    }
+
+    public AASeriesElement cursor(String prop) {
+        cursor = prop;
+        return this;
+    }
+
+    public AASeriesElement offset(String prop) {
+        offset = prop;
+        return this;
+    }
+
+    public AASeriesElement linkWeight(Integer prop) {
+        linkWeight = prop;
+        return this;
+    }
+
+    public AASeriesElement centeredLinks(Boolean prop) {
+        centeredLinks = prop;
         return this;
     }
 
