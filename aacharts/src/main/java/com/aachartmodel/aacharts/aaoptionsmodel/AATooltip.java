@@ -18,6 +18,8 @@ public class AATooltip {
     public Boolean shared;
     public Boolean crosshairs;
     public String valueSuffix;
+    public Boolean outside;
+
 
     public AATooltip backgroundColor(String prop) {
         backgroundColor = prop;
@@ -93,6 +95,11 @@ public class AATooltip {
 
     public AATooltip valueSuffix(String prop) {
         valueSuffix = prop;
+        return this;
+    }
+
+    public AATooltip outside(Boolean prop) {
+        outside = prop;
         return this;
     }
 
