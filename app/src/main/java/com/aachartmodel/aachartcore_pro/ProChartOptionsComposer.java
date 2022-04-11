@@ -44,8 +44,7 @@ public class ProChartOptionsComposer {
                                 .type(AAChartType.Sankey)
                                 .keys(new String[]{"from", "to", "weight"})
                                 .data(AAOptionsData.sankeyData),
-                })
-                ;
+                });
     }
 
     public static AAOptions variablepieChart() {
@@ -292,8 +291,7 @@ public class ProChartOptionsComposer {
                 .tooltip(new AATooltip()
                         .enabled(true)
                         .useHTML(true)
-                        .pointFormat("<b>{point.name}:<\\/b> {point.y}m CO<sub>2<\\/sub>")
-                )
+                        .pointFormat("<b>{point.name}:<\\/b> {point.y}m CO<sub>2<\\/sub>"))
                 .plotOptions(new AAPlotOptions()
                         .packedbubble(new AAPackedbubble()
                                 .minSize("30%")
@@ -323,8 +321,7 @@ public class ProChartOptionsComposer {
                 .tooltip(new AATooltip()
                         .enabled(true)
                         .useHTML(true)
-                        .pointFormat("<b>{point.name}:<\\/b> {point.y}m CO<sub>2<\\/sub>")
-                )
+                        .pointFormat("<b>{point.name}:<\\/b> {point.y}m CO<sub>2<\\/sub>"))
                 .plotOptions(new AAPlotOptions()
                         .packedbubble(new AAPackedbubble()
                                 .minSize("30%")
@@ -836,14 +833,15 @@ public class ProChartOptionsComposer {
                                 .nodeWidth(65f)
                 })
                 .tooltip(new AATooltip()
-//                    .outside(true)
+                    .outside(true)
                 );
     }
 
     //https://www.highcharts.com/docs/chart-and-series-types/arc-diagram
     public static AAOptions arcdiagramChart1() {
         return new AAOptions()
-                .colors(new String[]{"#293462", "#a64942", "#fe5f55", "#fff1c1", "#5bd1d7", "#ff502f", "#004d61", "#ff8a5c", "#fff591", "#f5587b", "#fad3cf", "#a696c8", "#5BE7C4", "#266A2E", "#593E1A"})
+                .colors(new String[]{"#293462", "#a64942", "#fe5f55", "#fff1c1", "#5bd1d7", "#ff502f", "#004d61",
+                        "#ff8a5c", "#fff591", "#f5587b", "#fad3cf", "#a696c8", "#5BE7C4", "#266A2E", "#593E1A"})
                 .title(new AATitle()
                         .text("Main train connections in Europe"))
                 .series(new AASeriesElement[]{
@@ -884,8 +882,7 @@ public class ProChartOptionsComposer {
                                         .nodeFormat("{point.name}")
                                         .color(AAColor.Black)
                                         .linkTextPath(new AATextPath()
-                                                .enabled(true))
-                                )
+                                                .enabled(true)))
                                 .data(AAOptionsData.arcdiagram2Data)
                 });
     }
@@ -907,8 +904,7 @@ public class ProChartOptionsComposer {
                                         .y(-2f)
                                         .color("#333333")
                                         .overflow("allow")
-                                        .padding(0f)
-                                )
+                                        .padding(0f))
                                 .offset("60%")
                                 .data(AAOptionsData.arcdiagram3Data)
                 });
@@ -971,8 +967,7 @@ public class ProChartOptionsComposer {
                                 .dataLabels(new AADataLabels()
                                 .textPath(new AATextPath()
                                         .attributes(attributes)
-                                        .enabled(true)
-                                ))
+                                        .enabled(true)))
                 })
                 .tooltip(new AATooltip()
                         .headerFormat("")
