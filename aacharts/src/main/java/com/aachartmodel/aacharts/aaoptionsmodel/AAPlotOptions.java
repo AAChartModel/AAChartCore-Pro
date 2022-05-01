@@ -17,8 +17,6 @@ public class AAPlotOptions {
 
     public AAPackedbubble packedbubble;
     public AATreemap treemap;
-//    AAPropStatementAndPropSetFuncStatement(strong, AAPlotOptions, AAPackedbubble     *, packedbubble);
-//    AAPropStatementAndPropSetFuncStatement(strong, AAPlotOptions, AATreemap     *, treemap);
 
     public AAPlotOptions column(AAColumn prop) {
         column = prop;

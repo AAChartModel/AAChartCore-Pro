@@ -26,7 +26,7 @@ public class ProChartActivity extends AppCompatActivity {
 
     private AAOptions chartConfigurationWithSelectedIndex(int selectedIndex) {
         switch (selectedIndex) {
-            case  0: return  ProChartOptionsComposer.sankeyChart();
+            case  0: return ProChartOptionsComposer.sankeyChart();
             case  1: return ProChartOptionsComposer.variablepieChart();
             case  2: return ProChartOptionsComposer.treemapWithLevelsData();
             case  3: return ProChartOptionsComposer.variwideChart();

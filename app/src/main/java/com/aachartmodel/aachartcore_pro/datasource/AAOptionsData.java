@@ -147,32 +147,32 @@ public class AAOptionsData {
         return getJsonDataWithJsonFileName("eulerData");
     }
 
-    public static Object[]organizationData() {
+    private static Object[] organizationData() {
         return getJsonDataWithJsonFileName("organizationData");
     }
 
-    public static Object[]organizationNodesData() {
+    private static Object[] organizationNodesData() {
         return getJsonDataWithJsonFileName("organizationNodesData");
     }
 
 
-    public static Object[]arcdiagram1Data() {
+    private static Object[] arcdiagram1Data() {
         return getJsonDataWithJsonFileName("arcdiagram1Data");
     }
 
-    public static Object[]arcdiagram2Data() {
+    private static Object[] arcdiagram2Data() {
         return getJsonDataWithJsonFileName("arcdiagram2Data");
     }
 
-    public static Object[]arcdiagram3Data() {
+    private static Object[] arcdiagram3Data() {
         return getJsonDataWithJsonFileName("arcdiagram3Data");
     }
 
-    public static Object[]flameData() {
+    private static Object[] flameData() {
         return getJsonDataWithJsonFileName("flameData");
     }
 
-    public static Object[]sunburst2Data() {
+    private static Object[] sunburst2Data() {
         return getJsonDataWithJsonFileName("sunburst2Data");
     }
 
@@ -185,7 +185,7 @@ public class AAOptionsData {
     }
 
 
-    public static String getJson(String fileName){
+    private static String getJson(String fileName){
         StringBuilder stringBuilder = new StringBuilder();
         try {
             InputStream is = BaseApplication.getContext().getAssets().open(fileName);
