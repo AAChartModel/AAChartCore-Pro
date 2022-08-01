@@ -9,6 +9,7 @@ import com.aachartmodel.aacharts.aaoptionsmodelpro.AAColorAxis;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAColorVariation;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AADataClassesElement;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAFilter;
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AAItem;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AALayoutAlgorithm;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AALevelsElement;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAPackedbubble;
@@ -709,14 +710,60 @@ public class ProChartOptionsComposer {
                         .text("Parliament visualization"))
                 .legend(new AALegend()
                         .enabled(false))
-                .series(new AASeriesElement[]{
-                        new AASeriesElement()
+                .series(new AAItem[]{
+                        new AAItem()
                                 .name("Representatives")
                                 .keys(new String[]{"name","y","color","label"})
                                 .data(AAOptionsData.itemData)
                                 .dataLabels(new AADataLabels()
                                         .enabled(false))
-                                .size("170%")
+                                .startAngle(-100f)
+                                .endAngle(+100f)
+                });
+    }
+
+    public static AAOptions itemChart2() {
+        return new AAOptions()
+                .chart(new AAChart()
+                        .type(AAChartType.Item))
+                .title(new AATitle()
+                        .text("AAChartKit-Pro item chart"))
+                .subtitle(new AASubtitle()
+                        .text("Parliament visualization"))
+                .legend(new AALegend()
+                        .enabled(false))
+                .series(new AAItem[]{
+                        new AAItem()
+                                .name("Representatives")
+                                .keys(new String[]{"name","y","color","label"})
+                                .data(AAOptionsData.itemData)
+                                .dataLabels(new AADataLabels()
+                                        .enabled(false))
+                                .startAngle(null)
+                                .endAngle(null)
+
+                });
+    }
+
+    public static AAOptions itemChart3() {
+        return new AAOptions()
+                .chart(new AAChart()
+                        .type(AAChartType.Item))
+                .title(new AATitle()
+                        .text("AAChartKit-Pro item chart"))
+                .subtitle(new AASubtitle()
+                        .text("Parliament visualization"))
+                .legend(new AALegend()
+                        .enabled(false))
+                .series(new AAItem[]{
+                        new AAItem()
+                                .name("Representatives")
+                                .keys(new String[]{"name","y","color","label"})
+                                .data(AAOptionsData.itemData)
+                                .dataLabels(new AADataLabels()
+                                        .enabled(false))
+                                .startAngle(0f)
+                                .endAngle(360f)
                 });
     }
 
