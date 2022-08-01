@@ -58,6 +58,8 @@ public class ProChartActivity extends AppCompatActivity {
             case 29: return ProChartOptionsComposer.arcdiagramChart3();
             case 30: return ProChartOptionsComposer.flameChart();
             case 31: return ProChartOptionsComposer.packedbubbleSpiralChart();
+            case 32: return ProChartOptionsComposer.itemChart2();
+            case 33: return ProChartOptionsComposer.itemChart3();
         }
         return ProChartOptionsComposer.sankeyChart();
     }

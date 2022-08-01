@@ -55,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 "arcdiagramChart2---弧形图2",
                 "arcdiagramChart3---弧形图3",
                 "flameChart---火焰🔥图",
-                "packedbubbleSpiralChart---渐进变化的气泡🎈图"
+                "packedbubbleSpiralChart---渐进变化的气泡🎈图",
+                "itemChart2---议会项目图2",
+                "itemChart3---议会项目图3",
         };
         ChartTypesRecyclerViewAdapter mChartTypesRecyclerViewAdapter = new ChartTypesRecyclerViewAdapter(chartTypesArr);
         mChartTypesRecyclerViewAdapter.setItemOnClickListener(new ChartTypesRecyclerViewAdapter.OnItemClickListener() {
