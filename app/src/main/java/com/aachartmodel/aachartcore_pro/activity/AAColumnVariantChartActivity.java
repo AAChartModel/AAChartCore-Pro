@@ -47,9 +47,9 @@ public class AAColumnVariantChartActivity extends AppCompatActivity {
             case  2: return AAColumnVariantChartComposer.dumbbellChart();
             case  3: return AAColumnVariantChartComposer.lollipopChart();
             case  4: return AAColumnVariantChartComposer.xrangeChart();
-//            case  5: return AAColumnVariantChartComposer.histogramChart();
+            case  5: return AAColumnVariantChartComposer.histogramChart();
             case  6: return AAColumnVariantChartComposer.bellcurveChart();
-//            case  7: return AAColumnVariantChartComposer.bulletChart();
+            case  7: return AAColumnVariantChartComposer.bulletChart();
         }
         return null;
     }
