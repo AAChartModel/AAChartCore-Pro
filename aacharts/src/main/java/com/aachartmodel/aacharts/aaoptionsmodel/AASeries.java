@@ -10,9 +10,11 @@ public class AASeries {
     public String[] keys;
     public Boolean colorByPoint;//决定了图表是否给每个数据列或每个点分配一个颜色，默认值是 false， 即默认是给每个数据类分配颜色，
     public Boolean connectNulls;//设置折线是否断点重连
-    public Map events;
+    public AASeriesEvents events;
     public AAShadow shadow;
     public AADataLabels dataLabels;
+    public AAStates states;
+    public AAPoint point;
     public Float pointPadding;
     public Float groupPadding;
 
@@ -51,7 +53,7 @@ public class AASeries {
         return this;
     }
 
-    public AASeries events(Map prop) {
+    public AASeries events(AASeriesEvents prop) {
         events = prop;
         return this;
     }
@@ -63,6 +65,16 @@ public class AASeries {
 
     public AASeries dataLabels(AADataLabels prop) {
         dataLabels = prop;
+        return this;
+    }
+
+    public AASeries states(AAStates prop) {
+        states = prop;
+        return this;
+    }
+
+    public AASeries point(AAPoint prop) {
+        point = prop;
         return this;
     }
 
