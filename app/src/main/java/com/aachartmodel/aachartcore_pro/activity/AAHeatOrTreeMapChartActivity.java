@@ -41,10 +41,10 @@ public class AAHeatOrTreeMapChartActivity extends AppCompatActivity {
         switch (selectedIndex) {
             case  0: return AAHeatOrTreeMapChartComposer.heatmapChart();
             case  1: return AAHeatOrTreeMapChartComposer.tilemapChart();
-//            case  2: return AAHeatOrTreeMapChartComposer.treemapWithColorAxisData();
+            case  2: return AAHeatOrTreeMapChartComposer.treemapWithColorAxisData();
             case  3: return AAHeatOrTreeMapChartComposer.treemapWithLevelsData();
-//            case  4: return AAHeatOrTreeMapChartComposer.drilldownLargeDataTreemapChart();
-//            case  5: return AAHeatOrTreeMapChartComposer.largeDataHeatmapChart();
+            case  4: return AAHeatOrTreeMapChartComposer.drilldownLargeDataTreemapChart();
+            case  5: return AAHeatOrTreeMapChartComposer.largeDataHeatmapChart();
         }
         return null;
     }
