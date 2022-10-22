@@ -21,6 +21,11 @@ public class AAChart {
     public AAResetZoomButton resetZoomButton;
     public String zoomType;
     public AAChartEvents events;
+//    AAPropSetFuncImplementation(AAChart, id           , parallelCoordinates)
+//    AAPropSetFuncImplementation(AAChart, AAParallelAxes *, parallelAxes)
+//    AAPropSetFuncImplementation(AAChart, NSNumber    *, height)
+    public Boolean parallelCoordinates;
+    public AAParallelAxes parallelAxes;
     public Number height;
 
     public AAChart type(String prop) {
@@ -103,13 +108,23 @@ public class AAChart {
         return this;
     }
 
-    public AAChart zoomType(String zoomType) {
-        this.zoomType = zoomType;
+    public AAChart zoomType(String prop) {
+        this.zoomType = prop;
         return this;
     }
 
-    public AAChart events(AAChartEvents events) {
-        this.events = events;
+    public AAChart events(AAChartEvents prop) {
+        this.events = prop;
+        return this;
+    }
+
+    public AAChart parallelCoordinates(Boolean prop) {
+        this.parallelCoordinates = prop;
+        return this;
+    }
+
+    public AAChart parallelAxes(AAParallelAxes prop) {
+        this.parallelAxes = prop;
         return this;
     }
 
