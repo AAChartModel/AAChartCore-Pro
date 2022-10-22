@@ -18,6 +18,8 @@ import com.aachartmodel.aacharts.aaoptionsmodelpro.AASolidgaugeDataElement;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AATextPath;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AATreemap;
 import com.aachartmodel.aacharts.aatools.AAColor;
+import com.aachartmodel.aacharts.aatools.AAGradientColor;
+import com.aachartmodel.aacharts.aatools.AALinearGradientDirection;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -752,6 +754,341 @@ public class ProChartOptionsComposer {
                 }
 
 
+                //- (AAOptions *)parallelCoordinatesSplineChart {
+    //    return AAOptions.new
+    //        .chartSet(AAChart.new
+    //            .typeSet(AAChartTypeSpline)
+    //            .parallelCoordinatesSet(@true)
+    //            .parallelAxesSet(AAParallelAxes.new
+    //                .lineWidthSet(@2)))
+    //        .titleSet(AATitle.new
+    //            .textSet(@"Marathon set"))
+    //        .plotOptionsSet(AAPlotOptions.new
+    //            .seriesSet(AASeries.new
+    //                .animationSet(false)
+    //                .markerSet(AAMarker.new
+    //                    .enabledSet(false)
+    //                    .statesSet(AAMarkerStates.new
+    //                        .hoverSet(AAMarkerHover.new
+    //                            .enabledSet(false))))
+    //                .statesSet(AAStates.new
+    //                    .hoverSet(AAHover.new
+    //                        .haloSet(AAHalo.new
+    //                            .sizeSet(@0))))
+    //                .eventsSet(AAEvents.new
+    //                    .mouseOverSet(@AAJSFunc(function () {
+    //                        this.group.toFront();
+    //                    })))))
+    //        .tooltipSet(AATooltip.new
+    //            .pointFormatSet(@"●{series.name}: {point.formattedValue}"))
+    //        .xAxisSet(AAXAxis.new
+    //            .categoriesSet(@[
+    //                @"Training date",
+    //                @"Miles for training run",
+    //                @"Training time",
+    //                @"Shoe brand",
+    //                @"Running pace per mile",
+    //                @"Short or long",
+    //                @"After 2004",
+    //            ])
+    //            .offsetSet(@10))
+    //        .yAxisSet((id)@[
+    //            AAYAxis.new
+    //                .typeSet(AAChartAxisTypeDatetime)
+    //                .tooltipValueFormatSet(@"{value:%Y-%m-%d}"),
+    //            AAYAxis.new
+    //                .minSet(@0)
+    //                .tooltipValueFormatSet(@"{value} mile(s)"),
+    //            AAYAxis.new
+    //                .typeSet(AAChartAxisTypeDatetime)
+    //                .minSet(@0)
+    //                .labelsSet(AALabels.new
+    //                    .formatSet(@"{value:%H:%M}")),
+    //            AAYAxis.new
+    //                .categoriesSet(@[
+    //                    @"Other",
+    //                    @"Adidas",
+    //                    @"Mizuno",
+    //                    @"Asics",
+    //                    @"Brooks",
+    //                    @"New Balance",
+    //                    @"Izumi",
+    //                ]),
+    //            AAYAxis.new
+    //                .typeSet(AAChartAxisTypeDatetime),
+    //            AAYAxis.new
+    //                .categoriesSet(@[
+    //                    @"> 5miles",
+    //                    @"< 5miles",
+    //                ]),
+    //            AAYAxis.new
+    //                .categoriesSet(@[
+    //                    @"Before",
+    //                    @"After",
+    //                ])
+    //            ])
+    //        .colorsSet(@[AARgbaColor(255, 0, 0, 0.1), ])
+    //        .seriesSet(({
+    //            NSArray *marathonDataArr = AAOptionsData.marathonData;
+    //            NSMutableArray *seriesArr = [NSMutableArray arrayWithCapacity:marathonDataArr.count];
+    //            [marathonDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    //                AASeriesElement *aaSeriesElement = AASeriesElement.new
+    //                .nameSet(@"Runner")
+    //                .dataSet(obj)
+    //                .shadowSet((id)@false);
+    //                [seriesArr addObject:aaSeriesElement];
+    //            }];
+    //            seriesArr;
+    //        }));
+    //}
+
+    public static AAOptions parallelCoordinatesSplineChart() {
+        //  NSArray *marathonDataArr = AAOptionsData.marathonData;
+        //            NSMutableArray *seriesArr = [NSMutableArray arrayWithCapacity:marathonDataArr.count];
+        //            [marathonDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //                AASeriesElement *aaSeriesElement = AASeriesElement.new
+        //                .nameSet(@"Runner")
+        //                .dataSet(obj)
+        //                .shadowSet((id)@false);
+        //                [seriesArr addObject:aaSeriesElement];
+        //            }];
+        //            seriesArr;
+
+        Object[] marathonDataArr = AAOptionsData.marathonData;
+        AASeriesElement[] seriesArr = new AASeriesElement[marathonDataArr.length];
+        for (int i = 0; i < marathonDataArr.length; i++) {
+            AASeriesElement aaSeriesElement = new AASeriesElement()
+                    .name("Runner")
+                    .data((Object[]) marathonDataArr[i])
+                    .shadow(new AAShadow()
+                            .enabled(false));
+            seriesArr[i] = aaSeriesElement;
+        }
+
+        return new AAOptions()
+                .chart(new AAChart()
+                        .type(AAChartType.Spline)
+                        .parallelCoordinates(true)
+                        .parallelAxes(new AAParallelAxes()
+                                .lineWidth(2f)))
+                .title(new AATitle()
+                        .text("Marathon set"))
+                .plotOptions(new AAPlotOptions()
+                        .series(new AASeries()
+//                                .animation(false)
+                                .marker(new AAMarker()
+                                        .enabled(false)
+                                        .states(new AAMarkerStates()
+                                                .hover(new AAMarkerHover()
+                                                        .enabled(false))))
+                                .states(new AAStates()
+                                        .hover(new AAHover()
+                                                .halo(new AAHalo()
+                                                        .size(0f))))
+                                .events(new AASeriesEvents()
+                                        .mouseOver("function () {\n" +
+                                                "                        this.group.toFront();\n" +
+                                                "                    }"))))
+                .tooltip(new AATooltip()
+                        .pointFormat("●{series.name}: {point.formattedValue}"))
+                .xAxis(new AAXAxis()
+                        .categories(new String[]{
+                                "Training date",
+                                "Miles for training run",
+                                "Training time",
+                                "Shoe brand",
+                                "Running pace per mile",
+                                "Short or long",
+                                "After 2004",
+                        })
+//                        .offset(10f)
+                )
+                .yAxisArray(new AAYAxis[]{
+                        new AAYAxis()
+                                .type(AAChartAxisType.Datetime)
+                                .tooltipValueFormat("{value:%Y-%m-%d}"),
+                        new AAYAxis()
+                                .min(0f)
+                                .tooltipValueFormat("{value} mile(s)"),
+                        new AAYAxis()
+                                .type(AAChartAxisType.Datetime)
+                                .min(0f)
+                                .labels(new AALabels()
+                                        .format("{value:%H:%M}")),
+                        new AAYAxis()
+                                .categories(new String[]{
+                                        "Other",
+                                        "Adidas",
+                                        "Mizuno",
+                                        "Asics",
+                                        "Brooks",
+                                        "New Balance",
+                                        "Izumi",
+                                }),
+                        new AAYAxis()
+                                .type(AAChartAxisType.Datetime),
+                        new AAYAxis()
+                                .categories(new String[]{
+                                        "> 5miles",
+                                        "< 5miles",
+                                }),
+                        new AAYAxis()
+                                .categories(new String[]{
+                                        "Before",
+                                        "After",
+                                })
+                })
+                .colors(new String[]{"rgba(255,0,0,0.1)"})
+                .series(seriesArr);
+
+                }
 
 
-}
+                //- (AAOptions *)parallelCoordinatesLineChart {
+    //    AAOptions *aaOptions = [self parallelCoordinatesSplineChart];
+    //
+    //    aaOptions.chart.typeSet(AAChartTypeLine);
+    //    aaOptions.colorsSet(@[({
+    //        NSDictionary *gradientColor =
+    //        [AAGradientColor gradientColorWithDirection:AALinearGradientDirectionToRight
+    //                                         stopsArray:@[
+    //            @[@0.00, @"#febc0f0F"],//颜色字符串设置支持十六进制类型和 rgba 类型
+    //            @[@0.25, @"#FF14d4E6"],
+    //            @[@0.50, @"#0bf8f5E6"],
+    //            @[@0.75, @"#F33c52E6"],
+    //            @[@1.00, @"#1904ddE6"],
+    //        ]];
+    //        gradientColor;
+    //    })]);
+    //
+    //    return aaOptions;
+    //}
+
+    public static AAOptions parallelCoordinatesLineChart() {
+        AAOptions aaOptions = parallelCoordinatesSplineChart();
+
+        //{
+        //        NSDictionary *gradientColor =
+        //        [AAGradientColor gradientColorWithDirection:AALinearGradientDirectionToRight
+        //                                         stopsArray:@[
+        //            @[@0.00, @"#febc0f0F"],//颜色字符串设置支持十六进制类型和 rgba 类型
+        //            @[@0.25, @"#FF14d4E6"],
+        //            @[@0.50, @"#0bf8f5E6"],
+        //            @[@0.75, @"#F33c52E6"],
+        //            @[@1.00, @"#1904ddE6"],
+        //        ]];
+        //        gradientColor;
+        //    }
+
+        Map<String, Object> gradientColor = AAGradientColor.linearGradient(
+                AALinearGradientDirection.ToRight,
+                (Object[][]) new Object[]{
+                        new Object[]{0.00f, "#febc0f0F"},
+                        new Object[]{0.25f, "#FF14d4E6"},
+                        new Object[]{0.50f, "#0bf8f5E6"},
+                        new Object[]{0.75f, "#F33c52E6"},
+                        new Object[]{1.00f, "#1904ddE6"},
+                }
+        );
+
+        aaOptions.chart.type(AAChartType.Line);
+        aaOptions.colors(new Object[]{gradientColor});
+
+        return aaOptions;
+    }
+
+    //- (AAOptions *)volinPlotChart {
+    //    return AAOptions.new
+    //        .chartSet(AAChart.new
+    //            .typeSet(AAChartTypeStreamgraph)
+    //            .invertedSet(true))
+    //        .titleSet(AATitle.new
+    //            .textSet(@"The 2012 Olympic rowing athletes weight"))
+    //        .xAxisSet(AAXAxis.new
+    //            .reversedSet(false)
+    //            .labelsSet(AALabels.new
+    //                .formatSet(@"{value} kg"))
+    //            .gridLineWidthSet(@1)
+    //                  .crosshairSet(AACrosshair.new
+    //                      .colorSet(AAColor.lightGrayColor)
+    //                      .dashStyleSet(AAChartLineDashStyleTypeLongDashDotDot)))
+    //        .yAxisSet((id)@[
+    //            AAYAxis.new
+    //                .widthSet((id)@"45%")
+    //                .offsetSet(@0)
+    //                .visibleSet(false),
+    //            AAYAxis.new
+    //                .widthSet((id)@"45%")
+    //                .leftSet((id)@"55%")
+    //                .offsetSet(@0)
+    //                .visibleSet(false)
+    //            ])
+    //        .tooltipSet(AATooltip.new
+    //            .splitSet(@true)
+    ////            .crosshairsSet(true)
+    //            .headerFormatSet(@"")
+    //            .pointFormatSet(@"{series.name}: {point.x} kg"))
+    //        .seriesSet(@[
+    //            AASeriesElement.new
+    //                .nameSet(@"Male")
+    //                .dataSet(AAOptionsData.volinPlotElement1Data)
+    //                .colorSet(@"#a8d4ff")
+    //                .yAxisSet(@0),
+    //            AASeriesElement.new
+    //                .nameSet(@"Female")
+    //                .colorSet(@"#ffa8d4")
+    //                .dataSet((AAOptionsData.volinPlotElement2Data))
+    //                .yAxisSet(@1)
+    //            ]);
+    //}
+
+    public static AAOptions volinPlotChart() {
+        return new AAOptions()
+                .chart(new AAChart()
+                        .type(AAChartType.Streamgraph)
+                        .inverted(true))
+                .title(new AATitle()
+                        .text("The 2012 Olympic rowing athletes weight"))
+                .xAxis(new AAXAxis()
+                        .reversed(false)
+                        .labels(new AALabels()
+                                .format("{value} kg"))
+                        .gridLineWidth(1)
+                        .crosshair(new AACrosshair()
+                                .color(AAColor.LightGray)
+                                .dashStyle(AAChartLineDashStyleType.LongDashDotDot)))
+                .yAxisArray(new AAYAxis[]{
+                        new AAYAxis()
+                                .width("45%")
+                                .offset(0)
+                                .visible(false),
+                        new AAYAxis()
+                                .width("45%")
+                                .left("55%")
+                                .offset(0)
+                                .visible(false)
+                })
+                .tooltip(new AATooltip()
+                        .split(true)
+                        .headerFormat("")
+                        .pointFormat("{series.name}: {point.x} kg"))
+                .series(new AASeriesElement[]{
+                        new AASeriesElement()
+                                .name("Male")
+                                .data(AAOptionsData.volinPlotElement1Data)
+                                .color("#a8d4ff")
+                                .yAxis(0),
+                        new AASeriesElement()
+                                .name("Female")
+                                .color("#ffa8d4")
+                                .data(AAOptionsData.volinPlotElement2Data)
+                                .yAxis(1)
+                });
+
+
+    }
+
+    }
+
+
+
