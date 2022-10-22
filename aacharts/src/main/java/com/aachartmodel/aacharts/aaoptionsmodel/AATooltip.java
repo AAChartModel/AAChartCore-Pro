@@ -24,6 +24,7 @@ public class AATooltip {
     public String positioner;
     public AADateTimeLabelFormats dateTimeLabelFormats;
     public String shape;
+    public Boolean split;
 
     public AATooltip backgroundColor(Object prop) {
         backgroundColor = prop;
@@ -127,6 +128,11 @@ public class AATooltip {
 
     public AATooltip shape(String prop) {
         shape = prop;
+        return this;
+    }
+
+    public AATooltip split(Boolean prop) {
+        split = prop;
         return this;
     }
 
