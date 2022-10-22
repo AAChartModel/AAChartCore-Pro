@@ -1,6 +1,7 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAColorAxis;
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AAData;
 
 public class AAOptions {
     public AAChart chart;
@@ -20,6 +21,7 @@ public class AAOptions {
     public Boolean touchEventEnabled;
 
     public AAColorAxis colorAxis;
+    public AAData data;
 
     public AAOptions chart(AAChart prop) {
         chart = prop;
@@ -98,6 +100,11 @@ public class AAOptions {
 
     public AAOptions colorAxis(AAColorAxis prop) {
         colorAxis = prop;
+        return this;
+    }
+
+    public AAOptions data(AAData prop) {
+        data = prop;
         return this;
     }
 
