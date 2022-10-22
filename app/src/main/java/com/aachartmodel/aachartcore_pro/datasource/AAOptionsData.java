@@ -49,6 +49,17 @@ public class AAOptionsData {
     public static Object[] sunburst2Data = sunburst2Data();
 
     public static Object[] simpleDependencyWheelData = simpleDependencyWheelData();
+    public static Object[] marathonData = marathonData();
+//    + (NSArray *)volinPlotElement1Data {
+//        return [self getJsonDataWithJsonFileName:@"volinPlotElement1Data"];
+//    }
+//
+//+ (NSArray *)volinPlotElement2Data {
+//        return [self getJsonDataWithJsonFileName:@"volinPlotElement2Data"];
+//    }
+public static Object[] volinPlotElement1Data = volinPlotElement1Data();
+    public static Object[] volinPlotElement2Data = volinPlotElement2Data();
+
 
     private static Object[] getVariablepieData() {
         return getJsonDataWithJsonFileName("variablepieData");
@@ -180,6 +191,18 @@ public class AAOptionsData {
 
     private static Object[] simpleDependencyWheelData() {
         return getJsonDataWithJsonFileName("simpleDependencyWheelData");
+    }
+
+    private static Object[] marathonData() {
+        return getJsonDataWithJsonFileName("marathonData");
+    }
+
+    private static Object[] volinPlotElement1Data() {
+        return getJsonDataWithJsonFileName("volinPlotElement1Data");
+    }
+
+    private static Object[] volinPlotElement2Data() {
+        return getJsonDataWithJsonFileName("volinPlotElement2Data");
     }
 
     private static Object[] getJsonDataWithJsonFileName(String jsonFileName) {
