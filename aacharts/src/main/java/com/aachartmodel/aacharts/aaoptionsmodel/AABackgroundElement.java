@@ -1,44 +1,44 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
-public class AABackground {
+public class AABackgroundElement {
     public Object backgroundColor;
     public String borderColor;
-    public Float borderWidth;
+    public Number borderWidth;
     public String className;
-    public Float innerRadius;
-    public Float outerRadius;
+    public Object innerRadius;
+    public Object outerRadius;
     public String shape;
 
-    public AABackground backgroundColor(Object prop) {
+    public AABackgroundElement backgroundColor(Object prop) {
         backgroundColor = prop;
         return this;
     }
-    public AABackground borderColor(String prop) {
+    public AABackgroundElement borderColor(String prop) {
         borderColor = prop;
         return this;
     }
 
-    public AABackground borderWidth(Float prop) {
+    public AABackgroundElement borderWidth(Number prop) {
         borderWidth = prop;
         return this;
     }
 
-    public AABackground className(String prop) {
+    public AABackgroundElement className(String prop) {
         className = prop;
         return this;
     }
 
-    public AABackground innerRadius(Float prop) {
+    public AABackgroundElement innerRadius(Object prop) {
         innerRadius = prop;
         return this;
     }
 
-    public AABackground outerRadius(Float prop) {
+    public AABackgroundElement outerRadius(Object prop) {
         outerRadius = prop;
         return this;
     }
 
-    public AABackground shape(String prop) {
+    public AABackgroundElement shape(String prop) {
         shape = prop;
         return this;
     }
