@@ -227,4 +227,55 @@ public class AARelationshipChartComposer {
                                     .data(AAOptionsData.arcdiagram3Data)
                     });
         }
+
+
+        //+ (AAOptions *)simpleDependencyWheelChart {
+    //    return AAOptions.new
+    //        .titleSet(AATitle.new
+    //            .textSet(@"2016 BRICS export in million USD"))
+    //        .colorsSet(@[@"#058DC7", @"#8dc705", @"#c73f05", @"#ffc080", @"#dd69ba", ])
+    //        .seriesSet(@[
+    //            AASeriesElement.new
+    //                .keysSet(@[@"from", @"to", @"weight", ])
+    //                .dataSet(AAOptionsData.simpleDependencyWheelData)
+    //                .typeSet(AAChartTypeDependencywheel)
+    //                .nameSet(@"Dependency wheel series")
+    //                .dataLabelsSet(AADataLabels.new
+    //                    .colorSet(@"#333")
+    //                    .textPathSet(AATextPath.new
+    //                        .enabledSet(true)
+    ////                        .attributesSet(AAAttributes.new
+    ////                            .dySet(@5))
+    //            )
+    ////                    .distanceSet(@10)
+    //            )
+    ////                .sizeSet(@"95%")
+    //            ]);
+    //}
+
+        public static AAOptions simpleDependencyWheelChart() {
+            return new AAOptions()
+                    .title(new AATitle()
+                            .text("2016 BRICS export in million USD"))
+                    .colors(new String[]{"#058DC7", "#8dc705", "#c73f05", "#ffc080", "#dd69ba"})
+                    .series(new AASeriesElement[]{
+                            new AASeriesElement()
+                                    .keys(new String[]{"from", "to", "weight"})
+                                    .data(AAOptionsData.simpleDependencyWheelData)
+                                    .type(AAChartType.Dependencywheel)
+                                    .name("Dependency wheel series")
+                                    .dataLabels(new AADataLabels()
+                                            .color("#333")
+                                            .textPath(new AATextPath()
+                                                    .enabled(true)
+//                                                    .attributes(new AAAttributes()
+//                                                            .dy(5f)
+//                                                    )
+//                                                    .distance(10f)
+                                            )
+                                    )
+                    });
+        }
+
+
 }
