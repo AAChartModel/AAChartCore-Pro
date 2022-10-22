@@ -1,13 +1,13 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
 public class AAPane {
-    public AABackground background;
+    public AABackgroundElement[] background;
     public Object[] center;
     public Float endAngle;
     public Float size;
     public Float startAngle;
 
-    public AAPane background(AABackground prop) {
+    public AAPane background(AABackgroundElement[] prop) {
         background = prop;
         return this;
     }
