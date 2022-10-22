@@ -65,10 +65,10 @@ public class ProChartActivity extends AppCompatActivity {
             case 10: return ProChartOptionsComposer.itemChart3();
             case 11: return ProChartOptionsComposer.icicleChart();
             case 12: return ProChartOptionsComposer.sunburstChart2();
-//            case 13: return ProChartOptionsComposer.solidgaugeChart();
-//            case 14: return ProChartOptionsComposer.parallelCoordinatesSplineChart();
-//            case 15: return ProChartOptionsComposer.parallelCoordinatesLineChart();
-//            case 16: return ProChartOptionsComposer.volinPlotChart();
+            case 13: return ProChartOptionsComposer.solidgaugeChart();
+            case 14: return ProChartOptionsComposer.parallelCoordinatesSplineChart();
+            case 15: return ProChartOptionsComposer.parallelCoordinatesLineChart();
+            case 16: return ProChartOptionsComposer.volinPlotChart();
             case 17: return ProChartOptionsComposer.variablepieChart();
         }
         return ProChartOptionsComposer.sunburstChart();
