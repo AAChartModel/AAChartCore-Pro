@@ -48,6 +48,8 @@ public class AAOptionsData {
     public static Object[] flameData = flameData();
     public static Object[] sunburst2Data = sunburst2Data();
 
+    public static Object[] simpleDependencyWheelData = simpleDependencyWheelData();
+
     private static Object[] getVariablepieData() {
         return getJsonDataWithJsonFileName("variablepieData");
     }
@@ -174,6 +176,10 @@ public class AAOptionsData {
 
     private static Object[] sunburst2Data() {
         return getJsonDataWithJsonFileName("sunburst2Data");
+    }
+
+    private static Object[] simpleDependencyWheelData() {
+        return getJsonDataWithJsonFileName("simpleDependencyWheelData");
     }
 
     private static Object[] getJsonDataWithJsonFileName(String jsonFileName) {
