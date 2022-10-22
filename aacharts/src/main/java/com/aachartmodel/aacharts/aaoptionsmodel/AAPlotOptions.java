@@ -1,6 +1,7 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAPackedbubble;
+import com.aachartmodel.aacharts.aaoptionsmodelpro.AASolidgauge;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AATreemap;
 
 public class AAPlotOptions {
@@ -17,6 +18,7 @@ public class AAPlotOptions {
 
     public AAPackedbubble packedbubble;
     public AATreemap treemap;
+    public AASolidgauge solidgauge;
 
     public AAPlotOptions column(AAColumn prop) {
         column = prop;
@@ -76,6 +78,11 @@ public class AAPlotOptions {
 
     public AAPlotOptions treemap(AATreemap prop) {
         treemap = prop;
+        return this;
+    }
+
+    public AAPlotOptions solidgauge(AASolidgauge prop) {
+        solidgauge = prop;
         return this;
     }
 
