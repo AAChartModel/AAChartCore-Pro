@@ -48,4 +48,7 @@ public interface AAChartType {
     String Organization    =  "organization";
     String Arcdiagram      =  "arcdiagram";
     String Flame           =  "flame";
+    String Histogram       =  "histogram";
+    String Solidgauge      =  "solidgauge";
+    String Bullet          =  "bullet";
 }
