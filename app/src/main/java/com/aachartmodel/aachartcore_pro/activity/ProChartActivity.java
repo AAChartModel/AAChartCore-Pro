@@ -24,43 +24,54 @@ public class ProChartActivity extends AppCompatActivity {
     }
 
 
+    //// https://www.highcharts.com/demo
+    //- (id)chartConfigurationWithSelectedIndex:(NSUInteger)selectedIndex {
+    //    switch (self.selectedIndex) {
+    //        case  0: return [self sunburstChart];
+    //        case  1: return [self streamgraphChart];
+    //        case  2: return [self vectorChart];
+    //        case  3: return [self bellcurveChart];
+    //        case  4: return [self timelineChart];
+    //        case  5: return [self itemChart];
+    //        case  6: return [self windbarbChart];
+    //        case  7: return [self wordcloudChart];
+    //        case  8: return [self flameChart];
+    //        case  9: return [self itemChart2];
+    //        case 10: return [self itemChart3];
+    //        case 11: return [self icicleChart];
+    //        case 12: return [self sunburstChart2];
+    //        case 13: return [self solidgaugeChart];
+    //        case 14: return [self parallelCoordinatesSplineChart];
+    //        case 15: return [self parallelCoordinatesLineChart];
+    //        case 16: return [self volinPlotChart];
+    //        case 17: return [self variablepieChart];
+    //
+    //    }
+    //    return [self sunburstChart];
+    //}
+
     private AAOptions chartConfigurationWithSelectedIndex(int selectedIndex) {
         switch (selectedIndex) {
-            case  0: return ProChartOptionsComposer.sankeyChart();
-            case  1: return ProChartOptionsComposer.variablepieChart();
-            case  2: return ProChartOptionsComposer.treemapWithLevelsData();
-            case  3: return ProChartOptionsComposer.variwideChart();
-            case  4: return ProChartOptionsComposer.sunburstChart();
-            case  5: return ProChartOptionsComposer.dependencywheelChart();
-            case  6: return ProChartOptionsComposer.heatmapChart();
-            case  7: return ProChartOptionsComposer.packedbubbleChart();
-            case  8: return ProChartOptionsComposer.packedbubbleSplitChart();
-            case  9: return ProChartOptionsComposer.vennChart();
-            case 10: return ProChartOptionsComposer.dumbbellChart();
-            case 11: return ProChartOptionsComposer.lollipopChart();
-            case 12: return ProChartOptionsComposer.streamgraphChart();
-            case 13: return ProChartOptionsComposer.columnpyramidChart();
-            case 14: return ProChartOptionsComposer.tilemapChart();
-            case 15: return ProChartOptionsComposer.treemapWithColorAxisDataChart();
-            case 16: return ProChartOptionsComposer.drilldownTreemapChart();
-            case 17: return ProChartOptionsComposer.xrangeChart();
-            case 18: return ProChartOptionsComposer.vectorChart();
-            case 19: return ProChartOptionsComposer.bellcurveChart();
-            case 20: return ProChartOptionsComposer.timelineChart();
-            case 21: return ProChartOptionsComposer.itemChart();
-            case 22: return ProChartOptionsComposer.windbarbChart();
-            case 23: return ProChartOptionsComposer.networkgraphChart();
-            case 24: return ProChartOptionsComposer.wordcloudChart();
-            case 25: return ProChartOptionsComposer.eulerChart();
-            case 26: return ProChartOptionsComposer.organizationChart();
-            case 27: return ProChartOptionsComposer.arcdiagramChart1();
-            case 28: return ProChartOptionsComposer.arcdiagramChart2();
-            case 29: return ProChartOptionsComposer.arcdiagramChart3();
-            case 30: return ProChartOptionsComposer.flameChart();
-            case 31: return ProChartOptionsComposer.packedbubbleSpiralChart();
-            case 32: return ProChartOptionsComposer.itemChart2();
-            case 33: return ProChartOptionsComposer.itemChart3();
+            case  0: return ProChartOptionsComposer.sunburstChart();
+            case  1: return ProChartOptionsComposer.streamgraphChart();
+            case  2: return ProChartOptionsComposer.vectorChart();
+            case  3: return ProChartOptionsComposer.bellcurveChart();
+            case  4: return ProChartOptionsComposer.timelineChart();
+            case  5: return ProChartOptionsComposer.itemChart();
+            case  6: return ProChartOptionsComposer.windbarbChart();
+            case  7: return ProChartOptionsComposer.wordcloudChart();
+            case  8: return ProChartOptionsComposer.flameChart();
+            case  9: return ProChartOptionsComposer.itemChart2();
+            case 10: return ProChartOptionsComposer.itemChart3();
+//            case 11: return ProChartOptionsComposer.icicleChart();
+//            case 12: return ProChartOptionsComposer.sunburstChart2();
+//            case 13: return ProChartOptionsComposer.solidgaugeChart();
+//            case 14: return ProChartOptionsComposer.parallelCoordinatesSplineChart();
+//            case 15: return ProChartOptionsComposer.parallelCoordinatesLineChart();
+//            case 16: return ProChartOptionsComposer.volinPlotChart();
+            case 17: return ProChartOptionsComposer.variablepieChart();
         }
-        return ProChartOptionsComposer.sankeyChart();
+        return ProChartOptionsComposer.sunburstChart();
     }
+
 }
