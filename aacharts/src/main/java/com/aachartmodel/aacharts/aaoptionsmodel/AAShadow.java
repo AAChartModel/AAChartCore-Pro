@@ -1,11 +1,17 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
 public class AAShadow {
+    public Boolean enabled;
     public String color;
     public Float offsetX;
     public Float offsetY;
     public Float opacity;
     public Float width;
+
+    public AAShadow enabled(Boolean prop) {
+        enabled = prop;
+        return this;
+    }
 
     public AAShadow color(String prop) {
         color = prop;
