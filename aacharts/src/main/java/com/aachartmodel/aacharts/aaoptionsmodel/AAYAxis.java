@@ -1,40 +1,54 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
-public class AAYAxis {
-    public AAAxisTitle title;
-    public AAPlotBandsElement[] plotBands;
-    public AAPlotLinesElement[] plotLines;
-    public String[] categories;
-    public Boolean reversed;
-    public Float gridLineWidth;// y 轴网格线宽度
-    public String gridLineColor;  // y 轴网格线颜色
-    public String gridLineDashStyle; //网格线线条样式，所有可用的线条样式参考：Highcharts线条样式
-    public String alternateGridColor;  //backcolor of every other grid line area
-    public String gridLineInterpolation; //Polar charts only. Whether the grid lines should draw as a polygon with straight lines between categories, or as circles. Can be either circle or polygon. 默认是：null.
-    public AALabels labels;//用于设置 y 轴文字相关的
-    public Float lineWidth; // y 轴线宽度
-    public String lineColor; // y 轴线颜色
-    public Float off; // y 轴线水平偏移
-    public Boolean allowDecimals; //y轴是否允许显示小数
-    public Float max; //y轴最大值
-    public Float min; //y轴最小值（设置为0就不会有负数）
-    public Float maxPadding; //Padding of the max value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer. This is useful when you don't want the highest data value to appear on the edge of the plot area. When the axis' max option is set or a max extreme is set using axis.setExtremes(), the maxPadding will be ignored. Defaults to 0.01.
-    public Float minPadding; //Padding of the min value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer. This is useful when you don't want the lowest data value to appear on the edge of the plot area.  Defaults to 0.05
-    public Object[] tickPositions; //自定义Y轴坐标（如：[0, 25, 50, 75 , 100]）
-    public Boolean visible; //y轴是否允许显示
-    public Boolean opposite;//是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。 默认是：false.
-    public Boolean startOnTick; //Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. The default is: false.
-    public Boolean endOnTick;
-    public Integer tickInterval;
-    public AACrosshair crosshair;  //准星线样式设置
-    public String stackLabels;
-    public Float tickWidth;//坐标轴刻度线的宽度，设置为 0 时则不显示刻度线
-    public Float tickLength;//坐标轴刻度线的长度。 默认是：10.
-    public String tickPosition; //刻度线相对于轴线的位置，可用的值有 inside 和 outside，分别表示在轴线的内部和外部。 默认是：outside.
+public class AAYAxis extends AAAxis {
+    public Object stackLabels;
+//    public AAPropSetFuncImplementation(AAYAxis, NSString *, tooltipValueFormat)
+    public String tooltipValueFormat; ////Parallel coordinates only. https://api.highcharts.com.cn/highcharts/yAxis.tooltipValueFormat.html
+    public Object width;
+    public AAYAxis stackLabels(String prop) {
+        stackLabels = prop;
+        return this;
+    }
 
+    public AAYAxis tooltipValueFormat(String prop) {
+        tooltipValueFormat = prop;
+        return this;
+    }
+
+    public AAYAxis width(Object prop) {
+        width = prop;
+        return this;
+    }
+
+    ///////////////////////////////////////////
+
+    public AAYAxis allowDecimals(Boolean prop) {
+        allowDecimals = prop;
+        return this;
+    }
+
+    public AAYAxis alternateGridColor(Object prop) {
+        alternateGridColor = prop;
+        return this;
+    }
+
+    public AAYAxis crosshair(AACrosshair prop) {
+        crosshair = prop;
+        return this;
+    }
 
     public AAYAxis title(AAAxisTitle prop) {
         title = prop;
+        return this;
+    }
+
+    public AAYAxis type(String prop) {
+        type = prop;
+        return this;
+    }
+
+    public AAYAxis dateTimeLabelFormats(AADateTimeLabelFormats prop) {
+        dateTimeLabelFormats = prop;
         return this;
     }
 
@@ -53,12 +67,102 @@ public class AAYAxis {
         return this;
     }
 
+    public AAYAxis linkedTo(Integer prop) {
+        linkedTo = prop;
+        return this;
+    }
+
     public AAYAxis reversed(Boolean prop) {
         reversed = prop;
         return this;
     }
 
-    public AAYAxis gridLineWidth(Float prop) {
+    public AAYAxis opposite(Boolean prop) {
+        opposite = prop;
+        return this;
+    }
+
+    public AAYAxis lineWidth(Number prop) {
+        lineWidth = prop;
+        return this;
+    }
+
+    public AAYAxis lineColor(String prop) {
+        lineColor = prop;
+        return this;
+    }
+
+    public AAYAxis max(Number prop) {
+        max = prop;
+        return this;
+    }
+
+    public AAYAxis min(Number prop) {
+        min = prop;
+        return this;
+    }
+
+    public AAYAxis maxPadding(Number prop) {
+        maxPadding = prop;
+        return this;
+    }
+
+    public AAYAxis minPadding(Number prop) {
+        minPadding = prop;
+        return this;
+    }
+
+    public AAYAxis minRange(Integer prop) {
+        minRange = prop;
+        return this;
+    }
+
+    public AAYAxis minTickInterval(Integer prop) {
+        minTickInterval = prop;
+        return this;
+    }
+
+    public AAYAxis minorGridLineColor(String prop) {
+        minorGridLineColor = prop;
+        return this;
+    }
+
+    public AAYAxis minorGridLineDashStyle(String prop) {
+        minorGridLineDashStyle = prop;
+        return this;
+    }
+
+    public AAYAxis minorGridLineWidth(Number prop) {
+        minorGridLineWidth = prop;
+        return this;
+    }
+
+    public AAYAxis minorTickColor(String prop) {
+        minorTickColor = prop;
+        return this;
+    }
+
+    public AAYAxis minorTickInterval(Object prop) {
+        minorTickInterval = prop;
+        return this;
+    }
+
+    public AAYAxis minorTickLength(Number prop) {
+        minorTickLength = prop;
+        return this;
+    }
+
+    public AAYAxis minorTickPosition(String prop) {
+        minorTickPosition = prop;
+        return this;
+    }
+
+    public AAYAxis minorTickWidth(Number prop) {
+        minorTickWidth = prop;
+        return this;
+    }
+
+    public AAYAxis gridLineWidth(Number prop) {
         gridLineWidth = prop;
         return this;
     }
@@ -73,13 +177,13 @@ public class AAYAxis {
         return this;
     }
 
-    public AAYAxis alternateGridColor(String prop) {
-        alternateGridColor = prop;
+    public AAYAxis gridLineInterpolation(String prop) {
+        gridLineInterpolation = prop;
         return this;
     }
 
-    public AAYAxis gridLineInterpolation(String prop) {
-        gridLineInterpolation = prop;
+    public AAYAxis offset(Number prop) {
+        offset = prop;
         return this;
     }
 
@@ -88,58 +192,8 @@ public class AAYAxis {
         return this;
     }
 
-    public AAYAxis lineWidth(Float prop) {
-        lineWidth = prop;
-        return this;
-    }
-
-    public AAYAxis lineColor(String prop) {
-        lineColor = prop;
-        return this;
-    }
-
-    public AAYAxis off(Float prop) {
-        off = prop;
-        return this;
-    }
-
-    public AAYAxis allowDecimals(Boolean prop) {
-        allowDecimals = prop;
-        return this;
-    }
-
-    public AAYAxis max(Float prop) {
-        max = prop;
-        return this;
-    }
-
-    public AAYAxis min(Float prop) {
-        min = prop;
-        return this;
-    }
-
-    public AAYAxis maxPadding(Float prop) {
-        maxPadding = prop;
-        return this;
-    }
-
-    public AAYAxis minPadding(Float prop) {
-        minPadding = prop;
-        return this;
-    }
-
-    public AAYAxis tickPositions(Object[] prop) {
-        tickPositions = prop;
-        return this;
-    }
-
     public AAYAxis visible(Boolean prop) {
         visible = prop;
-        return this;
-    }
-
-    public AAYAxis opposite(Boolean prop) {
-        opposite = prop;
         return this;
     }
 
@@ -153,33 +207,48 @@ public class AAYAxis {
         return this;
     }
 
+    public AAYAxis tickColor(String prop) {
+        tickColor = prop;
+        return this;
+    }
+
+    public AAYAxis tickAmount(Integer prop) {
+        tickAmount = prop;
+        return this;
+    }
+
     public AAYAxis tickInterval(Integer prop) {
         tickInterval = prop;
         return this;
     }
 
-    public AAYAxis crosshair(AACrosshair prop) {
-        crosshair = prop;
+    public AAYAxis tickmarkPlacement(String prop) {
+        tickmarkPlacement = prop;
         return this;
     }
 
-    public AAYAxis stackLabels(String prop) {
-        stackLabels = prop;
-        return this;
-    }
-
-    public AAYAxis tickWidth(Float prop) {
+    public AAYAxis tickWidth(Number prop) {
         tickWidth = prop;
         return this;
     }
 
-    public AAYAxis tickLength(Float prop) {
+    public AAYAxis tickLength(Number prop) {
         tickLength = prop;
         return this;
     }
 
     public AAYAxis tickPosition(String prop) {
         tickPosition = prop;
+        return this;
+    }
+
+    public AAYAxis tickPositions(Object[] prop) {
+        tickPositions = prop;
+        return this;
+    }
+
+    public AAYAxis left(Object prop) {
+        left = prop;
         return this;
     }
 
