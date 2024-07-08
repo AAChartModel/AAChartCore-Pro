@@ -1,16 +1,13 @@
-plugins {
-    id 'com.android.application'
-    id 'maven-publish'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 34
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.aachartmodel.aachartcore_pro"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
