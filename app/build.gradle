@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
 }
 
+apply plugin: 'maven-publish'
+
 android {
     compileSdkVersion 34
     buildToolsVersion "30.0.1"
