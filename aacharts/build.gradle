@@ -46,7 +46,7 @@ android {
 
     sourceSets {
         main {
-            assets.srcDirs = ['src/main/assets', 'D:\\github\\AAChartCore-Pro\\aacharts\\src\\main\\assets']
+            assets.srcDirs = ['src/main/assets', 'D:/github/AAChartCore-Pro/aacharts/src/main/assets']
         }
     }
 
@@ -89,7 +89,7 @@ afterEvaluate {
 
             groupId 'com.github.AAChartModel'
             artifactId = 'aacharts'
-            version = '0.1.6'
+            version = '0.1.7'
         }
 
         repositories {
