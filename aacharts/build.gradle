@@ -27,7 +27,29 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+
+
+
+    // 确保生成的 AAR 包含 assets
+    packagingOptions {
+        resources {
+            pickFirsts += ['META-INF/MANIFEST.MF']
+        }
+    }
+
     namespace 'com.aachartmodel.aacharts'
+
+    sourceSets {
+        main {
+            assets.srcDirs = ['src/main/assets', 'D:\\github\\AAChartCore-Pro\\aacharts\\src\\main\\assets']
+        }
+    }
+
 }
 
 dependencies {
@@ -42,16 +64,49 @@ dependencies {
 }
 
 
-afterEvaluate{
-    publishing{
-        publications{
-            release(MavenPublication){
-                from components.findByName('release')
+//afterEvaluate{
+//    publishing{
+//        publications {
+//            release(MavenPublication){
+//                from components.findByName('release')
+//
+//                groupId='com.github.AAChartModel'
+//                artifactId = 'aacharts'
+//                version = '0.0.9'
+//            }
+//        }
+//
+//        repositories {
+//            mavenLocal()
+//        }
+//    }
+//}
 
-                groupId='com.github.AAChartModel'
-                artifactId = 'aacharts'
-                version = '0.0.9'
-            }
+afterEvaluate {
+    android.libraryVariants.each { variant ->
+        publishing.publications.create(variant.name, MavenPublication) {
+            from components.findByName(variant.name)
+
+            groupId 'com.github.AAChartModel'
+            artifactId = 'aacharts'
+            version = '0.1.6'
+        }
+
+        repositories {
+            mavenLocal()
+        }
+
+    }
+}
+
+// 确保 assets 文件夹被包含在 AAR 中
+android.libraryVariants.all { variant ->
+    variant.outputs.all { output ->
+        task("generate${variant.name.capitalize()}Jar", type: Jar) {
+            from variant.javaCompile.destinationDir
+            from 'src/main/assets'
+            destinationDirectory = file("${buildDir}/outputs/jar")
+            archiveBaseName = "MyLibrary-${variant.name}"
         }
     }
 }
