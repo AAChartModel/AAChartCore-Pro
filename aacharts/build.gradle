@@ -1,5 +1,7 @@
-apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
 
 android {
@@ -8,7 +10,7 @@ android {
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 30
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -39,32 +41,4 @@ dependencies {
 
 }
 
-afterEvaluate {
-    publishing {
-        repositories {
-            it.mavenLocal()
-        }
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.findByName('release')
-                groupId = 'com.github.AAChartModel'
-                artifactId = 'AAChartCore'
-                version = android.defaultConfig.versionName
-            }
-        }
-    }
-}
 
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            release(MavenPublication) {
-//                from components.findByName('release')
-//                groupId = 'com.github.aachartmodel'
-//                artifactId = 'aacharts'
-//                version = '0.0.7'
-//            }
-//        }
-//    }
-//}
