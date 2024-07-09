@@ -42,3 +42,16 @@ dependencies {
 }
 
 
+afterEvaluate{
+    publishing{
+        publications{
+            release(MavenPublication){
+                from components.findByName('release')
+
+                groupId='com.github.AAChartModel'
+                artifactId = 'aacharts'
+                version = '0.0.9'
+            }
+        }
+    }
+}
