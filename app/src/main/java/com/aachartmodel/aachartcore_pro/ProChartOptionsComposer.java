@@ -657,13 +657,14 @@ public class ProChartOptionsComposer {
                                 .fontSize(16f)
                                 .textOutline("3px"))
                         .valueSuffix("%")
-                        .pointFormat("{series.name}<br><span style=\"font-size:2em; color: {point.color}; font-weight: bold\">{point.y}</span>")
-                        .positioner("function(labelWidth) {\n" +
-                                "                    let position = {};\n" +
-                                "                    position[\"x\"] = (this.chart.chartWidth - labelWidth) / 2 - 100;\n" +
-                                "                    position[\"y\"] = (this.chart.plotHeight / 2) + 15;\n" +
-                                "                    return position;\n" +
-                                "                }"))
+//                        .pointFormat("{series.name}<br><span style=\"font-size:2em; color: {point.color}; font-weight: bold\">{point.y}</span>")
+//                        .positioner("function(labelWidth) {\n" +
+//                                "                    let position = {};\n" +
+//                                "                    position[\"x\"] = (this.chart.chartWidth - labelWidth) / 2 - 100;\n" +
+//                                "                    position[\"y\"] = (this.chart.plotHeight / 2) + 15;\n" +
+//                                "                    return position;\n" +
+//                                "                }")
+                                )
                 .pane(new AAPane()
                         .startAngle(0f)
                         .endAngle(360f)
