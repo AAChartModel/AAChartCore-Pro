@@ -21,6 +21,7 @@ import com.aachartmodel.aacharts.aatools.AAColor;
 import com.aachartmodel.aacharts.aatools.AAGradientColor;
 import com.aachartmodel.aacharts.aatools.AALinearGradientDirection;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -857,9 +858,10 @@ public class ProChartOptionsComposer {
         Object[] marathonDataArr = AAOptionsData.marathonData;
         AASeriesElement[] seriesArr = new AASeriesElement[marathonDataArr.length];
         for (int i = 0; i < marathonDataArr.length; i++) {
+            ArrayList<Number> numbers = (ArrayList<Number>) marathonDataArr[i];
             AASeriesElement aaSeriesElement = new AASeriesElement()
                     .name("Runner")
-                    .data((Object[]) marathonDataArr[i])
+                    .data(numbers.toArray(new Number[0]))
                     .shadow(new AAShadow()
                             .enabled(false));
             seriesArr[i] = aaSeriesElement;
@@ -982,12 +984,12 @@ public class ProChartOptionsComposer {
 
         Map<String, Object> gradientColor = AAGradientColor.linearGradient(
                 AALinearGradientDirection.ToRight,
-                (Object[][]) new Object[]{
+                new Object[][]{
                         new Object[]{0.00f, "#febc0f0F"},
                         new Object[]{0.25f, "#FF14d4E6"},
                         new Object[]{0.50f, "#0bf8f5E6"},
                         new Object[]{0.75f, "#F33c52E6"},
-                        new Object[]{1.00f, "#1904ddE6"},
+                        new Object[]{1.00f, "#1904ddE6"}
                 }
         );
 
