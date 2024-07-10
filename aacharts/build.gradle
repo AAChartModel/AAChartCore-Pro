@@ -35,20 +35,20 @@ android {
 
 
 
-    // 确保生成的 AAR 包含 assets
-    packagingOptions {
-        resources {
-            pickFirsts += ['META-INF/MANIFEST.MF']
-        }
-    }
+//    // 确保生成的 AAR 包含 assets
+//    packagingOptions {
+//        resources {
+//            pickFirsts += ['META-INF/MANIFEST.MF']
+//        }
+//    }
 
     namespace 'com.aachartmodel.aacharts'
 
-    sourceSets {
-        main {
-            assets.srcDirs = ['src/main/assets', 'D:/github/AAChartCore-Pro/aacharts/src/main/assets']
-        }
-    }
+//    sourceSets {
+//        main {
+//            assets.srcDirs = ['src/main/assets', 'D:/github/AAChartCore-Pro/aacharts/src/main/assets']
+//        }
+//    }
 
 }
 
@@ -100,13 +100,13 @@ afterEvaluate {
 }
 
 // 确保 assets 文件夹被包含在 AAR 中
-android.libraryVariants.all { variant ->
-    variant.outputs.all { output ->
-        task("generate${variant.name.capitalize()}Jar", type: Jar) {
-            from variant.javaCompile.destinationDir
-            from 'src/main/assets'
-            destinationDirectory = file("${buildDir}/outputs/jar")
-            archiveBaseName = "MyLibrary-${variant.name}"
-        }
-    }
-}
+//android.libraryVariants.all { variant ->
+//    variant.outputs.all { output ->
+//        task("generate${variant.name.capitalize()}Jar", type: Jar) {
+//            from variant.javaCompile.destinationDir
+//            from 'src/main/assets'
+//            destinationDirectory = file("${buildDir}/outputs/jar")
+//            archiveBaseName = "MyLibrary-${variant.name}"
+//        }
+//    }
+//}
