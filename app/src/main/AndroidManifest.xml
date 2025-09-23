@@ -41,6 +41,7 @@
         </activity>
         <activity android:name=".activity.ProChartsListActivity" />
         <activity android:name=".activity.ProChartActivity" />
+        <activity android:name=".activity.ShowAllGroupChartsActivity" />
         <activity android:name=".activity.MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

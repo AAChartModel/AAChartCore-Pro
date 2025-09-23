@@ -322,7 +322,13 @@ public class AAHeatOrTreeMapChartComposer {
 
     public static AAOptions largeDataHeatmapChart() {
         Map<String, Object> csvDataMap = AAOptionsCSV.csvData();
-        String csvStr = Objects.requireNonNull(csvDataMap.get("csv")).toString();
+        String csvStr = "";
+        if (csvDataMap != null) {
+            Object csvObj = csvDataMap.get("csv");
+            if (csvObj != null) {
+                csvStr = csvObj.toString();
+            }
+        }
         return new AAOptions()
                 .data(new AAData()
                         .csv(csvStr)

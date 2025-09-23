@@ -5,5 +5,21 @@
         android:id="@+id/action_show_all_pro"
         android:title="显示全部Pro图表"
         app:showAsAction="never" />
-</menu>
 
+    <item
+        android:id="@+id/action_open_bubble_sample"
+        android:title="打开 AABubbleChartActivity 示例"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_open_column_sample"
+        android:title="打开 AAColumnVariantChartActivity 示例"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_open_heat_treemap_sample"
+        android:title="打开 AAHeatOrTreeMapChartActivity 示例"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_open_relationship_sample"
+        android:title="打开 AARelationshipChartActivity 示例"
+        app:showAsAction="never" />
+</menu>

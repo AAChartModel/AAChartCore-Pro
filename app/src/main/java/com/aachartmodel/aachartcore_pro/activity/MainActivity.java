@@ -32,8 +32,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_show_all_pro) {
+        int id = item.getItemId();
+        if (id == R.id.action_show_all_pro) {
             startActivity(new Intent(this, ProChartsListActivity.class));
+            return true;
+        } else if (id == R.id.action_open_bubble_sample) {
+            Intent intent = new Intent(this, AABubbleChartActivity.class);
+            intent.putExtra("selectedIndex", 0);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_open_column_sample) {
+            Intent intent = new Intent(this, AAColumnVariantChartActivity.class);
+            intent.putExtra("selectedIndex", 0);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_open_heat_treemap_sample) {
+            Intent intent = new Intent(this, AAHeatOrTreeMapChartActivity.class);
+            intent.putExtra("selectedIndex", 0);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_open_relationship_sample) {
+            Intent intent = new Intent(this, AARelationshipChartActivity.class);
+            intent.putExtra("selectedIndex", 0);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
