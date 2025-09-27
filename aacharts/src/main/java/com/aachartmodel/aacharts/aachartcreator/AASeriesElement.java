@@ -68,7 +68,7 @@ public class AASeriesElement {
     private Boolean colorByPoint;
     private Integer zIndex;
     private Object[] zones;
-    private AAShadow shadow;
+    private Object shadow;
     private String stack;
     private AATooltip tooltip;
     private Boolean enableMouseTracking;
@@ -224,6 +224,11 @@ public class AASeriesElement {
     }
 
     public AASeriesElement shadow(AAShadow prop) {
+        shadow = prop;
+        return this;
+    }
+
+    public AASeriesElement shadow(Boolean prop) {
         shadow = prop;
         return this;
     }

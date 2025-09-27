@@ -5,18 +5,12 @@ import com.aachartmodel.aachartcore_pro.datasource.AAOptionsSeries;
 import com.aachartmodel.aacharts.aachartcreator.AASeriesElement;
 import com.aachartmodel.aacharts.aachartenum.*;
 import com.aachartmodel.aacharts.aaoptionsmodel.*;
-import com.aachartmodel.aacharts.aaoptionsmodelpro.AAColorAxis;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAColorVariation;
-import com.aachartmodel.aacharts.aaoptionsmodelpro.AADataClassesElement;
-import com.aachartmodel.aacharts.aaoptionsmodelpro.AAFilter;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AAItem;
-import com.aachartmodel.aacharts.aaoptionsmodelpro.AALayoutAlgorithm;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AALevelsElement;
-import com.aachartmodel.aacharts.aaoptionsmodelpro.AAPackedbubble;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AASolidgauge;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AASolidgaugeDataElement;
 import com.aachartmodel.aacharts.aaoptionsmodelpro.AATextPath;
-import com.aachartmodel.aacharts.aaoptionsmodelpro.AATreemap;
 import com.aachartmodel.aacharts.aatools.AAColor;
 import com.aachartmodel.aacharts.aatools.AAGradientColor;
 import com.aachartmodel.aacharts.aatools.AALinearGradientDirection;
@@ -863,8 +857,7 @@ public class ProChartOptionsComposer {
             AASeriesElement aaSeriesElement = new AASeriesElement()
                     .name("Runner")
                     .data(numbers.toArray(new Number[0]))
-                    .shadow(new AAShadow()
-                            .enabled(false));
+                    .shadow(false);
             seriesArr[i] = aaSeriesElement;
         }
 
