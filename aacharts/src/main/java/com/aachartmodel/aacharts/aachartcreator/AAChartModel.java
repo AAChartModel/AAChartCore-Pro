@@ -60,32 +60,32 @@ public class AAChartModel {
     public Boolean yAxisReversed;         //y 轴翻转
     public Boolean tooltipEnabled;        //是否显示浮动提示框(默认显示)
     public String  tooltipValueSuffix;    //浮动提示框单位后缀
-    public Boolean tooltipCrosshairs;     //是否显示准星线(默认显示)
     public Boolean gradientColorEnable;   //是否要为渐变色
     public Boolean polar;                 //是否极化图形(变为雷达图)
-    public Float[] margin;                //图表外边缘和绘图区域之间的边距
+    public Number[]margin;                //图表外边缘和绘图区域之间的边距
     public Boolean dataLabelsEnabled;     //是否显示数据
     public AAStyle dataLabelsStyle;       //数据文本风格样式
     public Boolean xAxisLabelsEnabled;    //x 轴是否显示数据
     public Integer xAxisTickInterval;     //x 轴刻度点间隔数(设置每隔几个点显示一个 X轴的内容)
     public String[]categories;            //x 轴是否显示数据
-    public Float   xAxisGridLineWidth;    //x 轴网格线的宽度
+    public Number  xAxisGridLineWidth;    //x 轴网格线的宽度
     public Boolean xAxisVisible;          //x 轴是否显示
     public Boolean yAxisVisible;          //y 轴是否显示
     public Boolean yAxisLabelsEnabled;    //y 轴是否显示数据
     public String  yAxisTitle;            //y 轴标题
-    public Float   yAxisLineWidth;        //y 轴轴线的宽度
-    public Float   yAxisMin;              //y 轴最小值
-    public Float   yAxisMax;              //y 轴最大值
+    public Number  yAxisLineWidth;        //y 轴轴线的宽度
+    public Number  yAxisMin;              //y 轴最小值
+    public Number  yAxisMax;              //y 轴最大值
     public Boolean yAxisAllowDecimals;    //y 轴是否允许显示小数
-    public Float   yAxisGridLineWidth;    //y 轴网格线的宽度
+    public Number  yAxisGridLineWidth;    //y 轴网格线的宽度
     public Object[]colorsTheme;           //图表主题颜色数组
     public Boolean legendEnabled;         //是否显示图例
     public Object  backgroundColor;       //图表背景色
-    public Float   borderRadius;          //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
-    public Float   markerRadius;          //折线连接点的半径长度
-    public Object[] series;               //图表的数据列内容
-    public Boolean touchEventEnabled;     //是否支持用户触摸事件
+    public Number  borderRadius;          //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
+    public Number  markerRadius;          //折线连接点的半径长度
+    public Object[]series;                //图表的数据列内容
+    public Boolean clickEventEnabled;     //是否支持用户点击事件
+    public Boolean touchEventEnabled;     //是否支持用户触摸(手指掠过)事件
     public AAScrollablePlotArea scrollablePlotArea;
 
 
@@ -180,11 +180,6 @@ public class AAChartModel {
         return this;
     }
 
-    public AAChartModel tooltipCrosshairs(Boolean prop) {
-        tooltipCrosshairs = prop;
-        return this;
-    }
-
     public AAChartModel gradientColorEnable(Boolean prop) {
         gradientColorEnable = prop;
         return this;
@@ -195,7 +190,7 @@ public class AAChartModel {
         return this;
     }
 
-    public AAChartModel margin(Float[] prop) {
+    public AAChartModel margin(Number[] prop) {
         margin = prop;
         return this;
     }
@@ -225,12 +220,12 @@ public class AAChartModel {
         return this;
     }
 
-    public AAChartModel xAxisGridLineWidth(Float prop) {
+    public AAChartModel xAxisGridLineWidth(Number prop) {
         xAxisGridLineWidth = prop;
         return this;
     }
 
-    public AAChartModel yAxisGridLineWidth(Float prop) {
+    public AAChartModel yAxisGridLineWidth(Number prop) {
         yAxisGridLineWidth = prop;
         return this;
     }
@@ -255,17 +250,17 @@ public class AAChartModel {
         return this;
     }
 
-    public AAChartModel yAxisLineWidth(Float prop) {
+    public AAChartModel yAxisLineWidth(Number prop) {
         yAxisLineWidth = prop;
         return this;
     }
 
-    public AAChartModel yAxisMin(Float prop) {
+    public AAChartModel yAxisMin(Number prop) {
         yAxisMin = prop;
         return this;
     }
 
-    public AAChartModel yAxisMax(Float prop) {
+    public AAChartModel yAxisMax(Number prop) {
         yAxisMax = prop;
         return this;
     }
@@ -291,18 +286,23 @@ public class AAChartModel {
     }
 
 
-    public AAChartModel borderRadius(Float prop) {
+    public AAChartModel borderRadius(Number prop) {
         borderRadius = prop;
         return this;
     }
 
-    public AAChartModel markerRadius(Float prop) {
+    public AAChartModel markerRadius(Number prop) {
         markerRadius = prop;
         return this;
     }
 
     public AAChartModel series(Object[] prop) {
         series = prop;
+        return this;
+    }
+
+    public AAChartModel clickEventEnabled(Boolean prop) {
+        clickEventEnabled = prop;
         return this;
     }
 
@@ -316,8 +316,14 @@ public class AAChartModel {
         return this;
     }
 
+    public AAOptions aa_toAAOptions() {
+        return AAOptionsConstructor.configureChartOptions(this);
+    }
+
     public AAChartModel() {
         chartType             = AAChartType.Line;
+        title                 = "";
+        yAxisTitle            = "";
         animationDuration     = 500;//以毫秒为单位
         animationType         = AAChartAnimationType.Linear;
         inverted              = false;
@@ -328,7 +334,6 @@ public class AAChartModel {
         dataLabelsEnabled     = false;
         markerSymbolStyle     = AAChartSymbolStyleType.Normal;
         colorsTheme           = new String[]{"#fe117c","#ffc069","#06caf4","#7dffc0"};//默认的颜色数组(必须要添加默认数组,否则就会出错)
-        tooltipCrosshairs     = true;
         gradientColorEnable   = false;
         polar                 = false;
         xAxisLabelsEnabled    = true;
