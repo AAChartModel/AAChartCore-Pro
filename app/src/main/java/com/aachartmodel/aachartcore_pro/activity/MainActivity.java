@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.aachartmodel.aachartcore_pro.ProChartOptionsComposer;
 import com.aachartmodel.aachartcore_pro.adapter.ChartTypesRecyclerViewAdapter;
 import com.aachartmodel.aachartcore_pro.R;
 
@@ -21,6 +22,42 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setupRecycleView();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_show_all_pro) {
+            startActivity(new Intent(this, ProChartsListActivity.class));
+            return true;
+        } else if (id == R.id.action_open_bubble_sample) {
+            Intent intent = new Intent(this, AABubbleChartActivity.class);
+            intent.putExtra("selectedIndex", 0);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_open_column_sample) {
+            Intent intent = new Intent(this, AAColumnVariantChartActivity.class);
+            intent.putExtra("selectedIndex", 0);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_open_heat_treemap_sample) {
+            Intent intent = new Intent(this, AAHeatOrTreeMapChartActivity.class);
+            intent.putExtra("selectedIndex", 0);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_open_relationship_sample) {
+            Intent intent = new Intent(this, AARelationshipChartActivity.class);
+            intent.putExtra("selectedIndex", 0);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setupRecycleView() {
