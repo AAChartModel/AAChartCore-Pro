@@ -37,6 +37,7 @@ import com.aachartmodel.aacharts.aachartenum.AAChartStackingType;
 import com.aachartmodel.aacharts.aachartenum.AAChartSymbolStyleType;
 import com.aachartmodel.aacharts.aachartenum.AAChartType;
 import com.aachartmodel.aacharts.aachartenum.AAChartZoomType;
+import com.aachartmodel.aacharts.aaoptionsmodel.AAOptions;
 import com.aachartmodel.aacharts.aaoptionsmodel.AAScrollablePlotArea;
 import com.aachartmodel.aacharts.aaoptionsmodel.AAStyle;
 

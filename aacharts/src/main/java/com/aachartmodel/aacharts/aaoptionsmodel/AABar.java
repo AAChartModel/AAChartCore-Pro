@@ -12,7 +12,7 @@ public class AABar {
     public Boolean colorByPoint;//对每个不同的点设置颜色(当图表类型为 AABar 时,设置为 AABar 对象的属性,当图表类型为 bar 时,应该设置为 bar 对象的属性才有效)
     public AADataLabels dataLabels;
     public String stacking;
-    public Float borderRadius;
+    public Number borderRadius;
     public Float yAxis;
 
     public AABar name(String prop) {
@@ -70,7 +70,7 @@ public class AABar {
         return this;
     }
 
-    public AABar borderRadius(Float prop) {
+    public AABar borderRadius(Number prop) {
         borderRadius = prop;
         return this;
     }
