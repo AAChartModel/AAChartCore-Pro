@@ -41,51 +41,51 @@ import com.aachartmodel.aacharts.aaoptionsmodelpro.AALevelsElement;
 
 public class AASeriesElement {
 
-    private String type;
-    private Boolean allowPointSelect;
-    private String name;
-    private Object[] data;
-    private Float lineWidth;//折线图、曲线图、直方折线图、折线填充图、曲线填充图、直方折线填充图的线条宽度
-    private Float borderWidth;
-    private String borderColor;
-    private Float borderRadius;
-    private Object color;
-    private Object fillColor;
-    private Float fillOpacity;//折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色透明度
-    private Float threshold;//The threshold, also called zero level or base level. For line type series this is only used in conjunction with negativeColor. default：0.
-    private String negativeColor;// The color for the parts of the graph or points that are below the threshold
-    private Object negativeFillColor;
-    private Object size;
-    private Object innerSize;
-    private String dashStyle;
-    private Integer yAxis;
-    private AADataLabels dataLabels;
-    private AAMarker marker;
-    private Object step;
-    private Object states;
-    private Boolean showInLegend;        //Whether to display this particular series or series type in the legend. The default value is true for standalone series, false for linked series. Deafualt value：true
-    private Boolean visible;              //Set the initial visibility of the series. Deafualt value：true
-    private Boolean colorByPoint;
-    private Integer zIndex;
-    private Object[] zones;
-    private AAShadow shadow;
-    private String stack;
-    private AATooltip tooltip;
-    private Boolean enableMouseTracking;
-    private Boolean reversed;
-    private  String[] keys;
+    public String type;
+    public Boolean allowPointSelect;
+    public String name;
+    public Object[] data;
+    public Float lineWidth;//折线图、曲线图、直方折线图、折线填充图、曲线填充图、直方折线填充图的线条宽度
+    public Float borderWidth;
+    public String borderColor;
+    public Float borderRadius;
+    public Object color;
+    public Object fillColor;
+    public Float fillOpacity;//折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色透明度
+    public Float threshold;//The threshold, also called zero level or base level. For line type series this is only used in conjunction with negativeColor. default：0.
+    public String negativeColor;// The color for the parts of the graph or points that are below the threshold
+    public Object negativeFillColor;
+    public Object size;
+    public Object innerSize;
+    public String dashStyle;
+    public Integer yAxis;
+    public AADataLabels dataLabels;
+    public AAMarker marker;
+    public Object step;
+    public Object states;
+    public Boolean showInLegend;        //Whether to display this particular series or series type in the legend. The default value is true for standalone series, false for linked series. Deafualt value：true
+    public Boolean visible;              //Set the initial visibility of the series. Deafualt value：true
+    public Boolean colorByPoint;
+    public Integer zIndex;
+    public Object[] zones;
+    public AAShadow shadow;
+    public String stack;
+    public AATooltip tooltip;
+    public Boolean enableMouseTracking;
+    public Boolean reversed;
+    public  String[] keys;
 
-    private AALevelsElement[] levels;
-    private Boolean allowDrillToNode;
-    private Integer xAxis;
-    private Integer baseSeries;
+    public AALevelsElement[] levels;
+    public Boolean allowDrillToNode;
+    public Integer xAxis;
+    public Integer baseSeries;
 
-    private Object[] nodes;
-    private Float nodeWidth;
-    private String cursor;
-    private String offset;           //The offset of an arc diagram nodes column in relation to the plotArea. The offset equal to 50% places nodes in the center of a chart. By default the series is placed so that the biggest node is touching the bottom border of the plotArea. Defaults to '100%'.
-    private Integer linkWeight;           //The global link weight. If not set, width is calculated per link, depending on the weight value. Defaults to undefined.
-    private Boolean centeredLinks;       //The option to center links rather than position them one after another. Defaults to false.
+    public Object[] nodes;
+    public Float nodeWidth;
+    public String cursor;
+    public String offset;           //The offset of an arc diagram nodes column in relation to the plotArea. The offset equal to 50% places nodes in the center of a chart. By default the series is placed so that the biggest node is touching the bottom border of the plotArea. Defaults to '100%'.
+    public Integer linkWeight;           //The global link weight. If not set, width is calculated per link, depending on the weight value. Defaults to undefined.
+    public Boolean centeredLinks;       //The option to center links rather than position them one after another. Defaults to false.
 
 
     public AASeriesElement type(String prop) {
