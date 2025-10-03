@@ -8,7 +8,26 @@
  * ◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉ ...... SOURCE CODE ......◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉
  * ◉◉◉...................................................       ◉◉◉
  * ◉◉◉   https://github.com/AAChartModel/AAChartCore            ◉◉◉
- * ◉◉◉   https://github.com/AAChartModel/AAChartCore-Kotlin     ◉◉◉
+ * ◉◉◉       // Helper to add scripts based on chart type string
+    private void addChartPluginScripts(String chartType, Set<String> requiredPaths) {
+        if (chartType == null) {
+            return;
+        }
+
+        Set<String> scripts = new HashSet<>();
+        for (AAChartPluginConfiguration configuration : pluginConfigurations) {
+            if (configuration.types.contains(chartType)) {
+                scripts.addAll(configuration.scripts);
+            }
+        }
+
+        for (String script : scripts) {
+            String scriptPath = generateScriptPath(script);
+            if (scriptPath != null) {
+                requiredPaths.add(scriptPath);
+            }
+        }
+    }AChartModel/AAChartCore-Kotlin     ◉◉◉
  * ◉◉◉...................................................       ◉◉◉
  * ◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉ ...... SOURCE CODE ......◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉◉
  *
@@ -48,70 +67,101 @@ import java.util.Set;
 // MARK: - Shared Plugin Script Definition
 
 /**
- * Enum representing all available plugin scripts
+ * Interface representing all available plugin scripts
  */
-enum AAChartPluginScriptType {
+interface AAChartPluginScriptType {
     // AAInfographics normal version plugins
-    HIGHCHARTS_MORE("AAHighcharts-More", "AAMaster"),
-    FUNNEL("AAFunnel", "AAMaster"),
+    String HIGHCHARTS_MORE = "AAHighcharts-More";
+    String FUNNEL = "AAFunnel";
     
     // AAInfographics pro version plugins
-    SANKEY("AASankey", "AAModules"),
-    DEPENDENCY_WHEEL("AADependency-Wheel", "AAModules"),
-    NETWORKGRAPH("AANetworkgraph", "AAModules"),
-    ORGANIZATION("AAOrganization", "AAModules"),
-    ARC_DIAGRAM("AAArc-Diagram", "AAModules"),
-    VENN("AAVenn", "AAModules"),
-    TREEMAP("AATreemap", "AAModules"),
-    SUNBURST("AASunburst", "AAModules"),
-    FLAME("AAFlame", "AAModules"),
-    VARIABLE_PIE("AAVariable-Pie", "AAModules"),
-    VARIWIDE("AAVariwide", "AAModules"),
-    DUMBBELL("AADumbbell", "AAModules"),
-    LOLLIPOP("AALollipop", "AAModules"),
-    HISTOGRAM_BELLCURVE("AAHistogram-Bellcurve", "AAModules"),
-    BULLET("AABullet", "AAModules"),
-    HEATMAP("AAHeatmap", "AAModules"),
-    TILEMAP("AATilemap", "AAModules"),
-    STREAMGRAPH("AAStreamgraph", "AAModules"),
-    XRANGE("AAXrange", "AAModules"),
-    TIMELINE("AATimeline", "AAModules"),
-    SOLID_GAUGE("AASolid-Gauge", "AAModules"),
-    VECTOR("AAVector", "AAModules"),
-    ITEM_SERIES("AAItem-Series", "AAModules"),
-    DATA_GROUPING("AADatagrouping", "AAModules"),
-    WINDBARB("AAWindbarb", "AAModules"),
-    WORDCLOUD("AAWordcloud", "AAModules"),
-    TREEGRAPH("AATreegraph", "AAModules"),
-    PICTORIAL("AAPictorial", "AAModules"),
-    PARALLEL_COORDINATES("AAParallel-Coordinates", "AAModules"),
-    DATA("AAData", "AAModules");
+    String SANKEY = "AASankey";
+    String DEPENDENCY_WHEEL = "AADependency-Wheel";
+    String NETWORKGRAPH = "AANetworkgraph";
+    String ORGANIZATION = "AAOrganization";
+    String ARC_DIAGRAM = "AAArc-Diagram";
+    String VENN = "AAVenn";
+    String TREEMAP = "AATreemap";
+    String SUNBURST = "AASunburst";
+    String FLAME = "AAFlame";
+    String VARIABLE_PIE = "AAVariable-Pie";
+    String VARIWIDE = "AAVariwide";
+    String DUMBBELL = "AADumbbell";
+    String LOLLIPOP = "AALollipop";
+    String HISTOGRAM_BELLCURVE = "AAHistogram-Bellcurve";
+    String BULLET = "AABullet";
+    String HEATMAP = "AAHeatmap";
+    String TILEMAP = "AATilemap";
+    String STREAMGRAPH = "AAStreamgraph";
+    String XRANGE = "AAXrange";
+    String TIMELINE = "AATimeline";
+    String SOLID_GAUGE = "AASolid-Gauge";
+    String VECTOR = "AAVector";
+    String ITEM_SERIES = "AAItem-Series";
+    String WINDBARB = "AAWindbarb";
+    String WORDCLOUD = "AAWordcloud";
+    String TREEGRAPH = "AATreegraph";
+    String PICTORIAL = "AAPictorial";
+    String PARALLEL_COORDINATES = "AAParallel-Coordinates";
+    String DATA = "AAData";
+}
 
-    private final String rawValue;
-    private final String directoryPrefix;
-
-    AAChartPluginScriptType(String rawValue, String directoryPrefix) {
-        this.rawValue = rawValue;
-        this.directoryPrefix = directoryPrefix;
+/**
+ * Helper class for plugin script metadata
+ */
+class AAPluginScriptHelper {
+    private static final Map<String, String> DIRECTORY_MAP = new HashMap<>();
+    
+    static {
+        // AAMaster directory plugins (standard version)
+        DIRECTORY_MAP.put(AAChartPluginScriptType.HIGHCHARTS_MORE, "AAMaster");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.FUNNEL, "AAMaster");
+        
+        // AAModules directory plugins (pro version)
+        DIRECTORY_MAP.put(AAChartPluginScriptType.SANKEY, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.DEPENDENCY_WHEEL, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.NETWORKGRAPH, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.ORGANIZATION, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.ARC_DIAGRAM, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.VENN, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.TREEMAP, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.SUNBURST, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.FLAME, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.VARIABLE_PIE, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.VARIWIDE, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.DUMBBELL, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.LOLLIPOP, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.HISTOGRAM_BELLCURVE, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.BULLET, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.HEATMAP, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.TILEMAP, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.STREAMGRAPH, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.XRANGE, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.TIMELINE, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.SOLID_GAUGE, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.VECTOR, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.ITEM_SERIES, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.WINDBARB, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.WORDCLOUD, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.TREEGRAPH, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.PICTORIAL, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.PARALLEL_COORDINATES, "AAModules");
+        DIRECTORY_MAP.put(AAChartPluginScriptType.DATA, "AAModules");
     }
-
-    public String getRawValue() {
-        return rawValue;
-    }
-
+    
     /**
      * Returns the complete JavaScript file name with .js extension
      */
-    public String getFileName() {
-        return rawValue + ".js";
+    public static String getFileName(String pluginScript) {
+        return pluginScript + ".js";
     }
-
+    
     /**
      * Returns the directory prefix for the plugin script
      * Highcharts-More and Funnel are in AAMaster, others are in AAModules
      */
-    public String getDirectoryPrefix() {
-        return directoryPrefix;
+    public static String getDirectoryPrefix(String pluginScript) {
+        return DIRECTORY_MAP.getOrDefault(pluginScript, "AAModules");
     }
 }
 
@@ -159,9 +209,9 @@ public class AAChartViewPluginProvider implements AAChartViewPluginProviderProto
      */
     private static class AAChartPluginConfiguration {
         final Set<String> types;
-        final List<AAChartPluginScriptType> scripts;
+        final List<String> scripts;
 
-        AAChartPluginConfiguration(String[] types, AAChartPluginScriptType[] scripts) {
+        AAChartPluginConfiguration(String[] types, String[] scripts) {
             this.types = new HashSet<>(Arrays.asList(types));
             this.scripts = Arrays.asList(scripts);
         }
@@ -186,139 +236,139 @@ public class AAChartViewPluginProvider implements AAChartViewPluginProviderProto
                 AAChartType.Waterfall,
                 AAChartType.Polygon
             },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.HIGHCHARTS_MORE }
+            new String[] { AAChartPluginScriptType.HIGHCHARTS_MORE }
         ),
         
         // --- Funnel & Pyramid Charts ---
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Funnel, AAChartType.Pyramid },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.FUNNEL }
+            new String[] { AAChartPluginScriptType.FUNNEL }
         ),
         
         // --- Flow & Relationship Charts ---
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Sankey },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.SANKEY }
+            new String[] { AAChartPluginScriptType.SANKEY }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Dependencywheel },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.SANKEY, AAChartPluginScriptType.DEPENDENCY_WHEEL }
+            new String[] { AAChartPluginScriptType.SANKEY, AAChartPluginScriptType.DEPENDENCY_WHEEL }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Networkgraph },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.NETWORKGRAPH }
+            new String[] { AAChartPluginScriptType.NETWORKGRAPH }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Organization },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.SANKEY, AAChartPluginScriptType.ORGANIZATION }
+            new String[] { AAChartPluginScriptType.SANKEY, AAChartPluginScriptType.ORGANIZATION }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Arcdiagram },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.SANKEY, AAChartPluginScriptType.ARC_DIAGRAM }
+            new String[] { AAChartPluginScriptType.SANKEY, AAChartPluginScriptType.ARC_DIAGRAM }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Venn },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.VENN }
+            new String[] { AAChartPluginScriptType.VENN }
         ),
 
         // --- Hierarchical Charts ---
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Treemap },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.TREEMAP }
+            new String[] { AAChartPluginScriptType.TREEMAP }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Sunburst },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.SUNBURST }
+            new String[] { AAChartPluginScriptType.SUNBURST }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Flame },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.FLAME }
+            new String[] { AAChartPluginScriptType.FLAME }
         ),
 
         // --- Distribution & Comparison Charts ---
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Variablepie },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.VARIABLE_PIE }
+            new String[] { AAChartPluginScriptType.VARIABLE_PIE }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Variwide },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.VARIWIDE }
+            new String[] { AAChartPluginScriptType.VARIWIDE }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Dumbbell },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.DUMBBELL }
+            new String[] { AAChartPluginScriptType.DUMBBELL }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Lollipop },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.DUMBBELL, AAChartPluginScriptType.LOLLIPOP }
+            new String[] { AAChartPluginScriptType.DUMBBELL, AAChartPluginScriptType.LOLLIPOP }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Histogram },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.HISTOGRAM_BELLCURVE }
+            new String[] { AAChartPluginScriptType.HISTOGRAM_BELLCURVE }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Bellcurve },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.HISTOGRAM_BELLCURVE }
+            new String[] { AAChartPluginScriptType.HISTOGRAM_BELLCURVE }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Bullet },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.BULLET }
+            new String[] { AAChartPluginScriptType.BULLET }
         ),
 
         // --- Heatmap & Matrix Charts ---
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Heatmap },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.HEATMAP }
+            new String[] { AAChartPluginScriptType.HEATMAP }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Tilemap },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.HEATMAP, AAChartPluginScriptType.TILEMAP }
+            new String[] { AAChartPluginScriptType.HEATMAP, AAChartPluginScriptType.TILEMAP }
         ),
 
         // --- Time, Range & Stream Charts ---
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Streamgraph },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.STREAMGRAPH }
+            new String[] { AAChartPluginScriptType.STREAMGRAPH }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Xrange },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.XRANGE }
+            new String[] { AAChartPluginScriptType.XRANGE }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Timeline },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.TIMELINE }
+            new String[] { AAChartPluginScriptType.TIMELINE }
         ),
 
         // --- Gauge & Indicator Charts ---
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Solidgauge },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.SOLID_GAUGE }
+            new String[] { AAChartPluginScriptType.SOLID_GAUGE }
         ),
 
         // --- Specialized & Other Charts ---
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Vector },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.VECTOR }
+            new String[] { AAChartPluginScriptType.VECTOR }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Item },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.ITEM_SERIES }
+            new String[] { AAChartPluginScriptType.ITEM_SERIES }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Windbarb },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.DATA_GROUPING, AAChartPluginScriptType.WINDBARB }
+            new String[] { AAChartPluginScriptType.WINDBARB }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Wordcloud },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.WORDCLOUD }
+            new String[] { AAChartPluginScriptType.WORDCLOUD }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Treegraph },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.TREEMAP, AAChartPluginScriptType.TREEGRAPH }
+            new String[] { AAChartPluginScriptType.TREEMAP, AAChartPluginScriptType.TREEGRAPH }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Pictorial },
-            new AAChartPluginScriptType[] { AAChartPluginScriptType.PICTORIAL }
+            new String[] { AAChartPluginScriptType.PICTORIAL }
         )
     );
 
@@ -358,14 +408,14 @@ public class AAChartViewPluginProvider implements AAChartViewPluginProviderProto
             return;
         }
 
-        Set<AAChartPluginScriptType> scripts = new HashSet<>();
+        Set<String> scripts = new HashSet<>();
         for (AAChartPluginConfiguration configuration : pluginConfigurations) {
             if (configuration.types.contains(chartType)) {
                 scripts.addAll(configuration.scripts);
             }
         }
 
-        for (AAChartPluginScriptType script : scripts) {
+        for (String script : scripts) {
             String scriptPath = generateScriptPath(script);
             if (scriptPath != null) {
                 requiredPaths.add(scriptPath);
@@ -405,10 +455,10 @@ public class AAChartViewPluginProvider implements AAChartViewPluginProviderProto
     /**
      * Generates the full path for a given script name
      */
-    private String generateScriptPath(AAChartPluginScriptType script) {
-        String scriptName = script.getRawValue();
-        String fullScriptName = script.getFileName();
-        String directoryPrefix = script.getDirectoryPrefix();
+    private String generateScriptPath(String script) {
+        String scriptName = script;
+        String fullScriptName = AAPluginScriptHelper.getFileName(script);
+        String directoryPrefix = AAPluginScriptHelper.getDirectoryPrefix(script);
         
         // Plugin files are in {AAMaster|AAModules} directory
         String path = bundlePathLoader.path(scriptName, "js", directoryPrefix, null);

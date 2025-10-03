@@ -243,10 +243,10 @@ public class AAChartViewPluginLoader implements AAChartViewPluginLoaderProtocol 
      * Configuration for plugin dependencies
      */
     private static class PluginDependencyConfiguration {
-        final AAChartPluginScriptType plugin;
-        final List<AAChartPluginScriptType> dependencies;
+        final String plugin;
+        final List<String> dependencies;
         
-        PluginDependencyConfiguration(AAChartPluginScriptType plugin, AAChartPluginScriptType... dependencies) {
+        PluginDependencyConfiguration(String plugin, String... dependencies) {
             this.plugin = plugin;
             this.dependencies = Arrays.asList(dependencies);
         }
@@ -275,8 +275,8 @@ public class AAChartViewPluginLoader implements AAChartViewPluginLoaderProtocol 
         for (PluginDependencyConfiguration config : pluginDependencyConfigurations) {
             if (!config.dependencies.isEmpty()) {
                 pluginDependencies.put(
-                    config.plugin.getFileName(),
-                    config.dependencies.get(0).getFileName()
+                    AAPluginScriptHelper.getFileName(config.plugin),
+                    AAPluginScriptHelper.getFileName(config.dependencies.get(0))
                 );
             }
         }
@@ -286,12 +286,12 @@ public class AAChartViewPluginLoader implements AAChartViewPluginLoaderProtocol 
      * Priority plugins that should be loaded first (Pro version)
      */
     private static final List<String> priorityPlugins = Arrays.asList(
-            AAChartPluginScriptType.SANKEY.getFileName(),
-            AAChartPluginScriptType.HEATMAP.getFileName(),
-            AAChartPluginScriptType.DUMBBELL.getFileName(),
-            AAChartPluginScriptType.TREEMAP.getFileName(),
-            AAChartPluginScriptType.FUNNEL.getFileName(),
-            AAChartPluginScriptType.HIGHCHARTS_MORE.getFileName()
+            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.SANKEY),
+            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.HEATMAP),
+            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.DUMBBELL),
+            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.TREEMAP),
+            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.FUNNEL),
+            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.HIGHCHARTS_MORE)
     );
 
     /**
