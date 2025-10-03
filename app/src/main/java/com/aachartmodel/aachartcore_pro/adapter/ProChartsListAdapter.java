@@ -30,10 +30,11 @@ public class ProChartsListAdapter extends RecyclerView.Adapter<ProChartsListAdap
             "icicleChart",
             "sunburstChart2",
             "solidgaugeChart",
-            "parallelCoordinatesSplineChart",
-            "parallelCoordinatesLineChart",
             "volinPlotChart",
             "variablepieChart",
+//            "parallelCoordinatesSplineChart",
+//            "parallelCoordinatesLineChart",
+
     };
 
     @NonNull
@@ -84,10 +85,11 @@ public class ProChartsListAdapter extends RecyclerView.Adapter<ProChartsListAdap
             case 11: return ProChartOptionsComposer.icicleChart();
             case 12: return ProChartOptionsComposer.sunburstChart2();
             case 13: return ProChartOptionsComposer.solidgaugeChart();
-            case 14: return ProChartOptionsComposer.parallelCoordinatesSplineChart();
-            case 15: return ProChartOptionsComposer.parallelCoordinatesLineChart();
-            case 16: return ProChartOptionsComposer.volinPlotChart();
-            case 17: return ProChartOptionsComposer.variablepieChart();
+            case 14: return ProChartOptionsComposer.volinPlotChart();
+            case 15: return ProChartOptionsComposer.variablepieChart();
+//            case 14: return ProChartOptionsComposer.parallelCoordinatesSplineChart();
+//            case 15: return ProChartOptionsComposer.parallelCoordinatesLineChart();
+
         }
         return ProChartOptionsComposer.sunburstChart();
     }
