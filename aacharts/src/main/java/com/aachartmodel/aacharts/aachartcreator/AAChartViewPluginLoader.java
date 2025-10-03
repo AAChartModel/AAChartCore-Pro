@@ -240,15 +240,56 @@ public class AAChartViewPluginLoader implements AAChartViewPluginLoaderProtocol 
     // MARK: - Helper Methods
 
     /**
-     * Basic plugin dependencies for standard version
+     * Configuration for plugin dependencies
+     */
+    private static class PluginDependencyConfiguration {
+        final AAChartPluginScriptType plugin;
+        final List<AAChartPluginScriptType> dependencies;
+        
+        PluginDependencyConfiguration(AAChartPluginScriptType plugin, AAChartPluginScriptType... dependencies) {
+            this.plugin = plugin;
+            this.dependencies = Arrays.asList(dependencies);
+        }
+    }
+    
+    /**
+     * Centralized plugin dependency configurations for Pro version
+     */
+    private static final List<PluginDependencyConfiguration> pluginDependencyConfigurations = Arrays.asList(
+        new PluginDependencyConfiguration(AAChartPluginScriptType.DEPENDENCY_WHEEL, AAChartPluginScriptType.SANKEY),
+        new PluginDependencyConfiguration(AAChartPluginScriptType.ORGANIZATION, AAChartPluginScriptType.SANKEY),
+        new PluginDependencyConfiguration(AAChartPluginScriptType.ARC_DIAGRAM, AAChartPluginScriptType.SANKEY),
+        new PluginDependencyConfiguration(AAChartPluginScriptType.LOLLIPOP, AAChartPluginScriptType.DUMBBELL),
+        new PluginDependencyConfiguration(AAChartPluginScriptType.TILEMAP, AAChartPluginScriptType.HEATMAP),
+        new PluginDependencyConfiguration(AAChartPluginScriptType.TREEGRAPH, AAChartPluginScriptType.TREEMAP)
+    );
+    
+    /**
+     * Basic plugin dependencies for Pro version
      * Maps plugin filename to its dependency filename
      */
     private static final Map<String, String> pluginDependencies = new HashMap<>();
     
+    static {
+        // Build dependencies map from configurations
+        for (PluginDependencyConfiguration config : pluginDependencyConfigurations) {
+            if (!config.dependencies.isEmpty()) {
+                pluginDependencies.put(
+                    config.plugin.getFileName(),
+                    config.dependencies.get(0).getFileName()
+                );
+            }
+        }
+    }
+    
     /**
-     * Priority plugins that should be loaded first (standard version)
+     * Priority plugins that should be loaded first (Pro version)
      */
     private static final List<String> priorityPlugins = Arrays.asList(
+            AAChartPluginScriptType.SANKEY.getFileName(),
+            AAChartPluginScriptType.HEATMAP.getFileName(),
+            AAChartPluginScriptType.DUMBBELL.getFileName(),
+            AAChartPluginScriptType.TREEMAP.getFileName(),
             AAChartPluginScriptType.FUNNEL.getFileName(),
             AAChartPluginScriptType.HIGHCHARTS_MORE.getFileName()
     );
