@@ -105,6 +105,7 @@ interface AAChartPluginScriptType {
     String PICTORIAL = "AAPictorial";
     String PARALLEL_COORDINATES = "AAParallel-Coordinates";
     String DATA = "AAData";
+    String DATA_GROUPING = "AADatagrouping";
 }
 
 /**
@@ -148,6 +149,7 @@ class AAPluginScriptHelper {
         DIRECTORY_MAP.put(AAChartPluginScriptType.PICTORIAL, "AAModules");
         DIRECTORY_MAP.put(AAChartPluginScriptType.PARALLEL_COORDINATES, "AAModules");
         DIRECTORY_MAP.put(AAChartPluginScriptType.DATA, "AAModules");
+    DIRECTORY_MAP.put(AAChartPluginScriptType.DATA_GROUPING, "AAModules");
     }
     
     /**
@@ -279,11 +281,11 @@ public class AAChartViewPluginProvider implements AAChartViewPluginProviderProto
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Sunburst },
-            new String[] { AAChartPluginScriptType.SUNBURST }
+            new String[] { AAChartPluginScriptType.HIGHCHARTS_MORE, AAChartPluginScriptType.SUNBURST }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Flame },
-            new String[] { AAChartPluginScriptType.FLAME }
+            new String[] { AAChartPluginScriptType.HIGHCHARTS_MORE, AAChartPluginScriptType.FLAME }
         ),
 
         // --- Distribution & Comparison Charts ---
@@ -297,11 +299,11 @@ public class AAChartViewPluginProvider implements AAChartViewPluginProviderProto
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Dumbbell },
-            new String[] { AAChartPluginScriptType.DUMBBELL }
+            new String[] { AAChartPluginScriptType.HIGHCHARTS_MORE, AAChartPluginScriptType.DUMBBELL }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Lollipop },
-            new String[] { AAChartPluginScriptType.DUMBBELL, AAChartPluginScriptType.LOLLIPOP }
+            new String[] { AAChartPluginScriptType.HIGHCHARTS_MORE, AAChartPluginScriptType.DUMBBELL, AAChartPluginScriptType.LOLLIPOP }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Histogram },
@@ -357,7 +359,7 @@ public class AAChartViewPluginProvider implements AAChartViewPluginProviderProto
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Windbarb },
-            new String[] { AAChartPluginScriptType.WINDBARB }
+            new String[] { AAChartPluginScriptType.DATA_GROUPING, AAChartPluginScriptType.WINDBARB }
         ),
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Wordcloud },

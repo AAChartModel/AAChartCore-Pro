@@ -259,9 +259,14 @@ public class AAChartViewPluginLoader implements AAChartViewPluginLoaderProtocol 
         new PluginDependencyConfiguration(AAChartPluginScriptType.DEPENDENCY_WHEEL, AAChartPluginScriptType.SANKEY),
         new PluginDependencyConfiguration(AAChartPluginScriptType.ORGANIZATION, AAChartPluginScriptType.SANKEY),
         new PluginDependencyConfiguration(AAChartPluginScriptType.ARC_DIAGRAM, AAChartPluginScriptType.SANKEY),
-        new PluginDependencyConfiguration(AAChartPluginScriptType.LOLLIPOP, AAChartPluginScriptType.DUMBBELL),
+        new PluginDependencyConfiguration(AAChartPluginScriptType.SUNBURST, AAChartPluginScriptType.HIGHCHARTS_MORE),
+        new PluginDependencyConfiguration(AAChartPluginScriptType.FLAME, AAChartPluginScriptType.HIGHCHARTS_MORE),
+    new PluginDependencyConfiguration(AAChartPluginScriptType.DUMBBELL, AAChartPluginScriptType.HIGHCHARTS_MORE),
         new PluginDependencyConfiguration(AAChartPluginScriptType.TILEMAP, AAChartPluginScriptType.HEATMAP),
-        new PluginDependencyConfiguration(AAChartPluginScriptType.TREEGRAPH, AAChartPluginScriptType.TREEMAP)
+        new PluginDependencyConfiguration(AAChartPluginScriptType.LOLLIPOP, AAChartPluginScriptType.HIGHCHARTS_MORE),
+        new PluginDependencyConfiguration(AAChartPluginScriptType.TREEGRAPH, AAChartPluginScriptType.TREEMAP),
+        new PluginDependencyConfiguration(AAChartPluginScriptType.SOLID_GAUGE, AAChartPluginScriptType.HIGHCHARTS_MORE),
+        new PluginDependencyConfiguration(AAChartPluginScriptType.WINDBARB, AAChartPluginScriptType.DATA_GROUPING)
     );
     
     /**
@@ -286,12 +291,12 @@ public class AAChartViewPluginLoader implements AAChartViewPluginLoaderProtocol 
      * Priority plugins that should be loaded first (Pro version)
      */
     private static final List<String> priorityPlugins = Arrays.asList(
-            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.SANKEY),
-            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.HEATMAP),
-            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.DUMBBELL),
-            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.TREEMAP),
-            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.FUNNEL),
-            AAPluginScriptHelper.getFileName(AAChartPluginScriptType.HIGHCHARTS_MORE)
+        AAPluginScriptHelper.getFileName(AAChartPluginScriptType.HIGHCHARTS_MORE),
+        AAPluginScriptHelper.getFileName(AAChartPluginScriptType.SANKEY),
+        AAPluginScriptHelper.getFileName(AAChartPluginScriptType.HEATMAP),
+        AAPluginScriptHelper.getFileName(AAChartPluginScriptType.DUMBBELL),
+        AAPluginScriptHelper.getFileName(AAChartPluginScriptType.TREEMAP),
+        AAPluginScriptHelper.getFileName(AAChartPluginScriptType.FUNNEL)
     );
 
     /**
@@ -300,7 +305,7 @@ public class AAChartViewPluginLoader implements AAChartViewPluginLoaderProtocol 
     private List<String> sortPluginPaths(Set<String> paths, Map<String, String> externalDependencies) {
         List<String> sortedPaths = new ArrayList<>(paths);
         
-        // Use internal dependencies (empty for standard version, but kept for structure)
+        // Use internal dependencies
         final Map<String, String> dependencies = new HashMap<>(pluginDependencies);
         
         // Merge external dependencies if provided
@@ -315,25 +320,33 @@ public class AAChartViewPluginLoader implements AAChartViewPluginLoaderProtocol 
                 String file2 = getFileName(path2);
 
                 // Check explicit dependencies
+                // If file2 depends on file1, file1 should come first (return -1)
                 String dep2 = dependencies.get(file2);
                 if (dep2 != null && dep2.equals(file1)) {
                     return -1;
                 }
+                // If file1 depends on file2, file2 should come first (return 1)
                 String dep1 = dependencies.get(file1);
                 if (dep1 != null && dep1.equals(file2)) {
                     return 1;
                 }
                 
-                // Check priority plugins
-                for (String priorityFileName : priorityPlugins) {
-                    if (file1.equals(priorityFileName) && !file2.equals(priorityFileName)) {
-                        return -1;
-                    }
-                    if (file2.equals(priorityFileName) && !file1.equals(priorityFileName)) {
-                        return 1;
-                    }
+                // Check priority plugins - lower index = higher priority = should come first
+                int priority1 = priorityPlugins.indexOf(file1);
+                int priority2 = priorityPlugins.indexOf(file2);
+                
+                if (priority1 != -1 && priority2 != -1) {
+                    // Both are priority plugins, compare their indices
+                    return Integer.compare(priority1, priority2);
+                } else if (priority1 != -1) {
+                    // Only file1 is priority, it should come first
+                    return -1;
+                } else if (priority2 != -1) {
+                    // Only file2 is priority, it should come first
+                    return 1;
                 }
 
+                // Neither has priority, use alphabetical order
                 return path1.compareTo(path2);
             }
         });
