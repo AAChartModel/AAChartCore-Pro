@@ -22,4 +22,8 @@
         android:id="@+id/action_open_relationship_sample"
         android:title="打开 AARelationshipChartActivity 示例"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_open_custom_stage_sample"
+        android:title="打开自定义阶段图表(睡眠阶段)"
+        app:showAsAction="never" />
 </menu>

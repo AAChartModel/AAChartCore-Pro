@@ -205,6 +205,46 @@ public static Object[] volinPlotElement1Data = volinPlotElement1Data();
         return getJsonDataWithJsonFileName("volinPlotElement2Data");
     }
 
+    /**
+     * 生成随机睡眠数据
+     * @param count 数据段数量
+     * @return 睡眠数据数组
+     */
+    public static String[][] randomSleepData(int count) {
+        String[] stages = {"Deep", "Core", "REM", "Awake"};
+        java.util.List<String[]> result = new java.util.ArrayList<>();
+        
+        // 设置基准日期和时间
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        calendar.set(2024, 8, 7, 3, 0, 0); // 2024-09-07 03:00:00
+        
+        long currentTime = calendar.getTimeInMillis();
+        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.US);
+        
+        java.util.Random random = new java.util.Random();
+        
+        for (int i = 0; i < count; i++) {
+            // 随机选择阶段
+            String stage = stages[random.nextInt(stages.length)];
+            
+            // 随机生成持续时间(5-45分钟)
+            int durationMinutes = 5 + random.nextInt(40);
+            
+            long startTime = currentTime;
+            long endTime = startTime + durationMinutes * 60 * 1000;
+            
+            String startTimeStr = formatter.format(new java.util.Date(startTime));
+            String endTimeStr = formatter.format(new java.util.Date(endTime));
+            
+            result.add(new String[]{startTimeStr, endTimeStr, stage});
+            
+            // 更新当前时间到结束时间
+            currentTime = endTime;
+        }
+        
+        return result.toArray(new String[0][]);
+    }
+
     private static Object[] getJsonDataWithJsonFileName(String jsonFileName) {
         String jsonStr = getJson("data/" + jsonFileName + ".json");
         Gson gson = new Gson();

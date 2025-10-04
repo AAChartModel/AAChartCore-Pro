@@ -39,6 +39,14 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".AAStageSeries.AACustomStageChartActivity"
+            android:label="Custom Stage Chart"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity android:name=".activity.ProChartsListActivity" />
         <activity android:name=".activity.ProChartActivity" />
         <activity android:name=".activity.ShowAllGroupChartsActivity" />
