@@ -60,6 +60,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -342,7 +343,7 @@ public class AAChartViewPluginProvider implements AAChartViewPluginProviderProto
         // --- Gauge & Indicator Charts ---
         new AAChartPluginConfiguration(
             new String[] { AAChartType.Solidgauge },
-            new String[] { AAChartPluginScriptType.SOLID_GAUGE }
+            new String[] { AAChartPluginScriptType.HIGHCHARTS_MORE, AAChartPluginScriptType.SOLID_GAUGE }
         ),
 
         // --- Specialized & Other Charts ---
@@ -374,7 +375,7 @@ public class AAChartViewPluginProvider implements AAChartViewPluginProviderProto
 
     @Override
     public Set<String> getRequiredPluginPaths(AAOptions options) {
-        Set<String> requiredPaths = new HashSet<>();
+    Set<String> requiredPaths = new LinkedHashSet<>();
 
         // Check for plugins based on AAOptions properties
         addChartPluginScripts(options, requiredPaths);
@@ -408,7 +409,7 @@ public class AAChartViewPluginProvider implements AAChartViewPluginProviderProto
             return;
         }
 
-        Set<String> scripts = new HashSet<>();
+    Set<String> scripts = new LinkedHashSet<>();
         for (AAChartPluginConfiguration configuration : pluginConfigurations) {
             if (configuration.types.contains(chartType)) {
                 scripts.addAll(configuration.scripts);
