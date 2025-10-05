@@ -230,9 +230,11 @@ public class AACustomStageChartComposer {
                         .groupPadding(0f)
                         .colorByPoint(false)
                         .borderRadius(barRadius)
-//                        .states(new AAStates()
-//                                .hover(new AAHover().enabled(true)))
-                        .dataLabels(new AADataLabels().enabled(false)));
+                        .states(new AAStates()
+                                .hover(new AAHover()
+                                        .enabled(true)))
+                        .dataLabels(new AADataLabels()
+                                .enabled(false)));
     }
 
     /**
