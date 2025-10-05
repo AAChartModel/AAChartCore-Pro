@@ -1,5 +1,6 @@
 package com.aachartmodel.aachartcore_pro.AAStageSeries;
 
+import com.aachartmodel.aachartcore_pro.AAStageSeries.AAStageSeriesPlugin.AAEnvelopeSeries;
 import com.aachartmodel.aacharts.aachartenum.AAChartAxisType;
 import com.aachartmodel.aacharts.aachartenum.AAChartFontWeightType;
 import com.aachartmodel.aacharts.aachartenum.AAChartLineDashStyleType;
@@ -222,30 +223,16 @@ public class AACustomStageChartComposer {
      * 创建绘图选项配置
      */
     private static AAPlotOptions createPlotOptionsConfig(AAEnvelope envelope, Float barRadius) {
-        // 创建一个自定义的 AASeries 并设置 envelope 属性
-        Map<String, Object> seriesOptions = new HashMap<>();
-        seriesOptions.put("pointPadding", 0);
-        seriesOptions.put("groupPadding", 0);
-        seriesOptions.put("colorByPoint", false);
-        seriesOptions.put("borderRadius", barRadius);
-        
-        // 将 envelope 添加到 series 选项中
-        if (envelope != null) {
-            seriesOptions.put("envelope", envelope);
-        }
-        
-        AAStates states = new AAStates()
-//                .hover(new AAHover().enabled(true))
-                ;
-        seriesOptions.put("states", states);
-        
-        AADataLabels dataLabels = new AADataLabels().enabled(false);
-        seriesOptions.put("dataLabels", dataLabels);
-
-        AAPlotOptions plotOptions = new AAPlotOptions();
-//        plotOptions.series = seriesOptions;
-        
-        return plotOptions;
+        return new AAPlotOptions()
+                .series(new AAEnvelopeSeries()
+                        .envelope(envelope)
+                        .pointPadding(0f)
+                        .groupPadding(0f)
+                        .colorByPoint(false)
+                        .borderRadius(barRadius)
+//                        .states(new AAStates()
+//                                .hover(new AAHover().enabled(true)))
+                        .dataLabels(new AADataLabels().enabled(false)));
     }
 
     /**
