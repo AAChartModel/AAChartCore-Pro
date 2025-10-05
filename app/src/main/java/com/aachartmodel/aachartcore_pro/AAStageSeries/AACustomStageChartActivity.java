@@ -293,7 +293,7 @@ public class AACustomStageChartActivity extends AppCompatActivity {
                 barRadius
         );
 
-        aaChartView.aa_refreshChartWithChartOptions(updatedOptions);
+        aaChartView.aa_updateChartWithOptions(updatedOptions, true);
     }
 
     private void generateRandomData() {
