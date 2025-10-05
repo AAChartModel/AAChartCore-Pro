@@ -135,10 +135,17 @@ public class AACustomStageChartComposer {
                 .shadow(shadow);
 
         if (fixedGradient) {
-//            envelope.color(AAGradientColor.linearGradient(
-//                    AALinearGradientDirection.ToTop,
-//                    new String[]{"rgba(150, 200, 255, 0.95)", "rgba(90, 160, 255, 0.85)", "rgba(70, 140, 250, 0.80)"}
-//            ));
+            Object[][] stopsArr = {
+                    {0.0, "rgba(150, 200, 255, 0.95)"},
+                    {0.5, "rgba(90, 160, 255, 0.85)"},
+                    {1.0, "rgba(70, 140, 250, 0.80)"}
+            };//颜色字符串设置支持十六进制类型和 rgba 类型
+
+            Map<String, Object> gradientColorStops = AAGradientColor.linearGradient(
+                    AALinearGradientDirection.ToTop,
+                    stopsArr
+            );
+            envelope.color(gradientColorStops);
         } else {
             envelope.color("auto");
         }
