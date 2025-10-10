@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.aachartmodel.aachartcore_pro.adapter.ChartTypesRecyclerViewAdapter;
+import com.aachartmodel.aachartcore_pro.AAStageSeries.AACustomStageChartActivity;
 import com.aachartmodel.aachartcore_pro.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -54,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.action_open_relationship_sample) {
             Intent intent = new Intent(this, AARelationshipChartActivity.class);
             intent.putExtra("selectedIndex", 0);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_open_custom_stage_sample) {
+            Intent intent = new Intent(this, AACustomStageChartActivity.class);
             startActivity(intent);
             return true;
         }

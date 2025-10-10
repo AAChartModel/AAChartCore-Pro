@@ -2,51 +2,30 @@
     {
         "name": "A",
         "value": 6,
-        "color": {
-            "patternIndex": 0
-        },
         "colorValue": 1
     }, {
         "name": "B",
         "value": 6,
-        "color": {
-            "patternIndex": 1
-        },
         "colorValue": 2
     }, {
         "name": "C",
         "value": 4,
-        "color": {
-            "patternIndex": 2
-        },
         "colorValue": 3
     }, {
         "name": "D",
         "value": 3,
-        "color": {
-            "patternIndex": 3
-        },
         "colorValue": 4
     }, {
         "name": "E",
         "value": 2,
-        "color": {
-            "patternIndex": 4
-        },
         "colorValue": 5
     }, {
         "name": "F",
         "value": 2,
-        "color": {
-            "patternIndex": 5
-        },
         "colorValue": 6
     }, {
         "name": "G",
         "value": 1,
-        "color": {
-            "patternIndex": 6
-        },
         "colorValue": 7
     }
 ]

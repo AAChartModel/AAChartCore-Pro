@@ -205,6 +205,99 @@ public static Object[] volinPlotElement1Data = volinPlotElement1Data();
         return getJsonDataWithJsonFileName("volinPlotElement2Data");
     }
 
+    /**
+     * 生成随机睡眠数据
+     * @param count 数据段数量
+     * @return 睡眠数据数组
+     */
+    public static String[][] randomSleepData(int count) {
+        java.util.List<String[]> dataset = new java.util.ArrayList<>();
+        java.util.Calendar calStart = java.util.Calendar.getInstance();
+        calStart.set(2024, 8, 7, 22, 0, 0); // 2024-09-07 22:00 (Calendar 月份从0开始)
+        calStart.set(java.util.Calendar.MILLISECOND, 0);
+        java.util.Calendar calEnd = java.util.Calendar.getInstance();
+        calEnd.set(2024, 8, 8, 6, 0, 0); // 2024-09-08 06:00
+        calEnd.set(java.util.Calendar.MILLISECOND, 0);
+
+        long startMillis = calStart.getTimeInMillis();
+        long endMillis = calEnd.getTimeInMillis();
+        double totalDuration = (endMillis - startMillis) / 1000.0; // 秒
+
+        long currentMillis = startMillis;
+        double avgDuration = totalDuration / (double) count;
+        double minDuration = Math.max(60.0, avgDuration * 0.3);   // 最少 60 秒
+        double maxDuration = Math.min(3600.0, avgDuration * 2);   // 最多 3600 秒
+
+        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.US);
+        java.util.Random random = new java.util.Random();
+        String lastStage = null;
+
+        for (int i = 0; i < count; i++) {
+            String stage;
+            double progress = ((currentMillis - startMillis) / 1000.0) / totalDuration;
+
+            do {
+                if (progress < 0.2) {
+                    double r = random.nextDouble();
+                    if (r < 0.6) stage = "Core";
+                    else {
+                        double r2 = random.nextDouble();
+                        stage = r2 < 0.7 ? "REM" : "Awake";
+                    }
+                } else if (progress < 0.4) {
+                    double r = random.nextDouble();
+                    if (r < 0.4) stage = "Deep";
+                    else {
+                        double r2 = random.nextDouble();
+                        stage = r2 < 0.8 ? "Core" : "REM";
+                    }
+                } else if (progress < 0.7) {
+                    double r = random.nextDouble();
+                    if (r < 0.2) stage = "Deep";
+                    else if (r < 0.6) stage = "Core";
+                    else if (r < 0.85) stage = "REM";
+                    else stage = "Awake";
+                } else {
+                    double r = random.nextDouble();
+                    if (r < 0.4) stage = "REM";
+                    else {
+                        double r2 = random.nextDouble();
+                        stage = r2 < 0.7 ? "Core" : "Awake";
+                    }
+                }
+            } while (stage.equals(lastStage));
+            lastStage = stage;
+
+            double durationSeconds;
+            if (i == count - 1) {
+                durationSeconds = (endMillis - currentMillis) / 1000.0;
+            } else {
+                double remainingTime = (endMillis - currentMillis) / 1000.0;
+                double remainingSegments = (double) (count - i);
+                double maxAllowedDuration = remainingTime - (remainingSegments - 1) * minDuration;
+                double effectiveMaxDuration = Math.min(maxDuration, maxAllowedDuration);
+                if (effectiveMaxDuration < minDuration) {
+                    durationSeconds = minDuration;
+                } else {
+                    durationSeconds = minDuration + random.nextDouble() * (effectiveMaxDuration - minDuration);
+                }
+            }
+
+            durationSeconds = Math.max(minDuration, Math.min(durationSeconds, (endMillis - currentMillis) / 1000.0));
+            long segmentEndMillis = currentMillis + (long) (durationSeconds * 1000.0);
+
+            String startStr = formatter.format(new java.util.Date(currentMillis));
+            String endStr = formatter.format(new java.util.Date(segmentEndMillis));
+            dataset.add(new String[]{startStr, endStr, lastStage});
+
+            currentMillis = segmentEndMillis;
+            if (currentMillis >= endMillis) break;
+        }
+
+        return dataset.toArray(new String[0][]);
+    }
+
+
     private static Object[] getJsonDataWithJsonFileName(String jsonFileName) {
         String jsonStr = getJson("data/" + jsonFileName + ".json");
         Gson gson = new Gson();

@@ -51,4 +51,6 @@ public interface AAChartType {
     String Histogram       =  "histogram";
     String Solidgauge      =  "solidgauge";
     String Bullet          =  "bullet";
+    String Treegraph       =  "treegraph";
+    String Pictorial       =  "pictorial";
 }

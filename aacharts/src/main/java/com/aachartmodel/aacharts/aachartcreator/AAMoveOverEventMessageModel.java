@@ -27,11 +27,6 @@ package com.aachartmodel.aacharts.aachartcreator;
 
 import com.google.gson.internal.LinkedTreeMap;
 
-public class AAMoveOverEventMessageModel {
-    public String name;
-    public Double x;
-    public Double y;
-    public String category;
-    public LinkedTreeMap offset;
-    public Integer index;
+public class AAMoveOverEventMessageModel extends AAEventMessageModel {
+
 }

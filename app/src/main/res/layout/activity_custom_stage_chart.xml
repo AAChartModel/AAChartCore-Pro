@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.AACustomStageChartActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- 控制面板 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:elevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <!-- Mode -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mode"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="4dp"/>
+
+                    <RadioGroup
+                        android:id="@+id/mode_radio_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <RadioButton
+                            android:id="@+id/mode_connect"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="connect"
+                            android:checked="true"/>
+
+                        <RadioButton
+                            android:id="@+id/mode_dilate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="dilate"/>
+                    </RadioGroup>
+
+                    <!-- Arcs -->
+                    <CheckBox
+                        android:id="@+id/arcs_checkbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Arcs"
+                        android:checked="true"
+                        android:layout_marginBottom="12dp"/>
+
+                    <!-- Arcs Mode -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ArcsMode"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="4dp"/>
+
+                    <RadioGroup
+                        android:id="@+id/arcs_mode_radio_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <RadioButton
+                            android:id="@+id/arcs_mode_concave"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="concave"
+                            android:checked="true"/>
+
+                        <RadioButton
+                            android:id="@+id/arcs_mode_convex"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="convex"/>
+                    </RadioGroup>
+
+                    <!-- Bar Radius -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="BarRadius"
+                            android:textStyle="bold"
+                            android:textSize="14sp"/>
+
+                        <SeekBar
+                            android:id="@+id/bar_radius_seekbar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/bar_radius_value"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="12.00"
+                            android:gravity="end"
+                            android:textSize="14sp"
+                            android:fontFamily="monospace"/>
+                    </LinearLayout>
+
+                    <!-- Margin -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Margin"
+                            android:textStyle="bold"
+                            android:textSize="14sp"/>
+
+                        <SeekBar
+                            android:id="@+id/margin_seekbar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/margin_value"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="8.00"
+                            android:gravity="end"
+                            android:textSize="14sp"
+                            android:fontFamily="monospace"/>
+                    </LinearLayout>
+
+                    <!-- External Radius -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="ExternalRadius"
+                            android:textStyle="bold"
+                            android:textSize="14sp"/>
+
+                        <SeekBar
+                            android:id="@+id/external_radius_seekbar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/external_radius_value"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="18.00"
+                            android:gravity="end"
+                            android:textSize="14sp"
+                            android:fontFamily="monospace"/>
+                    </LinearLayout>
+
+                    <!-- Opacity -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Opacity"
+                            android:textStyle="bold"
+                            android:textSize="14sp"/>
+
+                        <SeekBar
+                            android:id="@+id/opacity_seekbar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/opacity_value"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="0.38"
+                            android:gravity="end"
+                            android:textSize="14sp"
+                            android:fontFamily="monospace"/>
+                    </LinearLayout>
+
+                    <!-- Seam Epsilon -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="SeamEpsilon"
+                            android:textStyle="bold"
+                            android:textSize="14sp"/>
+
+                        <SeekBar
+                            android:id="@+id/seam_epsilon_seekbar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/seam_epsilon_value"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="0.50"
+                            android:gravity="end"
+                            android:textSize="14sp"
+                            android:fontFamily="monospace"/>
+                    </LinearLayout>
+
+                    <!-- Sleep Segments -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="SleepSegments"
+                            android:textStyle="bold"
+                            android:textSize="14sp"/>
+
+                        <SeekBar
+                            android:id="@+id/sleep_segments_seekbar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/sleep_segments_value"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="25"
+                            android:gravity="end"
+                            android:textSize="14sp"
+                            android:fontFamily="monospace"/>
+                    </LinearLayout>
+
+                    <!-- Fixed Gradient -->
+                    <CheckBox
+                        android:id="@+id/fixed_gradient_checkbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fixed Blue Gradient"
+                        android:checked="true"
+                        android:layout_marginBottom="12dp"/>
+
+                    <!-- Preset Buttons -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="5">
+
+                        <Button
+                            android:id="@+id/preset_fluid"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fluid"
+                            android:textSize="10sp"
+                            android:padding="4dp"
+                            android:layout_marginEnd="2dp"/>
+
+                        <Button
+                            android:id="@+id/preset_parity"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Parity"
+                            android:textSize="10sp"
+                            android:padding="4dp"
+                            android:layout_marginEnd="2dp"/>
+
+                        <Button
+                            android:id="@+id/preset_safe_dilate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Dilate"
+                            android:textSize="10sp"
+                            android:padding="4dp"
+                            android:layout_marginEnd="2dp"/>
+
+                        <Button
+                            android:id="@+id/preset_ultra_crisp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Crisp"
+                            android:textSize="10sp"
+                            android:padding="4dp"
+                            android:layout_marginEnd="2dp"/>
+
+                        <Button
+                            android:id="@+id/random_data"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Random"
+                            android:textSize="10sp"
+                            android:padding="4dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 图表容器 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="2dp">
+
+                <com.aachartmodel.aacharts.aachartcreator.AAChartView
+                    android:id="@+id/aa_chart_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

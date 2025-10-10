@@ -32,50 +32,75 @@
 
 package com.aachartmodel.aacharts.aachartcreator;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.aachartmodel.aacharts.aaoptionsmodel.AAPlotOptions;
+import com.aachartmodel.aacharts.aaoptionsmodel.AAPoint;
+import com.aachartmodel.aacharts.aaoptionsmodel.AAPointEvents;
+import com.aachartmodel.aacharts.aaoptionsmodel.AASeries;
+import com.aachartmodel.aacharts.aatools.AAColor;
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 import com.aachartmodel.aacharts.aaoptionsmodel.AAOptions;
 import com.aachartmodel.aacharts.aatools.AAJSStringPurer;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 
-public class AAChartView extends WebView {
+public class AAChartView extends AAChartViewOpenAPI {
 
     public interface AAChartViewCallBack {
-        void chartViewDidFinishLoad(AAChartView aaChartView);
-        void chartViewMoveOverEventMessage(
+        default void chartViewDidFinishLoad(
+                AAChartView aaChartView
+        ) {
+        }
+
+        default void chartViewClickEventMessage(
                 AAChartView aaChartView,
-                AAMoveOverEventMessageModel messageModel
-        );
+                AAClickEventMessageModel clickEventMessage
+        ) {
+        }
+
+        default void chartViewMoveOverEventMessage(
+                AAChartView aaChartView,
+                AAMoveOverEventMessageModel moveOverEventMessage
+        ) {
+        }
     }
 
-    public Float contentWidth;
-    public Float contentHeight;
+
+    public Number contentWidth;
+    public Number contentHeight;
     public Boolean chartSeriesHidden;
     public Boolean isClearBackgroundColor;
     public AAChartViewCallBack callBack;
 
-    public void setContentWidth(Float contentWidth) {
+    // --- Plugin Loader ---
+    private AAChartViewPluginLoaderProtocol pluginLoader;
+    public Set<String> userPluginPaths = new HashSet<>();
+    public Map<String, String> dependencies = new HashMap<>();
+
+    public void setContentWidth(Number contentWidth) {
         this.contentWidth = contentWidth;
         String jsStr = "setTheChartViewContentWidth('"
                 + this.contentWidth + "')";
         safeEvaluateJavaScriptString(jsStr);
     }
 
-    public void setContentHeight(Float contentHeight) {
+    public void setContentHeight(Number contentHeight) {
         this.contentHeight = contentHeight;
         String jsStr = "setTheChartViewContentHeight('"
                 + this.contentHeight + "')";
@@ -128,6 +153,7 @@ public class AAChartView extends WebView {
         setupBasicContent();
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private void setupBasicContent() {
         // Do some initialize work.
         this.contentWidth = 420f;
@@ -137,187 +163,62 @@ public class AAChartView extends WebView {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             this.setWebContentsDebuggingEnabled(true);
         }
+
+        // Initialize plugin loader with provider
+        this.pluginLoader = new AAChartViewPluginLoader(
+                getContext(),
+                new AAChartViewPluginProvider(getContext())
+        );
+
         //把当前对象作为androidObject别名传递给js
         //js通过window.androidObject.androidMethod()就可以直接调用安卓的androidMethod方法
         this.addJavascriptInterface(this, "androidObject");
     }
 
-
     //js调用安卓，必须加@JavascriptInterface注释的方法才可以被js调用
     @JavascriptInterface
-    public String androidMethod(String message) {
+    public String clickEventAndroidMethod(String message) {
         Gson gson = new Gson();
-        Map messageBody = new HashMap<String, Object>();
+        Map<String, Object> messageBody = new HashMap<>();
         messageBody = gson.fromJson(message, messageBody.getClass());
-        AAMoveOverEventMessageModel eventMessageModel = getEventMessageModel(messageBody);
+        // 调用泛型方法并传递 MyEventMessage.class 作为 eventType 参数
+        AAClickEventMessageModel clickEventMessageModel = this.getEventMessageModel(messageBody, AAClickEventMessageModel.class);
         if (callBack != null) {
-            callBack.chartViewMoveOverEventMessage(this,eventMessageModel);
+            callBack.chartViewClickEventMessage(this, clickEventMessageModel);
         }
-       Log.i("androidMethod","++++++++++++++++显示总共调用了几次");
+//       Log.i("androidMethod","++++++++++++++++显示总共调用了几次");
         return "";
     }
 
-
-    public void aa_drawChartWithChartModel(final AAChartModel chartModel) {
-        AAOptions aaOptions = AAOptionsConstructor.configureChartOptions(chartModel);
-        this.aa_drawChartWithChartOptions(aaOptions);
-    }
-
-    public void aa_refreshChartWithChartModel(AAChartModel chartModel) {
-        AAOptions aaOptions = AAOptionsConstructor.configureChartOptions(chartModel);
-        this.aa_refreshChartWithChartOptions(aaOptions);
-    }
-
-    public void aa_drawChartWithChartOptions(final AAOptions chartOptions) {
-        if (this.optionsJson != null) {
-            this.aa_refreshChartWithChartOptions(chartOptions);
-        } else {
-            this.loadLocalFilesAndDrawChart(chartOptions);
-            this.showJavaScriptAlertView();
+    //js调用安卓，必须加@JavascriptInterface注释的方法才可以被js调用
+    @JavascriptInterface
+    public String moveOverEventAndroidMethod(String message) {
+        Gson gson = new Gson();
+        Map<String, Object> messageBody = new HashMap<>();
+        messageBody = gson.fromJson(message, messageBody.getClass());
+        // 调用泛型方法并传递 MyEventMessage.class 作为 eventType 参数
+        AAMoveOverEventMessageModel moveOverEventMessageModel = this.getEventMessageModel(messageBody, AAMoveOverEventMessageModel.class);
+        if (callBack != null) {
+            callBack.chartViewMoveOverEventMessage(this, moveOverEventMessageModel);
         }
+//       Log.i("androidMethod","++++++++++++++++显示总共调用了几次");
+        return "";
     }
 
-    public void aa_refreshChartWithChartOptions(AAOptions chartOptions) {
-        configureChartOptionsAndDrawChart(chartOptions);
+    @Override
+    protected String getOptionsJson() {
+        return this.optionsJson;
     }
 
-
-    public void aa_onlyRefreshTheChartDataWithChartOptionsSeriesArray(
-            AASeriesElement[] seriesElementsArr
-    ) {
-        aa_onlyRefreshTheChartDataWithChartOptionsSeriesArray(seriesElementsArr,true);
-    }
-
-    public void aa_onlyRefreshTheChartDataWithChartOptionsSeriesArray(
-            AASeriesElement[] seriesElementsArr,
-            Boolean animation
-    ) {
-//        String seriesArr = new Gson().toJson(seriesElementsArr);
-        String javaScriptStr = "onlyRefreshTheChartDataWithSeries('"
-                 + "','" + animation + "')";
-        this.safeEvaluateJavaScriptString(javaScriptStr);
-    }
-
-
-    public  void aa_updateChartWithOptions(
-            Object options,
-            Boolean redraw
-    ) {
-        String classNameStr = options.getClass().getSimpleName();
-        classNameStr = classNameStr.replace("AA","");
-
-        //convert fist character to be lowercase string
-        String firstChar = classNameStr.substring(0,1);
-        String lowercaseFirstStr = firstChar.toLowerCase();
-        classNameStr = classNameStr.substring(1);
-        String finalClassName = lowercaseFirstStr + classNameStr;
-
-        Map finalOptionsMap = new HashMap();
-        finalOptionsMap.put(finalClassName,options);
-
-        String optionsStr  = "";
-        String javaScriptStr = "updateChart('" + optionsStr + "','" + redraw + "')";
-        this.safeEvaluateJavaScriptString(javaScriptStr);
-    }
-
-    public void aa_addPointToChartSeriesElement(
-            Integer elementIndex,
-            Object options
-    ) {
-        aa_addPointToChartSeriesElement(
-                elementIndex,
-                options,
-                true);
-    }
-    public void aa_addPointToChartSeriesElement(
-            Integer elementIndex,
-            Object options,
-            Boolean shift
-    ) {
-        aa_addPointToChartSeriesElement(
-                elementIndex,
-                options,
-                true,
-                shift,
-                true);
-    }
-
-
-    public void aa_addPointToChartSeriesElement(
-            Integer elementIndex,
-            Object options,
-            Boolean redraw,
-            Boolean shift,
-            Boolean animation
-    ) {
-        String optionsStr;
-        if (       options instanceof Integer
-                || options instanceof Float
-                || options instanceof Double) {
-            optionsStr = String.valueOf(options);
-        } else {
-            optionsStr = new Gson().toJson(options);
-        }
-
-        String javaScriptStr = "addPointToChartSeries('"
-                + elementIndex + "','"
-                + optionsStr + "','"
-                + redraw + "','"
-                + shift + "','"
-                + animation + "')";
-        this.safeEvaluateJavaScriptString(javaScriptStr);
-    }
-
-    public void aa_showTheSeriesElementContent(Integer elementIndex) {
-        String javaScriptStr = "showTheSeriesElementContentWithIndex('"
-                + elementIndex + "')";
-        this.safeEvaluateJavaScriptString(javaScriptStr);
-    }
-
-    public void aa_hideTheSeriesElementContent(Integer elementIndex) {
-        String javaScriptStr = "hideTheSeriesElementContentWithIndex('"
-                + elementIndex + "')";
-        this.safeEvaluateJavaScriptString(javaScriptStr);
-    }
-
-    public void aa_addElementToChartSeries(AASeriesElement aaSeriesElement) {
-        String pureElementJsonStr = new Gson().toJson(aaSeriesElement);
-
-        new Gson().toJson(aaSeriesElement);
-                Log.isLoggable("onlyInDebugEnvironment",Log.DEBUG);
-
-        String tag = "----- AAChartCore -----";
-        boolean isDebug = Log.isLoggable(tag, Log.DEBUG);
-        if (isDebug) {
-            Log.i(tag, pureElementJsonStr);
-        }
-
-        String javaScriptStr = "addElementToChartSeriesWithElement('"
-                 + "')";
-        this.safeEvaluateJavaScriptString(javaScriptStr);
-    }
-
-    public void aa_removeElementFromChartSeries(Integer elementIndex) {
-        String javaScriptStr = "removeElementFromChartSeriesWithElementIndex('"
-                + elementIndex + "')";
-        this.safeEvaluateJavaScriptString(javaScriptStr);
-    }
-
-    public void aa_evaluateTheJavaScriptStringFunction(String jsFunctionStr) {
-        String pureJSFunctionStr = AAJSStringPurer.pureJavaScriptFunctionString(jsFunctionStr);
-
-        String jsFunctionNameStr = "evaluateTheJavaScriptStringFunction('"
-                + pureJSFunctionStr + "')";
-        safeEvaluateJavaScriptString(jsFunctionNameStr);
-    }
-
-
-
-    private void loadLocalFilesAndDrawChart(final AAOptions aaOptions) {
+    @Override
+    protected void loadLocalFilesAndDrawChart(final AAOptions aaOptions) {
         this.loadUrl("file:///android_asset/AAChartView.html");
         this.setWebViewClient(new WebViewClient() {
             @Override
-            public void onPageFinished(WebView view,String url) {
+            public void onPageFinished(WebView view, String url) {
+                if (view == null || url == null) {
+                    return;
+                }
 //                Log.i("js files load","图表加载完成!!!!!!!! ");
                 configureChartOptionsAndDrawChart(aaOptions);
 
@@ -328,28 +229,102 @@ public class AAChartView extends WebView {
         });
     }
 
-    private void configureChartOptionsAndDrawChart(AAOptions chartOptions) {
+    private void configurePlotOptionsSeriesPointEvents(AAOptions aaOptions) {
+        if (aaOptions.plotOptions == null) {
+            aaOptions.plotOptions = new AAPlotOptions().series(new AASeries().point(new AAPoint().events(new AAPointEvents())));
+        } else if (aaOptions.plotOptions.series == null) {
+            aaOptions.plotOptions.series = new AASeries().point(new AAPoint().events(new AAPointEvents()));
+        } else if (aaOptions.plotOptions.series.point == null) {
+            aaOptions.plotOptions.series.point = new AAPoint().events(new AAPointEvents());
+        } else if (aaOptions.plotOptions.series.point.events == null) {
+            aaOptions.plotOptions.series.point.events = new AAPointEvents();
+        }
+    }
+
+    @Override
+    protected void configureChartOptionsAndDrawChart(AAOptions aaOptions) {
+        if (aaOptions == null) {
+            return;
+        }
+
+        // Configure the plugin loader (determines required plugins, gets scripts)
+        pluginLoader.configure(aaOptions);
+
         if (isClearBackgroundColor) {
-            chartOptions.chart.backgroundColor("rgba(0,0,0,0)");
+            aaOptions.chart.backgroundColor(AAColor.Clear);
+        }
+
+        // 提取布尔表达式以提高可读性，并防止 NullPointerException
+        boolean isClickEventEnabled = (aaOptions.clickEventEnabled != null && aaOptions.clickEventEnabled);
+        boolean isTouchEventEnabled = (aaOptions.touchEventEnabled != null && aaOptions.touchEventEnabled);
+
+        boolean isAnyEventEnabled = isClickEventEnabled || isTouchEventEnabled;
+
+        if (isAnyEventEnabled) {
+            configurePlotOptionsSeriesPointEvents(aaOptions);
         }
 
         Gson gson = new Gson();
-        String aaOptionsJsonStr = gson.toJson(chartOptions);
+        String aaOptionsJsonStr;
+
+        String originalBeforeDrawScript = aaOptions.beforeDrawChartJavaScript;
+        String originalAfterDrawScript = aaOptions.afterDrawChartJavaScript;
+
+        try {
+            if (originalBeforeDrawScript != null) {
+                aaOptions.beforeDrawChartJavaScript = AAJSStringPurer.pureAnonymousJSFunctionString(originalBeforeDrawScript);
+            }
+
+            if (originalAfterDrawScript != null) {
+                aaOptions.afterDrawChartJavaScript = AAJSStringPurer.pureAnonymousJSFunctionString(originalAfterDrawScript);
+            }
+
+            aaOptionsJsonStr = gson.toJson(aaOptions);
+        } finally {
+            aaOptions.beforeDrawChartJavaScript = originalBeforeDrawScript;
+            aaOptions.afterDrawChartJavaScript = originalAfterDrawScript;
+        }
+
         this.optionsJson = aaOptionsJsonStr;
-        String javaScriptStr = "loadTheHighChartView('"
-                + aaOptionsJsonStr + "','"
-                + this.contentWidth + "','"
-                + this.contentHeight + "')";
-        this.safeEvaluateJavaScriptString(javaScriptStr);
+
+        // Load plugins if needed before drawing the chart
+        final AAChartView chartView = this;
+        pluginLoader.loadPluginsIfNeeded(
+                this,
+                userPluginPaths,
+                dependencies,
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        // Execute pre-draw script via loader
+                        pluginLoader.executeBeforeDrawScript(chartView);
+
+                        // Draw the chart
+                        String javaScriptStr = "loadTheHighChartView('"
+                                + optionsJson + "','"
+                                + contentWidth + "','"
+                                + contentHeight + "')";
+                        safeEvaluateJavaScriptString(javaScriptStr);
+
+                        // Execute post-draw script via loader
+                        pluginLoader.executeAfterDrawScript(chartView);
+                    }
+                }
+        );
     }
 
-    private void showJavaScriptAlertView() {
+    @Override
+    protected void showJavaScriptAlertView() {
         this.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onJsAlert(WebView view,
                                      String url,
                                      String message,
                                      final JsResult result) {
+                if (view == null || url == null || message == null || result == null) {
+                    return false;
+                }
+
                 super.onJsAlert(view, url, message, result);
 
                 String urlStr = "url --->" + url + "\n\n\n";
@@ -369,30 +344,36 @@ public class AAChartView extends WebView {
         });
     }
 
-    private AAMoveOverEventMessageModel getEventMessageModel(Map messageBody) {
-        AAMoveOverEventMessageModel eventMessageModel =  new AAMoveOverEventMessageModel();
-        eventMessageModel.name = messageBody.get("name").toString();
+    private <T extends AAEventMessageModel> T getEventMessageModel(Map<String, Object> messageBody, Class<T> eventType) {
+        if (messageBody == null || eventType == null) {
+            throw new RuntimeException("Invalid parameters: messageBody or eventType is null");
+        }
+
+        T eventMessageModel;
+        try {
+            // 通过反射实例化泛型类型
+            eventMessageModel = eventType.getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create instance of " + eventType, e);
+        }
+
+        // 添加空指针检查
+        Object nameObj = messageBody.get("name");
+        Object categoryObj = messageBody.get("category");
+
+        eventMessageModel.name = nameObj != null ? nameObj.toString() : "";
         eventMessageModel.x = (Double) messageBody.get("x");
         eventMessageModel.y = (Double) messageBody.get("y");
-        eventMessageModel.category = messageBody.get("category").toString();
-        eventMessageModel.offset = (LinkedTreeMap) messageBody.get("offset");
+        eventMessageModel.category = categoryObj != null ? categoryObj.toString() : "";
         Double index = (Double) messageBody.get("index");
-        eventMessageModel.index = index.intValue();
+        eventMessageModel.index = index != null ? index.intValue() : 0;
+        eventMessageModel.offset = (LinkedTreeMap) messageBody.get("offset");
         return eventMessageModel;
     }
 
-
-    private void safeEvaluateJavaScriptString(String javaScriptString) {
+    @Override
+    protected void safeEvaluateJavaScriptString(String javaScriptString) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            String tag = "----- AAChartCore -----";
-            boolean isDebug = Log.isLoggable(tag, Log.DEBUG);
-            if (isDebug) {
-//                Log.i(tag, javaScriptString);
-
-                System.out.println(javaScriptString);
-
-            }
-
             this.evaluateJavascript("javascript:"+javaScriptString, new ValueCallback<String>() {
                 @Override
                 public void onReceiveValue(String s) {

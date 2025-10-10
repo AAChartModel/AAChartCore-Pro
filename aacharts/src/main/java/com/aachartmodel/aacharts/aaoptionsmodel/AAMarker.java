@@ -12,7 +12,7 @@ public class AAMarker {
 //AAPropSetFuncImplementation(AAMarker, NSNumber *,  height)
 
     public Boolean enabled;
-    public Float radius;
+    public Number radius;
     public String symbol;
     public String fillColor;//点的填充色(用来设置折线连接点的填充色)
     public Float lineWidth;//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
@@ -27,7 +27,7 @@ public class AAMarker {
         return this;
     }
 
-    public AAMarker radius(Float prop) {
+    public AAMarker radius(Number prop) {
         radius = prop;
         return this;
     }

@@ -1,10 +1,16 @@
 package com.aachartmodel.aacharts.aaoptionsmodel;
 
 public class AAHover {
+    public Boolean enabled;
     public String borderColor;
     public Float brightness;
     public String color;
     public AAHalo halo;
+
+    public AAHover enabled(Boolean prop) {
+        enabled = prop;
+        return this;
+    }
 
     public AAHover borderColor(String prop) {
         borderColor = prop;

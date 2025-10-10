@@ -17,11 +17,14 @@ public class AAOptions {
     public AALegend legend;
     public AAPane pane;
     public Object[] colors;
+    public AACredits credits;
     public AALang defaultOptions;
+    public Boolean clickEventEnabled;
     public Boolean touchEventEnabled;
-
     public AAColorAxis colorAxis;
     public AAData data;
+    public String beforeDrawChartJavaScript;
+    public String afterDrawChartJavaScript;
 
     public AAOptions chart(AAChart prop) {
         chart = prop;
@@ -88,8 +91,18 @@ public class AAOptions {
         return this;
     }
 
+    public AAOptions credits(AACredits prop) {
+        credits = prop;
+        return this;
+    }
+
     public AAOptions defaultOptions(AALang prop) {
         defaultOptions = prop;
+        return this;
+    }
+
+    public AAOptions clickEventEnabled(Boolean prop) {
+        clickEventEnabled = prop;
         return this;
     }
 
@@ -106,6 +119,23 @@ public class AAOptions {
     public AAOptions data(AAData prop) {
         data = prop;
         return this;
+    }
+
+    public AAOptions beforeDrawChartJavaScript(String prop) {
+        beforeDrawChartJavaScript = prop;
+        return this;
+    }
+
+    public AAOptions afterDrawChartJavaScript(String prop) {
+        afterDrawChartJavaScript = prop;
+        return this;
+    }
+
+
+    public AAOptions() {
+        AACredits aaCredits = new AACredits();
+        aaCredits.enabled = false;
+        this.credits = aaCredits;
     }
 
 }
